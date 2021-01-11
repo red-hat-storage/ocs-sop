@@ -1,0 +1,87 @@
+// begin header
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+:numbered:
+:toc: macro
+:toc-title: pass:[<b>Table of Contents</b>]
+// end header
+= CephOSDNearFull
+
+toc::[]
+
+== Check Description 
+
+*Severity:* Warning
+
+*Potential Customer Impact:* High
+
+
+== Overview
+
+A backend storage device in this Ceph Cluster has crossed 75%. In order to AVOID the cluster reaching
+read only mode, expand the storage cluster immediately.
+
+Expand the ceph cluster by adding additional OCS worker nodes (scale out). Directions below.
+
+== Prerequsities
+
+=== Prerequisite 1
+.Verify the alert is still active. 
+----
+<link> to cluster monitoring dashboard.
+----
+
+=== Prerequisite 2
+.Check and document ceph cluster health:
+----
+Steps for getting to: ceph stat || ceph -w 
+----
+
+=== Prerequisite 3
+.Check current machineset (in case you have workerocs nodes already):
+----
+oc get machinesets -n openshift-machine-api | egrep 'NAME|workerocs'
+----
+
+==  Alert
+=== Gather logs
+
+.Document Ceph Cluster health check:
+----
+Insert ceph stat || ceph -w directions
+----
+
+=== Make changes to solve alert
+
+Here are the command to expand the ceph cluster (AWS, dynamic storage provisioning):
+
+.Create new MachineSets that will run storage-specific nodes for your OCP cluster: (NOTE, This may take a few minutes.)
+----
+CLUSTERID=$(oc get machineset -n openshift-machine-api -o jsonpath='{.items[0].metadata.labels.machine\.openshift\.io/cluster-api-cluster}')
+
+echo $CLUSTERID
+
+# Make this an attachment to remove external dependencies?
+curl -s https://raw.githubusercontent.com/red-hat-storage/ocs-training/master/training/modules/ocs4/attachments/cluster-workerocs-us-east-2.yaml | sed -e "s/CLUSTERID/${CLUSTERID}/g" | oc apply -f -
+----
+
+.Verify the new machines are ready:
+----
+oc get machines -n openshift-machine-api | egrep 'NAME|workerocs'
+----
+
+.Scale the workerocs machineset: 
+----
+oc get machinesets -n openshift-machine-api -o name | grep workerocs | xargs -n1 -t oc scale -n openshift-machine-api --replicas=2
+----
+
+== Troubleshooting
+* Issue encountered while following the sop 
+----
+Here is the solution
+----
