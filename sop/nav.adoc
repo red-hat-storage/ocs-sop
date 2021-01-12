@@ -1,0 +1,5 @@
+name: alerts
+title: OCS Standard Operating Procedures Alerts
+version: master
+nav:
+  - modules/alerts/nav.adoc
