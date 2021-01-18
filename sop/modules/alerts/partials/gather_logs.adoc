@@ -1,0 +1,6 @@
+
+.Document Ceph Cluster health check:
+----
+See Prerequisite 4
+----
+

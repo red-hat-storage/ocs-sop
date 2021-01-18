@@ -10,23 +10,20 @@ endif::[]
 :toc: macro
 :toc-title: pass:[<b>Table of Contents</b>]
 // end header
-= CephOSDNearFull
+= CephOSDCriticallyFull
 
 toc::[]
 
 == Check Description 
 
-*Severity:* Warning
+*Severity:* Error
 
-*Potential Customer Impact:* Medium
+*Potential Customer Impact:* High
 
 
 == Overview
 
-A backend storage device in this Ceph Cluster has crossed 75%. In order to AVOID the cluster reaching
-read only mode, expand the storage cluster immediately.
-
-Expand the ceph cluster by adding additional OCS worker nodes (scale out). Directions below.
+A backend storage device in this Ceph Cluster has crossed 85%. Expand the storage cluster immediately.
 
 == Prerequsities
 
@@ -42,7 +39,6 @@ include::partial$check_cluster_heath.adoc[]
 If the toolbox is not deployed, please follow the directions below. 
 include::partial$deploy_toolbox.adoc[]
 
-
 ==  Alert
 === Gather logs
 
@@ -53,6 +49,7 @@ See Prerequisite 4
 
 === Make changes to solve alert
 include::partial$expand_cluster.adoc[]
+
 
 == Troubleshooting
 * Issue encountered while following the sop 

@@ -1,0 +1,5 @@
+.Verify the alert is still active:
+----
+<link> to cluster monitoring dashboard.
+----
+Proceed if the alert is still active.

@@ -10,7 +10,7 @@ endif::[]
 :toc: macro
 :toc-title: pass:[<b>Table of Contents</b>]
 // end header
-= CephOSDNearFull
+= CephMonVersionMismatchCephMonVersionMismatch
 
 toc::[]
 
@@ -23,10 +23,10 @@ toc::[]
 
 == Overview
 
-A backend storage device in this Ceph Cluster has crossed 75%. In order to AVOID the cluster reaching
-read only mode, expand the storage cluster immediately.
+Different versions of Ceph Mon components are running. This alert may trigger during an upgrade.
 
-Expand the ceph cluster by adding additional OCS worker nodes (scale out). Directions below.
+Determine if an upgrade is in progress and simply requires more time or if the upgrade process needs restarting.
+
 
 == Prerequsities
 
