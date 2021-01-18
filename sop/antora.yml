@@ -1,0 +1,6 @@
+name: sop
+title: OCS Standard Operating Procedures
+version: master
+nav:
+  - modules/alerts/nav.adoc
+
