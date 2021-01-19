@@ -3,3 +3,5 @@
 * xref:CephMgrIsMissingReplicas.adoc[CephMgrIsMissingReplicas]
 * xref:CephOSDCriticallyFull.adoc[CephOSDCriticallyFull]
 * xref:CephOSDNearFull.adoc[CephOSDNearFull]
+* xref:CephOSDVersionMismatch.adoc[CephOSDVersionMismatch]
+* xref:CephMonVersionMismatch.adoc[CephMonVersionMismatch]
