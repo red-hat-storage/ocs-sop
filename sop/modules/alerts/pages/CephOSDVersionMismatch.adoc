@@ -10,7 +10,7 @@ endif::[]
 :toc: macro
 :toc-title: pass:[<b>Table of Contents</b>]
 // end header
-= CephMgrIsAbsent
+= CephOSDVersionMismatch
 :ceph-component: rook-ceph-mgr
 
 toc::[]
@@ -23,7 +23,7 @@ toc::[]
 
 
 == Overview
-Different versions of Ceph Mon components are running. This alert may trigger during an upgrade that is taking a long time. To resolve this alter, determine if an upgrade is in progress and simply requires more time or if the upgrade process needs restarting.
+Different versions of Ceph OSD components are running. This alert may trigger during an upgrade that is taking a long time. To resolve this alter, determine if an upgrade is in progress and simply requires more time or if the upgrade process needs restarting.
 
 == Prerequsities
 include::partial$prerequisites.adoc[]
@@ -38,6 +38,11 @@ See prequistes.
 
 Check if an operator upgrade is in progress. WIP
 
+1. Verify an update is in progress. 
+  * oc get clusteroperators
+  * oc get pod -n openshift-storage
+ 
+continue with https://docs.openshift.com/container-platform/4.5/support/troubleshooting/troubleshooting-operator-issues.html
 
 == Troubleshooting
 * Issue encountered while following the sop 

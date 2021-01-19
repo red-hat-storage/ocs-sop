@@ -9,4 +9,3 @@ include::partial$check_cluster_heath.adoc[]
 
 If the toolbox is not deployed, please follow the directions below.
 include::partial$deploy_toolbox.adoc[]
-
