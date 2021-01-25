@@ -17,9 +17,9 @@ toc::[]
 
 == Check Description 
 
-*Severity:* Critical
+*Severity:* Warning
 
-*Potential Customer Impact:* Critical
+*Potential Customer Impact:* High
 
 
 == Overview
