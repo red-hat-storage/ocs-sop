@@ -1,0 +1,7 @@
+[subs="verbatim,attributes"]
+.Get pod status:
+----
+oc project openshift-storage
+oc get pod | grep {ceph-component}
+----
+

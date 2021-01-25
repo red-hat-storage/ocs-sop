@@ -1,0 +1,8 @@
+The Rook-Ceph *toolbox* should already be installed for this OCS on OSD cluster. If it is not, we need to deploy it since it is not shipped with OCS.
+
+.Deploy Rook-Ceph toolbox if needed:
+[source,role="execute"]
+----
+oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'
+----
+

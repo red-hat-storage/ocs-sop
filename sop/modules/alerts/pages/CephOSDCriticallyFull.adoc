@@ -1,0 +1,58 @@
+// begin header
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+:numbered:
+:toc: macro
+:toc-title: pass:[<b>Table of Contents</b>]
+// end header
+= CephOSDCriticallyFull
+
+toc::[]
+
+== Check Description 
+
+*Severity:* Error
+
+*Potential Customer Impact:* High
+
+
+== Overview
+
+A backend storage device in this Ceph Cluster has crossed 85%. Expand the storage cluster immediately.
+
+== Prerequsities
+
+=== Prerequisite 1
+include::partial$verify_alert.adoc[]
+
+=== Prerequisite 3
+include::partial$setup_cluster_access.adoc[]
+
+=== Prerequisite 4
+include::partial$check_cluster_heath.adoc[]
+
+If the toolbox is not deployed, please follow the directions below. 
+include::partial$deploy_toolbox.adoc[]
+
+==  Alert
+=== Gather logs
+
+.Document Ceph Cluster health check:
+----
+See Prerequisite 4
+----
+
+=== Make changes to solve alert
+include::partial$expand_cluster.adoc[]
+
+
+== Troubleshooting
+* Issue encountered while following the sop 
+----
+Here is the solution
+----

@@ -1,0 +1,51 @@
+// begin header
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+:numbered:
+:toc: macro
+:toc-title: pass:[<b>Table of Contents</b>]
+// end header
+= CephMgrIsAbsent
+:ceph-component: rook-ceph-mds
+
+toc::[]
+
+== Check Description 
+
+*Severity:* Warning
+
+*Potential Customer Impact:* Medium
+
+
+== Overview
+Minimum required replicas for the storage metadata service (MDS) are not available. MDS is responsible for file metadata. Degradation of the MDS service can affect the working of the storage cluster and should be fixed as soon as possible.
+
+== Prerequsities
+include::partial$prerequisites.adoc[]
+
+==  Alert
+=== Gather logs
+
+.Document Ceph Cluster health check:
+----
+See Prerequisites.
+----
+
+=== Make changes to solve alert
+Follow standard troubleshooting workflows. 
+
+include::partial$pod_status.adoc[]
+include::partial$pod_pending.adoc[]
+include::partial$pod_not_running.adoc[]
+include::partial$pod_not_ready.adoc[]
+
+== Troubleshooting
+* Issue encountered while following the sop 
+----
+Here is the solution
+----
