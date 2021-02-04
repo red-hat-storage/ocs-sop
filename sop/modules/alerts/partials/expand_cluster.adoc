@@ -24,7 +24,7 @@ If not, include 7.2 Add storage capacity from training or OCS docs.
 
 .Enter the tools pod that you created in <<Using the Rook-Ceph toolbox to check on the Ceph backing storage,the previous section>>:
 ----
-include::check_cluster_health.adoc
+WIP
 ----
 
 

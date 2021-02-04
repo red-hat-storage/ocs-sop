@@ -1,10 +1,10 @@
 .Check and document ceph cluster health:
 ----
-# Capture output using normal OSD team methods.
+Capture output using normal OSD team methods.
 TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
 oc rsh -n openshift-storage $TOOLS_POD
 
-# From the rsh command prompt, run the following and capture the output.
+From the rsh command prompt, run the following and capture the output.
 ceph status
 ceph osd status
 ceph osd tree

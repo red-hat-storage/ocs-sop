@@ -40,7 +40,7 @@ include::partial$setup_cluster_access.adoc[]
 
 === Prerequisite 4
 Expect missing or stale information from ceph status because the ceph manager is down.
-include::partial$check_cluster_heath.adoc[]
+include::partial$check_cluster_health.adoc[]
 
 If the toolbox is not deployed, please follow the directions below. 
 include::partial$deploy_toolbox.adoc[]
