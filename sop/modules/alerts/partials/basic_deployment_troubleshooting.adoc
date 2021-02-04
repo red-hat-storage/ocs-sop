@@ -1,0 +1,8 @@
+
+
+include::partial$pod_not_ready.adoc[]
+include::partial$pod_not_running.adoc[]
+include::partial$pod_ok_no_app_access.adoc[]
+include::partial$pod_pending.adoc[]
+include::partial$pod_status.adoc[]
+

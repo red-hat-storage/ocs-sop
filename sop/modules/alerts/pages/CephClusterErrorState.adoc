@@ -10,22 +10,24 @@ endif::[]
 :toc: macro
 :toc-title: pass:[<b>Table of Contents</b>]
 // end header
-= CephMgrIsAbsent
-:ceph-component: rook-ceph-mds
+= CephClusterErrorState
+:ceph-component: rook-ceph-mgr
 
 toc::[]
 
 == Check Description 
 
-*Severity:* Warning
+*Severity:* Error
 
 *Potential Customer Impact:* High
 
 
 == Overview
-Minimum required replicas for the storage metadata service (MDS) are not available. MDS is responsible for file metadata. Degradation of the MDS service can affect the working of the storage cluster and should be fixed as soon as possible.
+
+Storage cluster is in error state for more than 10m.
 
 == Prerequsities
+
 include::partial$prerequisites.adoc[]
 
 ==  Alert
@@ -33,11 +35,14 @@ include::partial$prerequisites.adoc[]
 
 .Document Ceph Cluster health check:
 ----
-See Prerequisites.
+See Prerequisites
 ----
 
 === Make changes to solve alert
 
+This alert reflects that the rook-ceph-mgr job has been in error for an unacceptable amount of time. Check for other alerts that would have triggered prior to this one and troubleshoot those alerts first. 
+
+In general:
 include::partial$check_operator_update.adoc[]
 include::partial$check_operator_sub_status.adoc[]
 include::partial$check_ocs_op_pod.adoc[]

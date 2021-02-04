@@ -10,22 +10,23 @@ endif::[]
 :toc: macro
 :toc-title: pass:[<b>Table of Contents</b>]
 // end header
-= CephMgrIsAbsent
-:ceph-component: rook-ceph-mds
+= CephOSDDiskUnavailable
 
 toc::[]
 
 == Check Description 
 
-*Severity:* Warning
+*Severity:* Error
 
 *Potential Customer Impact:* High
 
 
 == Overview
-Minimum required replicas for the storage metadata service (MDS) are not available. MDS is responsible for file metadata. Degradation of the MDS service can affect the working of the storage cluster and should be fixed as soon as possible.
+
+A disk device is not responding. Check alert details for disk and host. Replace disk if necessary.
 
 == Prerequsities
+
 include::partial$prerequisites.adoc[]
 
 ==  Alert
@@ -33,15 +34,12 @@ include::partial$prerequisites.adoc[]
 
 .Document Ceph Cluster health check:
 ----
-See Prerequisites.
+See Prerequisites
 ----
 
 === Make changes to solve alert
+WIP Necessary in AWS deployments? Looks for other alerts?
 
-include::partial$check_operator_update.adoc[]
-include::partial$check_operator_sub_status.adoc[]
-include::partial$check_ocs_op_pod.adoc[]
-include::partial$basic_deployment_troubleshooting.adoc[]
 
 == Troubleshooting
 * Issue encountered while following the sop 
