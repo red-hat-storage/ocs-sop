@@ -4,7 +4,7 @@ name: Build and Deploy Site with Antora
 on:
   push:
     branches:
-      - master
+      - main
 env:
   SITE_DIR: 'site'
 jobs:
