@@ -5,7 +5,7 @@ include::partial$verify_alert.adoc[]
 include::partial$setup_cluster_access.adoc[]
 
 === Prerequisite 4
-include::partial$check_cluster_heath.adoc[]
+include::partial$check_cluster_health.adoc[]
 
 If the toolbox is not deployed, please follow the directions below.
 include::partial$deploy_toolbox.adoc[]
