@@ -1,5 +1,7 @@
+This alert is based on the following link:{attachments}/rook-prometheus-ceph-v14-rules.yaml[Prometheus Rules File v14].
+
 .Verify the alert is still active:
 ----
-<link> to cluster monitoring dashboard.
+WIP: <link> to cluster monitoring dashboard.
 ----
 Proceed if the alert is still active.
