@@ -29,7 +29,7 @@ Different versions of Ceph OSD components are running. This alert may trigger du
 include::partial$prerequisites.adoc[]
 
 ==  Alert
-=== Gather logs
+include::partial$gather_logs.adoc[]
 
 See prequistes.
 
@@ -45,7 +45,7 @@ Check if an operator upgrade is in progress. WIP
 continue with https://docs.openshift.com/container-platform/4.5/support/troubleshooting/troubleshooting-operator-issues.html
 
 == Troubleshooting
-* Issue encountered while following the sop 
-----
-Here is the solution
-----
+include::partial$troubleshooting.adoc[] 
+
+
+

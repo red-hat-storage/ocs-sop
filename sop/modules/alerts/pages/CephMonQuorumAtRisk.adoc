@@ -31,12 +31,12 @@ Storage cluster quorum is low. Immediately check for cluster errors.
 include::partial$prerequisites.adoc[]
 
 ==  Alert
-=== Gather logs
+include::partial$gather_logs.adoc[]
 
-.Document Ceph Cluster health check:
-----
-See Prerequisites
-----
+
+
+
+
 
 === Make changes to solve alert
 
@@ -47,7 +47,7 @@ include::partial$check_operator_update.adoc[]
 include::partial$check_operator_sub_status.adoc[]
 
 == Troubleshooting
-* Issue encountered while following the sop 
-----
-Here is the solution
-----
+include::partial$troubleshooting.adoc[] 
+
+
+

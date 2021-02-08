@@ -1,7 +1,0 @@
-
-.Setup cluster access:
-----
-# Setup for cluster access using normal OSD team methods.
-export KUBECONFIG=<check with OSD team - insert here>
-----
-

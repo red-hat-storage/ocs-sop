@@ -30,18 +30,18 @@ A disk device is not responding. Check alert details for disk and host. Replace 
 include::partial$prerequisites.adoc[]
 
 ==  Alert
-=== Gather logs
+include::partial$gather_logs.adoc[]
 
-.Document Ceph Cluster health check:
-----
-See Prerequisites
-----
+
+
+
+
 
 === Make changes to solve alert
 WIP This realistic for AWS deployments? Perhaps look for other alerts?
 
 == Troubleshooting
-* Issue encountered while following the sop 
-----
-Here is the solution
-----
+include::partial$troubleshooting.adoc[] 
+
+
+
