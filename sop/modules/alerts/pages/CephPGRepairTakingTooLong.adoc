@@ -29,7 +29,7 @@ https://access.redhat.com/solutions/1589113
 include::partial$prerequisites.adoc[]
 
 ==  Alert
-=== Gather logs
+include::partial$gather_logs.adoc[]
 
 See prequistes.
 
@@ -42,7 +42,7 @@ Check with team:
 Checkk other alerts first or go for ceph pg repair steps?
 
 == Troubleshooting
-* Issue encountered while following the sop 
-----
-Here is the solution
-----
+include::partial$troubleshooting.adoc[] 
+
+
+

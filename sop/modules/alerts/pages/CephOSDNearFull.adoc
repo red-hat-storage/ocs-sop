@@ -34,7 +34,7 @@ Expand the ceph cluster by adding additional OCS worker nodes (scale out). Direc
 include::partial$verify_alert.adoc[]
 
 === Prerequisite 3
-include::partial$setup_cluster_access.adoc[]
+include::partial$verify_cluster_access.adoc[]
 
 === Prerequisite 4
 include::partial$check_cluster_health.adoc[]
@@ -44,18 +44,18 @@ include::partial$deploy_toolbox.adoc[]
 
 
 ==  Alert
-=== Gather logs
+include::partial$gather_logs.adoc[]
 
-.Document Ceph Cluster health check:
-----
+
+
 See Prerequisite 4
-----
+
 
 === Make changes to solve alert
 include::partial$expand_cluster.adoc[]
 
 == Troubleshooting
-* Issue encountered while following the sop 
-----
-Here is the solution
-----
+include::partial$troubleshooting.adoc[] 
+
+
+

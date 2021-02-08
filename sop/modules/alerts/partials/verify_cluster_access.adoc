@@ -1,0 +1,8 @@
+
+.Verify cluster access:
+----
+Verify you have cluster access.
+
+Examples - list
+----
+

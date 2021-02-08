@@ -1,10 +1,10 @@
 === Prerequisite 1
+include::partial$verify_cluster_access.adoc[]
+
+=== Prerequisite 2
 include::partial$verify_alert.adoc[]
 
 === Prerequisite 3
-include::partial$setup_cluster_access.adoc[]
-
-=== Prerequisite 4
 include::partial$check_cluster_health.adoc[]
 
 If the toolbox is not deployed, please follow the directions below.

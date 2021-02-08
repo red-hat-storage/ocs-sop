@@ -31,12 +31,12 @@ Storage cluster is in warning state for more than 10m.
 include::partial$prerequisites.adoc[]
 
 ==  Alert
-=== Gather logs
+include::partial$gather_logs.adoc[]
 
-.Document Ceph Cluster health check:
-----
-See Prerequisites
-----
+
+
+
+
 
 === Make changes to solve alert
 
@@ -49,7 +49,7 @@ include::partial$check_ocs_op_pod.adoc[]
 include::partial$basic_deployment_troubleshooting.adoc[]
 
 == Troubleshooting
-* Issue encountered while following the sop 
-----
-Here is the solution
-----
+include::partial$troubleshooting.adoc[] 
+
+
+

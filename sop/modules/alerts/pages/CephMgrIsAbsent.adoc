@@ -31,7 +31,7 @@ To resolve this alert, you will need to determine the cause of the disappearance
 include::partial$prerequisites.adoc[]
 
 ==  Alert
-=== Gather logs
+include::partial$gather_logs.adoc[]
 
 See prequistes.
 
@@ -43,7 +43,7 @@ include::partial$check_ocs_op_pod.adoc[]
 include::partial$basic_deployment_troubleshooting.adoc[]
 
 == Troubleshooting
-* Issue encountered while following the sop 
-----
-Here is the solution
-----
+include::partial$troubleshooting.adoc[] 
+
+
+
