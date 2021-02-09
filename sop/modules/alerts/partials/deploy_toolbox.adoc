@@ -1,4 +1,4 @@
-The Rook-Ceph *toolbox* should already be installed for this OCS on OSD cluster. If it is not, we need to deploy it since it is not shipped with OCS.
+If the toolbox is not deployed, please follow the directions below.
 
 .Deploy Rook-Ceph toolbox if needed:
 [source,role="execute"]
