@@ -168,9 +168,9 @@
 <li><a href="#_overview">2. Overview</a></li>
 <li><a href="#_prerequsities">3. Prerequsities</a>
 <ul class="sectlevel2">
-<li><a href="#_prerequisite_1_verify_cluster_access">3.1. Prerequisite 1 - Verify Cluster Access</a></li>
-<li><a href="#_prerequisite_2_verify_alert">3.2. Prerequisite 2 - Verify Alert</a></li>
-<li><a href="#_prerequisite_3_document_ocs_ceph_cluster_health">3.3. Prerequisite 3 - Document OCS Ceph Cluster Health</a></li>
+<li><a href="#_prerequisite_verify_cluster_access">3.1. Prerequisite - Verify Cluster Access</a></li>
+<li><a href="#_prerequisite_verify_alert">3.2. Prerequisite - Verify Alert</a></li>
+<li><a href="#_prerequisite_document_ocs_ceph_cluster_health">3.3. Prerequisite - Document OCS Ceph Cluster Health</a></li>
 </ul>
 </li>
 <li><a href="#_alert">4. Alert</a>
@@ -206,7 +206,7 @@
 <h2 id="_prerequsities"><a class="anchor" href="#_prerequsities"></a>3. Prerequsities</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_prerequisite_1_verify_cluster_access"><a class="anchor" href="#_prerequisite_1_verify_cluster_access"></a>3.1. Prerequisite 1 - Verify Cluster Access</h3>
+<h3 id="_prerequisite_verify_cluster_access"><a class="anchor" href="#_prerequisite_verify_cluster_access"></a>3.1. Prerequisite - Verify Cluster Access</h3>
 <div class="listingblock">
 <div class="title">Verify cluster access:</div>
 <div class="content">
@@ -218,7 +218,7 @@ Check the output to ensure you are in the correct context for the cluster mentio
 </div>
 </div>
 <div class="sect2">
-<h3 id="_prerequisite_2_verify_alert"><a class="anchor" href="#_prerequisite_2_verify_alert"></a>3.2. Prerequisite 2 - Verify Alert</h3>
+<h3 id="_prerequisite_verify_alert"><a class="anchor" href="#_prerequisite_verify_alert"></a>3.2. Prerequisite - Verify Alert</h3>
 <div class="listingblock">
 <div class="title">Verify the alert is still active:</div>
 <div class="content">
@@ -242,7 +242,7 @@ https://prometheus.io/docs/prometheus/latest/querying/api/#alerts</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_prerequisite_3_document_ocs_ceph_cluster_health"><a class="anchor" href="#_prerequisite_3_document_ocs_ceph_cluster_health"></a>3.3. Prerequisite 3 - Document OCS Ceph Cluster Health</h3>
+<h3 id="_prerequisite_document_ocs_ceph_cluster_health"><a class="anchor" href="#_prerequisite_document_ocs_ceph_cluster_health"></a>3.3. Prerequisite - Document OCS Ceph Cluster Health</h3>
 <div class="listingblock">
 <div class="title">Check and document ceph cluster health:</div>
 <div class="content">
@@ -261,8 +261,7 @@ exit</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If the toolbox is not deployed, please follow the directions below.
-The Rook-Ceph <strong>toolbox</strong> should already be installed for this OCS on OSD cluster. If it is not, we need to deploy it since it is not shipped with OCS.</p>
+<p>If the toolbox is not deployed, please follow the directions below.</p>
 </div>
 <div class="listingblock execute">
 <div class="title">Deploy Rook-Ceph toolbox if needed:</div>
