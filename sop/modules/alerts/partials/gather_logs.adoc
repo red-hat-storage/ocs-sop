@@ -1,6 +1,7 @@
 
 .Document Ceph Cluster health check:
 ----
-See Prerequisite 4
+For OCS specific results run:
+oc adm must-gather --image=registry.redhat.io/ocs4/ocs-must-gather-rhel8:v4.6
 ----
 
