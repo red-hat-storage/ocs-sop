@@ -29,31 +29,10 @@ To resolve this alert, you will need to determine the cause of the disappearance
 
 == Prerequsities
 
-=== Prerequisite 1
-Verify the replicaset exists, the desired and current state differ:
-
-
-include::partial$verify_alert.adoc[]
-
-=== Prerequisite 3
-include::partial$verify_cluster_access.adoc[]
-
-=== Prerequisite 4
-Expect missing or stale information from ceph status because the ceph manager is down.
-include::partial$check_cluster_health.adoc[]
-
-If the toolbox is not deployed, please follow the directions below. 
-include::partial$deploy_toolbox.adoc[]
-
-
+include::partial$prerequisites.adoc[]
 
 ==  Alert
 include::partial$gather_logs.adoc[]
-
-
-
-See Prerequisite 4
-
 
 === Make changes to solve alert
 include::partial$check_operator_update.adoc[]

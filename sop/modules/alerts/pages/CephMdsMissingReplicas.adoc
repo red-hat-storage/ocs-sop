@@ -31,11 +31,6 @@ include::partial$prerequisites.adoc[]
 ==  Alert
 include::partial$gather_logs.adoc[]
 
-
-
-See Prerequisites.
-
-
 === Make changes to solve alert
 
 include::partial$check_operator_update.adoc[]

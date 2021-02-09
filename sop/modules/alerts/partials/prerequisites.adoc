@@ -1,10 +1,12 @@
-=== Prerequisite 1
+
+=== Prerequisite 1 - Verify Cluster Access
 include::partial$verify_cluster_access.adoc[]
 
-=== Prerequisite 2
+=== Prerequisite 2 - Verify Alert 
 include::partial$verify_alert.adoc[]
 
-=== Prerequisite 3
+=== Prerequisite 3 - Document OCS Ceph Cluster Health 
+
 include::partial$check_cluster_health.adoc[]
 
 If the toolbox is not deployed, please follow the directions below.
