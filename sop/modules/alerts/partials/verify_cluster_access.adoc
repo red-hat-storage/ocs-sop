@@ -6,3 +6,6 @@ Find the cluster name in the alert and run:
 oc whoami --show-server
 
 Check the output to ensure you are in the correct context for the cluster mentioned in the alert. If not, please change context and proceed.proceed.
+
+----
+
