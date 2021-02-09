@@ -168,9 +168,8 @@
 <li><a href="#_overview">2. Overview</a></li>
 <li><a href="#_prerequsities">3. Prerequsities</a>
 <ul class="sectlevel2">
-<li><a href="#_prerequisite_1">3.1. Prerequisite 1</a></li>
-<li><a href="#_prerequisite_2">3.2. Prerequisite 2</a></li>
-<li><a href="#_prerequisite_3">3.3. Prerequisite 3</a></li>
+<li><a href="#_prerequisite_1_verify_cluster_access">3.1. Prerequisite 1 - Verify Cluster Access</a></li>
+<li><a href="#_prerequisite_3_document_ocs_ceph_cluster_health">3.2. Prerequisite 3 - Document OCS Ceph Cluster Health</a></li>
 </ul>
 </li>
 <li><a href="#_alert">4. Alert</a>
@@ -209,27 +208,46 @@
 <h2 id="_prerequsities"><a class="anchor" href="#_prerequsities"></a>3. Prerequsities</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_prerequisite_1"><a class="anchor" href="#_prerequisite_1"></a>3.1. Prerequisite 1</h3>
+<h3 id="_prerequisite_1_verify_cluster_access"><a class="anchor" href="#_prerequisite_1_verify_cluster_access"></a>3.1. Prerequisite 1 - Verify Cluster Access</h3>
 <div class="listingblock">
 <div class="title">Verify cluster access:</div>
 <div class="content">
-<pre>Verify you have cluster access.
+<pre>Find the cluster name in the alert and run:
+oc whoami --show-server
 
-Examples - list</pre>
+Check the output to ensure you are in the correct context for the cluster mentioned in the alert. If not, please change context and proceed.proceed.
+
+=== Prerequisite 2 - Verify Alert
+
+.Verify the alert is still active:</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Get the route to this cluster&#8217;s alertmanager:
+MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')</p>
+</div>
+<div class="paragraph">
+<p>Get your alertname from the alert, set for use in jq:
+export MYALERTNAME="&lt;alertname from alert&gt;"</p>
+</div>
+<div class="paragraph">
+<p>To see if this single alert is active run:
+curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  <a href="https://${MYALERTMANAGER}/api/v1/alerts" class="bare">https://${MYALERTMANAGER}/api/v1/alerts</a> | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERT: .labels.alertname, STATE: .status.state}'</p>
+</div>
+<div class="paragraph">
+<p>No entries means the alert is no longer active. Some alerts, such as mismatch versions, can occur during upgrades and resolve themselves. If this alert is not a mismatch version alert then there should be an investigation into what triggered the alert even though the alert resolved. Look for other active alerts or alerts with similiar timing.</p>
+</div>
+<div class="paragraph">
+<p>If you need more details run:
+curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  <a href="https://${MYALERTMANAGER}/api/v1/alerts" class="bare">https://${MYALERTMANAGER}/api/v1/alerts</a> | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERTDETAILS: .}'</p>
+</div>
+<div class="paragraph">
+<p>More about the Prometheus Alert endpoint can be found here:
+<a href="https://prometheus.io/docs/prometheus/latest/querying/api/#alerts" class="bare">https://prometheus.io/docs/prometheus/latest/querying/api/#alerts</a></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_prerequisite_2"><a class="anchor" href="#_prerequisite_2"></a>3.2. Prerequisite 2</h3>
-<div class="listingblock">
-<div class="title">Verify the alert is still active:</div>
-<div class="content">
-<pre>Steps to verify - Ui and cli</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_prerequisite_3"><a class="anchor" href="#_prerequisite_3"></a>3.3. Prerequisite 3</h3>
+<h3 id="_prerequisite_3_document_ocs_ceph_cluster_health"><a class="anchor" href="#_prerequisite_3_document_ocs_ceph_cluster_health"></a>3.2. Prerequisite 3 - Document OCS Ceph Cluster Health</h3>
 <div class="listingblock">
 <div class="title">Check and document ceph cluster health:</div>
 <div class="content">
@@ -266,7 +284,8 @@ The Rook-Ceph <strong>toolbox</strong> should already be installed for this OCS 
 <div class="listingblock">
 <div class="title">Document Ceph Cluster health check:</div>
 <div class="content">
-<pre>See Prerequisite 4</pre>
+<pre>For OCS specific results run:
+oc adm must-gather --image=registry.redhat.io/ocs4/ocs-must-gather-rhel8:v4.6</pre>
 </div>
 </div>
 <div class="paragraph">
