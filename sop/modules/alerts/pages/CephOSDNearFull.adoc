@@ -30,6 +30,7 @@ Expand the ceph cluster by adding additional OCS worker nodes (scale out). Direc
 
 == Prerequsities
 
+
 include::partial$prerequisites.adoc[]
 
 ==  Alert

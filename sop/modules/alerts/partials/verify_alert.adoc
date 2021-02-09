@@ -2,6 +2,7 @@
 .Verify the alert is still active:
 ----
 
+
 Get the route to this cluster's alertmanager:
 MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')
 
@@ -19,4 +20,4 @@ curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prom
 More about the Prometheus Alert endpoint can be found here:
 https://prometheus.io/docs/prometheus/latest/querying/api/#alerts
 
-----
+
