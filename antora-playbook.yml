@@ -4,7 +4,7 @@ site:
   start_page: sop::index.adoc
   robots: allow
   keys:
-    google_analytics: 'G-LGCEEZGN54'
+    google_analytics: 'G-PDMKGVZNGE'
 content:
   sources:
   - url: https://github.com/red-hat-storage/ocs-sop.git
