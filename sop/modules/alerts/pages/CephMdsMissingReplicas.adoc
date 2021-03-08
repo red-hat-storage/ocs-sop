@@ -10,7 +10,7 @@ endif::[]
 :toc: macro
 :toc-title: pass:[<b>Table of Contents</b>]
 // end header
-= CephMgrIsAbsent
+= CephMdsMissingReplicas
 :ceph-component: rook-ceph-mds
 
 toc::[]
