@@ -1,14 +1,14 @@
 site:
   title: OCS Standard Operating Procedures 
-  url: https://red-hat-storage.github.io/ocs-sop
+  url: https://mid998.github.io/ocs-sop
   start_page: sop::index.adoc
   robots: allow
   keys:
     google_analytics: 'G-PDMKGVZNGE'
 content:
   sources:
-  #- url: https://github.com/red-hat-storage/ocs-sop.git
-  - url: .
+  - url: https://github.com/mid998/ocs-sop.git
+    #- url: .
     branches: [HEAD]
     start_paths: [sop]
     edit_url: '{web_url}/edit/{refname}/{path}'
