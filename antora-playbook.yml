@@ -21,3 +21,22 @@ ui:
 # output:
   # clean: true
   # dir: ./site
+  #
+
+asciidoc:
+  attributes:
+    bad-pod: ${MYPOD}
+    title_message: "Message"
+    title_description: "Description"
+    title_severity: "Severity"
+    title_procedure: "Procedure for Resolution"
+    title_logs: "Gathering Logs"
+  extensions:
+          #- "@djencks/asciidoctor-tabset-block"
+      # - ./lib/collapsible-block-tree-processor
+    - ./lib/source-url-include-processor.js
+    - ./lib/json-config-ui-block-macro.js
+    - ./lib/inline-man-macro.js
+    - ./lib/multirow-table-head-tree-processor.js
+    - ./lib/swagger-ui-block-macro.js
+    - ./lib/tabs-block.js
