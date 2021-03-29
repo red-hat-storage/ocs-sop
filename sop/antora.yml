@@ -2,5 +2,5 @@ name: sop
 title: OCS Standard Operating Procedures
 version: master
 nav:
-  - modules/AWS/nav.adoc
+  - modules/alerts/nav.adoc
   - modules/OSD/nav.adoc

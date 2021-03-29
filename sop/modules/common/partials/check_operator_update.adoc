@@ -1,7 +1,0 @@
-
-*Check for OCS Operator Update*
-
-WIP CLI does the status of the operator reflect update in progress? 
-https://docs.openshift.com/container-platform/4.6/operators/admin/olm-status.html
-
-WIP UI 

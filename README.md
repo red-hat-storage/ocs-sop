@@ -20,3 +20,5 @@ The final configuration details for OCS on OSD are TBD. These SoPs are written w
 ### Other
   * Customer notifications and communication is outside the scope of these documents.
 
+### Build Notes
+https://gitlab.com/antora/antora-asciidoctor-extensions/-/tree/master/tabs-block used for tabs. Requires merging styles.css, copying behvaior.js to ui/js. 

@@ -1,5 +1,0 @@
-* Issue encountered while following the sop 
-----
-Any issues while following the sop should be documented here.
-----
-
