@@ -1,0 +1,37 @@
+site:
+  title: OCS SoPs
+  #url: https://red-hat-storage.github.io/ocs-sop
+  url: https://mid998.github.io/ocs-sop
+  start_page: sop::index.adoc
+  robots: allow
+content:
+  sources:
+  - url: .
+    branches: [HEAD]
+    start_paths: [sop]
+    edit_url: '{web_url}/edit/{refname}/{path}'
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/master/raw/build/ui-bundle.zip?job=bundle-stable
+    #url: https://github.com/redhat-scholars/course-ui/releases/download/v0.1.9/ui-bundle.zip
+    #url: /Users/michelledipalma/redhat/osd/course-ui/build/ui-bundle.zip
+    #url: /Users/michelledipalma/redhat/osd/antora-ui-default/build/ui-bundle.zip
+    snapshot: true
+  supplemental_files: ui
+asciidoc:
+  attributes:
+    bad-pod: ${MYPOD}
+    title_message: "Message"
+    title_description: "Description"
+    title_severity: "Severity"
+    title_procedure: "Procedure for Resolution"
+    title_logs: "Gathering Logs"
+  extensions:
+          #- "@djencks/asciidoctor-tabset-block"
+      # - ./lib/collapsible-block-tree-processor
+    - ./lib/source-url-include-processor.js
+    - ./lib/json-config-ui-block-macro.js
+    - ./lib/inline-man-macro.js
+    - ./lib/multirow-table-head-tree-processor.js
+    - ./lib/swagger-ui-block-macro.js
+    - ./lib/tabs-block.js
