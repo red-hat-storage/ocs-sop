@@ -1,0 +1,49 @@
+// begin header
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+:numbered:
+:toc: macro
+:toc-title: pass:[<b>Table of Contents</b>]
+// end header
+:alertname: AlertName
+:message: Message from the actual alert.
+:description: Description from the actual alert.
+:detailed_description: Detailed Description: Fill this in if necessary or leave ''
+:severity: Critical, Error, Warning
+:resolution_description: Fill this in if necessary or leave ''
+:ceph-component: rook-ceph-mgr
+
+= {alertname}
+:tabs:
+
+[{tabs}] 
+==== 
+Tab 1 Title:: 
++ 
+-- 
+This is the content of the first tab.
+
+Another paragraph in the first tab.
+
+[source,console]
+----
+$ a code block
+----
+--
+Tab 2 Title::
++
+This is the content of the second tab. 
+====
+
+
+include::partial$alert_information.adoc[]
+include::partial$procedure_resolution_basic.adoc[]
+include::partial$logs_support.adoc[]
+
+
+

@@ -1,0 +1,49 @@
+// begin header
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+:numbered:
+:toc: macro
+:toc-title: pass:[<b>Table of Contents</b>]
+// end header
+= CephMgrIsAbsent
+:ceph-component: rook-ceph-mgr
+
+toc::[]
+
+== Check Description 
+
+*Severity:* Critical
+
+*Potential Customer Impact:* Critical
+
+
+== Overview
+Ceph Manager has disappeared from Prometheus target discovery. This impacts health status reporting and will cause some of the information reported by `ceph status` to be missing or stale. In addition, the ceph manager is responsible for a Manager framework aimed at expanding the Ceph existing capabilities.
+
+To resolve this alert, you will need to determine the cause of the disappearance of the Ceph Manager and restart if necessary. 
+
+== Prerequsities
+include::common:partial$prerequisites.adoc[]
+
+==  Alert
+include::common:partial$gather_logs.adoc[]
+
+See prequistes.
+
+
+=== Make changes to solve alert
+include::common:partial$check_operator_update.adoc[]
+include::common:partial$check_operator_sub_status.adoc[]
+include::common:partial$check_ocs_op_pod.adoc[]
+include::common:partial$basic_deployment_troubleshooting.adoc[]
+
+== Troubleshooting
+include::common:partial$troubleshooting.adoc[] 
+
+
+

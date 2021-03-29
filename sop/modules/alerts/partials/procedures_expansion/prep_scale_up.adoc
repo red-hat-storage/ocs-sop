@@ -1,0 +1,99 @@
+=== Preparation for Scaling UP
+
+The procedure for scaling *UP* storage requires adding more storage capacity to existing nodes. In general, this process requires 3 steps:
+
+* *Check Ceph Cluster Status Before Recovery* - Check ceph status, ceph osd status, check current alerts
+* *Add Storage Capacity* - Determine if LSO is in use or not, add capacity accordingly. This will be deployment specific and you will need to have some idea of how your OCS cluster was deployed (i.e. AWS, Azure, bare metal) and how to add storage for your specific deployment. 
+* *Check Ceph Cluster Status During Recovery* - Essentially same as first item.
+
+=== Assess Your Cluster State 
+
+Check the current status of the ceph cluster and OSDs using the rook-ceph toolbox:
+
+[source,role="execute"]
+----
+oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'
+----
+
+After the `rook-ceph-tools` *Pod* is `Running`, access the *toolbox* like this:
+
+[source,role="execute"]
+----
+TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
+oc rsh -n openshift-storage $TOOLS_POD
+----
+
+Once inside the *toolbox*, run the following Ceph commands:
+
+[source,role="execute"]
+----
+ceph status
+----
+
+In the output of `ceph status` look for cluster: health, and data: usage. 
+
+*Typically*, OSDs running out of space to replicate are causing the problem. View current OSD status by running:
+[source,role="execute"]
+----
+ceph osd status
+----
+
+In the output of `ceph osd status` look for the numbers in the used and avail columns. You will track these numbers after adding scaling storage capacity.
+
+Do not forget to exit the pod to return back to your command prompt:
+[source,role="execute"]
+----
+exit
+----
+
+This in this situation, it is common to have *MANY* alerts firing or warning all at once. You may track current alert statuses by running:
+----
+WIP: findall_alerts.sh instructions here 
+----
+
+=== Determine LSO or No LSO
+
+To determine is LSO is installed and in use, run the following commands:
+
+[source,role="execute"]
+----
+oc get csv -A | grep local-storage
+----
+
+.Example output:
+----
+openshift-local-storage                local-storage-operator.4.6.0-202103130248.p0   Local Storage                 4.6.0-202103130248.p0              Succeeded
+----
+
+If you see output like above ending with Succeeded, LSO is installed. 
+
+Determine if LSO is in use by looking for PVs that begin with the "local-pv" prefix, and PVC names that contain "ocs-deviceset-" prefix then the name of the storageClass used in the storage cluster definition, by running the following commands:
+
+.Look for PV names with local-pv prefixes:
+[source,role="execute"]
+----
+oc -n openshift-storage get pvc | grep local-pv
+----
+
+.Example output:
+----
+ocs-deviceset-localblksc-demo-0-data-0-jlp6g   Bound    local-pv-f4d1075c                          50Gi       RWO            localblkscdemo               140m
+ocs-deviceset-localblksc-demo-1-data-0-c8pmq   Bound    local-pv-bf5ca51e                          50Gi       RWO            localblkscdemo               140m
+ocs-deviceset-localblksc-demo-2-data-0-nzzn5   Bound    local-pv-fb64d972                          50Gi       RWO            localblkscdemo               140m
+----
+
+Notice the storage class name embedded in the name of the PVC, right after "ocs-deviceset-". In our example demo case, this is "localblksc-demo" and can be verified to be in use by the storage cluster by running:
+
+.Check the storageClassName in the storage cluster matches:
+[source,role="execute"]
+----
+oc -n openshift-storage get storagecluster -o yaml | grep storageClassName
+----
+
+.Example output:
+----
+storageClassName: localblksc-demo
+----
+
+If PVs named local-pv* are present and are bound to PVCs that contain the name of the storageClass in use by storagecluster definition, LSO is in use. 
+

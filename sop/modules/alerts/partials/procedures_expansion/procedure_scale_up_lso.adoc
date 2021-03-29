@@ -1,0 +1,218 @@
+=== Adding Storage Capacity when Local Storage Operator is in USE
+
+To determine which nodes will need additional capacity, view the localvolumeset and look for values: with key: kubernetes.io/hostname by running the following command:
+
+[source,role="execute"]
+----
+oc -n openshift-local-storage get localvolumeset -o yaml
+----
+
+.Example output:
+----
+[...]
+    nodeSelector:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - ip-10-0-149-49
+          - ip-10-0-179-37
+          - ip-10-0-209-228
+    storageClassName: localblksc-demo
+[...]
+----
+
+Add storage capacity (i.e. in AWS attach EBS volumes) to each hostname listed. Details of attaching additional storage capacity will depend on your particular environment and are beyond the scope of this document. 
+
+Once you have added capacity to each node, verify LSO has discovered the new storage by viewing the localvolumediscoveryresults details. To view the localvolumediscoveryresults details, first view the localvolumediscovery then choose a node for a spot check:
+
+[source,role="execute"]
+----
+oc -n openshift-local-storage get localvolumediscoveryresults
+----
+
+If you do not see your new storage please rerun the command a few times to allow discovery to complete. 
+
+Choose one of the localvolumediscoveryresults from above to inspect details. When new storage has been "discovered" it will be reflected under status: discoveredDevices. 
+
+[source,role="execute"]
+----
+oc -n openshift-local-storage get localvolumediscoveryresults/discovery-result-ip-10-0-149-49.us-east-2.compute.internal -o yaml
+----
+
+.Example output
+----
+[...]
+  - deviceID: /dev/disk/by-id/nvme-Amazon_Elastic_Block_Store_vol0b86476e1d962d061
+    fstype: ""
+    model: 'Amazon Elastic Block Store              '
+    path: /dev/nvme2n1
+    property: NonRotational
+    serial: vol0b86476e1d962d061
+    size: 53687091200
+    status:
+      state: Available
+    type: disk
+    vendor: ""
+[...]
+----
+
+Expand the OCS cluster by directly editing the ocs-storagecluster definition, finding spec: count: and increasing the count by 1:
+[source,role="execute"]
+----
+oc -n openshift-storage edit storagecluster/ocs-storagecluster
+----
+
+.Example output
+----
+spec:
+  encryption: {}
+  externalStorage: {}
+  [...]
+  monDataDirHostPath: /var/lib/rook
+  storageDeviceSets:
+  - config: {}
+    count: 1
+----
+In the example above "count: 1" becomes "count: 2". 
+
+A successful edit of storagecluster/ocs-storagecluster will show the following:
+
+----
+storagecluster.ocs.openshift.io/ocs-storagecluster edited
+----
+
+=== Assess Your Cluster During Recovery
+Watch the expansion progress by viewing ceph status and ceph osd status. This step is a repeat of Assess Your Cluster however, this time you will be specifically looking for evidence of:
+
+ * New osds for the new storage
+ * Status of recovery in io:
+ * Progress of OSD rebalancing across all (existing and new) OSDs
+ * Finally ceph health: and all alerts return to normal
+
+
+In case you did not do this from the previous Assess Your Cluster section:
+
+[source,role="execute"]
+----
+oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'
+----
+
+After the `rook-ceph-tools` *Pod* is `Running`, access the *toolbox* like this:
+
+[source,role="execute"]
+----
+TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
+oc rsh -n openshift-storage $TOOLS_POD
+----
+
+Once inside the *toolbox*, run the following Ceph commands:
+
+[source,role="execute"]
+----
+ceph status
+----
+
+.Example output:
+----
+  cluster:
+    id:     4e949bf7-7e24-4c0e-898e-f5985b514a99
+    health: HEALTH_ERR
+            3 backfillfull osd(s)
+            3 pool(s) backfillfull
+            Degraded data redundancy: 18634/33627 objects degraded (55.414%), 122 pgs degraded
+            Full OSDs blocking recovery: 93 pgs recovery_toofull
+ 
+  services:
+    mon: 3 daemons, quorum a,b,c (age 59m)
+    mgr: a(active, since 59m)
+    mds: ocs-storagecluster-cephfilesystem:1 {0=ocs-storagecluster-cephfilesystem-a=up:active} 1 up:standby-replay
+    osd: 6 osds: 6 up (since 43s), 6 in (since 43s)
+ 
+  task status:
+    scrub status:
+        mds.ocs-storagecluster-cephfilesystem-a: idle
+        mds.ocs-storagecluster-cephfilesystem-b: idle
+ 
+  data:
+    pools:   3 pools, 288 pgs
+    objects: 11.21k objects, 43 GiB
+    usage:   137 GiB used, 163 GiB / 300 GiB avail
+    pgs:     18634/33627 objects degraded (55.414%)
+             45/33627 objects misplaced (0.134%)
+             165 active+clean
+             93  active+recovery_toofull+degraded
+             29  active+recovery_wait+degraded
+             1   active+recovering
+ 
+  io:
+    client:   3.0 KiB/s rd, 75 MiB/s wr, 3 op/s rd, 38 op/s wr
+    recovery: 71 MiB/s, 0 keys/s, 20 objects/s
+----
+
+Items to notice:
+
+* The cluster: health: is still HEALTH_ERR which is expected until the cluster full recovers. 
+* service: osds reflect the total number of desired OSDs, and how many are currently up. This should eventually change to have desired match up.
+* io: recovery: being present means a recovery is taking place. This line will disappear when the recovery is complete.
+
+To actively watch the OSD recovery, run the following:
+
+[source,role="execute"]
+----
+ceph osd status
+----
+
+Watch the output of `ceph osd status` for detail on how the OSDs are rebalancing. You will see changes in the used and avail columns as ceph moves data to achieve a health state. 
+
+.Example output while data is being rebalanced:
+----
++----+--------------------------------------------+-------+-------+--------+---------+--------+---------+-----------+
+| id |                    host                    |  used | avail | wr ops | wr data | rd ops | rd data |   state   |
++----+--------------------------------------------+-------+-------+--------+---------+--------+---------+-----------+
+| 0  | ip-10-0-179-37.us-east-2.compute.internal  | 33.9G | 16.0G |    0   |   830k  |    0   |     0   | exists,up |
+| 1  | ip-10-0-209-228.us-east-2.compute.internal | 35.0G | 14.9G |    3   |  5652k  |    0   |     0   | exists,up |
+| 2  | ip-10-0-149-49.us-east-2.compute.internal  | 32.4G | 17.5G |    0   |  1638k  |    0   |     0   | exists,up |
+| 3  | ip-10-0-179-37.us-east-2.compute.internal  | 13.5G | 86.4G |    3   |  8532k  |    2   |   106   | exists,up |
+| 4  | ip-10-0-209-228.us-east-2.compute.internal | 12.2G | 87.7G |    8   |  8183k  |    0   |     0   | exists,up |
+| 5  | ip-10-0-149-49.us-east-2.compute.internal  | 15.2G | 84.7G |    3   |  4118k  |    0   |     0   | exists,up |
++----+--------------------------------------------+-------+-------+--------+---------+--------+---------+-----------+
+----
+
+Once the recovery process has completed, `ceph status` will show:
+
+* cluster: health: HEALTH_OK
+* All OSDs desired and present in service: osds:
+* io: recovery: will not be present since recovery has completed
+
+In addition, `ceph osd status` will show:
+
+* Fairly even distribution of used/avail across all OSDs
+
+.Example out of `ceph osd status` after recovery:
+----
++----+--------------------------------------------+-------+-------+--------+---------+--------+---------+-----------+
+| id |                    host                    |  used | avail | wr ops | wr data | rd ops | rd data |   state   |
++----+--------------------------------------------+-------+-------+--------+---------+--------+---------+-----------+
+| 0  | ip-10-0-209-93.us-east-2.compute.internal  | 1104M | 48.9G |    0   |     0   |    0   |     0   | exists,up |
+| 1  | ip-10-0-140-27.us-east-2.compute.internal  | 1116M | 48.9G |    0   |     0   |    0   |     0   | exists,up |
+| 2  | ip-10-0-183-136.us-east-2.compute.internal | 1092M | 48.9G |    0   |  3276   |    0   |     0   | exists,up |
+| 3  | ip-10-0-140-27.us-east-2.compute.internal  | 1110M | 48.9G |    0   |  7372   |    0   |     0   | exists,up |
+| 4  | ip-10-0-183-136.us-east-2.compute.internal | 1134M | 48.8G |    0   |  2457   |    0   |     0   | exists,up |
+| 5  | ip-10-0-209-93.us-east-2.compute.internal  | 1121M | 48.9G |    0   |     0   |    2   |   106   | exists,up |
++----+--------------------------------------------+-------+-------+--------+---------+--------+---------+-----------+
+----
+
+Do not forget to exit the pod to return back to your command prompt:
+[source,role="execute"]
+----
+exit
+----
+
+Alerts will resolve themselves as the cluster recovers.
+----
+WIP: findall_alerts.sh instructions here 
+----
+
+This procedure is complete. 

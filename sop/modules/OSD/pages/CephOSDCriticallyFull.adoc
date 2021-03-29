@@ -1,0 +1,48 @@
+// begin header
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+:numbered:
+:toc: macro
+:toc-title: pass:[<b>Table of Contents</b>]
+// end header
+= CephOSDCriticallyFull
+
+toc::[]
+
+== Check Description 
+
+*Severity:* Error
+
+*Potential Customer Impact:* High
+
+
+== Overview
+
+A backend storage device in this Ceph Cluster has crossed 85%. Expand the storage cluster immediately.
+
+== Prerequsities
+
+include::common:partial$prerequisites.adoc[]
+
+==  Alert
+include::common:partial$gather_logs.adoc[]
+
+
+
+
+
+
+=== Make changes to solve alert
+include::common:partial$expand_cluster.adoc[]
+
+
+== Troubleshooting
+include::common:partial$troubleshooting.adoc[] 
+
+
+

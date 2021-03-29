@@ -1,0 +1,9 @@
+=== Product Documentation
+
+----
+
+https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage/4.6/[Openshift Container Storage]
+https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage/4.6/html/managing_and_allocating_storage_resources/index[OCS Managing and Allocating Resources]
+
+----
+

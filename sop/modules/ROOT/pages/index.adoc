@@ -1,5 +1,6 @@
-= OCS Standard Operating Procedures
+= Openshift Data Foundation (formerly OCS)  Standard Operating Procedures
 
-Welcome to OCS Standard Operating Procedures or SoPs!
+Welcome to Openshift Standard Standard Operating Procedures. These SOPs are provided for free and "as is" and are intended for Internal OCS deployments only. Please select your deploy type from the left navigation menu. 
 
-Discover our SoPs in the left navigation menu
+To customize these SOPs for your own organization, please clone: https://github.com/red-hat-storage/ocs-sop.git
+

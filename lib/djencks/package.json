@@ -1,0 +1,45 @@
+{
+  "name": "@djencks/asciidoctor-tabset-block",
+  "version": "0.0.3",
+  "description": "asciidoctor tabset-block extension",
+  "author": {
+    "name": "Dan Allen",
+    "email": "dan@opendevise.com"
+  },
+  "contributors": [
+    {
+      "name": "David Jencks",
+      "email": "djencks@apache.org"
+    }
+  ],
+  "license": "MPL-2.0",
+  "main": "lib/tabset-block.js",
+  "files": [
+    "lib/*.js"
+  ],
+  "scripts": {
+    "test": "mocha",
+    "lint": "eslint lib/**/**.js test/**/**.js",
+    "lint-fix": "eslint lib/**/**.js test/**/**.js --fix"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@antora/content-classifier": "^3.0.0-alpha.1",
+    "@asciidoctor/core": "^2.2.0",
+    "asciidoctor-opal-runtime": "0.3.0",
+    "chai": "~4.2",
+    "chai-cheerio": "~1.0",
+    "chai-fs": "~2.0",
+    "chai-spies": "~1.0",
+    "cheerio": "1.0.0-rc.3",
+    "dirty-chai": "~2.0",
+    "eslint": "~6.7",
+    "eslint-config-standard": "~14.1",
+    "eslint-plugin-import": "~2.19",
+    "eslint-plugin-node": "~10.0",
+    "eslint-plugin-promise": "~4.2",
+    "eslint-plugin-standard": "~4.0",
+    "mocha": "~6.2",
+    "prettier-eslint-cli": "~5.0"
+  }
+}

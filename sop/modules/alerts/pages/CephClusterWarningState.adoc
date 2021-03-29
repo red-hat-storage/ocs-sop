@@ -10,28 +10,19 @@ endif::[]
 :toc: macro
 :toc-title: pass:[<b>Table of Contents</b>]
 // end header
-= CephClusterWarningState
+:alertname: CephClusterWarningState
+:message: Storage cluster is in degraded state.
+:description: Storage cluster is in warning state for more than 10m.
+:detailed_description: ''
+:resolution_description: ''
+:severity: Warning
 :ceph-component: rook-ceph-mgr
 
-toc::[]
+= {alertname}
 
-== Check Description 
-
-*Severity:* Warning
-
-*Potential Customer Impact:* Warning
-
-
-== Overview
-
-Storage cluster is in warning state for more than 10m.
-
-== Prerequsities
-
-include::partial$prerequisites.adoc[]
-
-==  Alert
-include::partial$gather_logs.adoc[]
+include::partial$alert_information.adoc[]
+WIP
+include::partial$logs_support.adoc[]
 
 
 

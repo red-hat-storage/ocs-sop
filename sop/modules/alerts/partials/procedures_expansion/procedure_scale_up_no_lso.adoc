@@ -1,0 +1,66 @@
+=== Adding Storage Capacity when Local Storage Operator is NOT in USE
+
+The procedure for scaling up capacity on AWS, Azure or VMWare is the same. Please follow the steps below.
+
+.Check the current number of OSD pods and their status:
+[source,shell]
+----
+oc get pod -o=custom-columns=NAME:.metadata.name,STATUS:.status.phase,NODE:.spec.nodeName -n openshift-storage | grep osd | grep -v prepare
+----
+
+.Example output
+----
+rook-ceph-osd-0-5686cb6949-q6t4r                                  Running     perf7-m4ngt-worker-vswpc
+rook-ceph-osd-1-5ff8ffd585-w72vm                                  Running     perf7-m4ngt-worker-vwkqk
+rook-ceph-osd-2-745d64bcff-s6kkn                                  Running     perf7-m4ngt-worker-7vq2w
+----
+
+.Increase the storagecluster spec:count by editing the storagecluster directly:
+[source,shell]
+----
+oc edit storagecluster/ocs-storagecluster
+----
+
+Search for count: and increase by 1. Save and exit your editor. Watch for the new OSD pods to be in a running state.
+
+.Example
+----
+[...]
+spec:
+  encryption: {}
+  externalStorage: {}
+  managedResources:
+    cephBlockPools: {}
+    cephFilesystems: {}
+    cephObjectStoreUsers: {}
+    cephObjectStores: {}
+  storageDeviceSets:
+  - config: {}
+    count: 1     <<<<< increase by 1
+[...]
+----
+
+Caution
+It may take more than 5 minutes for new OSD pods to be in a Running state.
+.Step 3: Check the current number of OSD pods and their status after increasing the storagecluster count:
+[source,shell]
+----
+oc get pod -o=custom-columns=NAME:.metadata.name,STATUS:.status.phase,NODE:.spec.nodeName -n openshift-storage | grep osd | grep -v prepare
+----
+
+.Example output
+----
+rook-ceph-osd-0-5686cb6949-q6t4r                                  Running     perf7-m4ngt-worker-vswpc
+rook-ceph-osd-1-5ff8ffd585-w72vm                                  Running     perf7-m4ngt-worker-vwkqk
+rook-ceph-osd-2-745d64bcff-s6kkn                                  Running     perf7-m4ngt-worker-7vq2w
+rook-ceph-osd-3-86dbcddc96-dmv9s                                  Pending     <none>
+rook-ceph-osd-4-7d6f55bc6d-sctdc                                  Pending     <none>
+rook-ceph-osd-5-67dc5d75f9-gthp2                                  Pending     <none>
+----
+
+.Step 4: Verify the added the capacity by checking the cluster status:
+----
+step 5
+----
+
+

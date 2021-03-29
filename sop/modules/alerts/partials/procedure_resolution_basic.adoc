@@ -1,0 +1,13 @@
+
+
+== Prerequsities
+include::partial$prerequisites.adoc[]
+
+== {title_procedure}
+
+=== Resolution Overview
+{resolution_description}
+
+Include your resolution partial here. Or not! You can decide to just insert this section into your
+adoc if you know the procedure/resolution is unique to that SOP. 
+

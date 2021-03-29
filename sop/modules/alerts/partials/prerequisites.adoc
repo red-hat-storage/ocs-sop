@@ -1,8 +1,5 @@
 
-include::partial$verify_cluster_access.adoc[]
-
-include::partial$verify_alert.adoc[]
-
-include::partial$check_cluster_health.adoc[]
-
-include::partial$deploy_toolbox.adoc[]
+* Ensure you have link:Prerequisites.html#verify_cluster_access[cluster admin access.]
+* Ensure the alert is link:Prerequisites.html#verify_alert[still active.]
+* Document link:Prerequisites.html#check_cluster_health[current cluster health.]
+* Deploy the link:Prerequisites.html#deploy_toolbox[Ceph toolbox] if necessary.

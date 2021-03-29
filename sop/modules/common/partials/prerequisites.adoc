@@ -1,0 +1,8 @@
+
+include::partial$verify_cluster_access.adoc[]
+
+include::partial$verify_alert.adoc[]
+
+include::partial$check_cluster_health.adoc[]
+
+include::partial$deploy_toolbox.adoc[]

@@ -1,6 +1,9 @@
+
+*Deploy Toolbox*
+
 If the toolbox is not deployed, please follow the directions below.
 
-.Deploy Rook-Ceph toolbox if needed:
+.Step 1: Deploy Rook-Ceph toolbox if needed:
 [source,role="execute"]
 ----
 oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'
