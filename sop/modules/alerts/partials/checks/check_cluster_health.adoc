@@ -2,6 +2,13 @@
 === Document OCS Ceph Cluster Health
 
 You may directly check OCS Ceph Cluster health by using the rook-ceph toolbox.
+[source,role="execute"]
+----
+oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'
+----
+
+After the `rook-ceph-tools` *Pod* is `Running`, access the *toolbox* like this:
+
 .Check and document ceph cluster health:
 [source,role="execute"]
 ----
