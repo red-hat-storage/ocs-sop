@@ -1,0 +1,17 @@
+
+
+== Prerequisites
+include::partial$prerequisites.adoc[]
+
+== {title_procedure}
+
+=== Resolution Overview
+{resolution_description}
+
+include::partial$checks/check_alerts.adoc[]
+include::partial$basic_deployment_troubleshooting.adoc[]
+include::partial$checks/check_ocs_op_pod.adoc[]
+include::partial$checks/check_operator_update.adoc[]
+include::partial$checks/check_operator_sub_status.adoc[]
+
+

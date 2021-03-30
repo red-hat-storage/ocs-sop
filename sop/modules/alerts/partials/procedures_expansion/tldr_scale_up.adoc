@@ -1,0 +1,71 @@
+=== TL;DR - Just Add Capacity
+
+Go ahead and try adding capacity. Follow the cli instructions below or webui instruction document link:https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage/4.6/html/scaling_storage/scaling-up-storage-capacity_rhocs#proc_scaling-up-storage-by-adding-capacity-to-your-openshift-container-storage-nodes-on-aws-vmware-infrastructure_rhocs[Scaling up storage by adding capacity to your OpenShift Container Storage nodes].
+
+NOTE: These instructions use the storageClass already in use by the storage cluster. 
+
+.Increase the storagecluster spec:count by editing the storagecluster directly:
+[source,role="execute"]
+----
+oc edit storagecluster/ocs-storagecluster
+----
+
+Search for count: and increase by 1. Save and exit your editor. Watch for the new OSD pods to be in a running state.
+
+.Example
+----
+[...]
+spec:
+  encryption: {}
+  externalStorage: {}
+  managedResources:
+    cephBlockPools: {}
+    cephFilesystems: {}
+    cephObjectStoreUsers: {}
+    cephObjectStores: {}
+  storageDeviceSets:
+  - config: {}
+    count: 1     <<<<< increase by 1
+[...]
+----
+
+.Check the current number of OSD pods and their status after increasing the storagecluster count:
+[source,role="execute"]
+----
+oc get pod -o=custom-columns=NAME:.metadata.name,STATUS:.status.phase,NODE:.spec.nodeName -n openshift-storage | grep osd | grep -v prepare
+----
+
+NOTE: It may take more than 5 minutes for new OSD pods to be in a Running state.
+
+.Example output
+----
+rook-ceph-osd-0-9c68fb5f4-m67hx                                   Running     ip-10-0-143-24.us-east-2.compute.internal
+rook-ceph-osd-1-744c7bd4-9rvcc                                    Running     ip-10-0-209-63.us-east-2.compute.internal
+rook-ceph-osd-2-66cdb4f4bb-sj6nz                                  Running     ip-10-0-168-60.us-east-2.compute.internal
+rook-ceph-osd-3-74fbf9ff65-7qw24                                  Running     ip-10-0-209-63.us-east-2.compute.internal
+rook-ceph-osd-4-5b8f57fff6-pm8jl                                  Running     ip-10-0-168-60.us-east-2.compute.internal
+rook-ceph-osd-5-c58dd5f65-s4sxh                                   Running     ip-10-0-143-24.us-east-2.compute.internal
+----
+
+Also, check that all ocs-deviceset PVCs have a status of Bound:
+[source,role="execute"]
+----
+oc get pvc | grep ocs-device
+----
+
+.Example output
+----
+ocs-deviceset-gp2-0-data-0-w2phx   Bound    pvc-a3ec1073-045c-4981-b98c-1dedc04ef325   512Gi      RWO            gp2                           3h9m
+ocs-deviceset-gp2-0-data-1-2qkf6   Bound    pvc-898c12fc-5ea1-4dc9-a87c-bd2093d89703   512Gi      RWO            gp2                           44m
+ocs-deviceset-gp2-1-data-0-7h52n   Bound    pvc-0427726a-1de0-477b-8c3a-874c6808edd4   512Gi      RWO            gp2                           3h9m
+ocs-deviceset-gp2-1-data-1-kplzg   Bound    pvc-9b3d1801-7962-4782-9798-db37d1f07f44   512Gi      RWO            gp2                           44m
+ocs-deviceset-gp2-2-data-0-fgprz   Bound    pvc-e421907b-9dcc-4a47-a6af-ffa1020bb0d6   512Gi      RWO            gp2                           3h9m
+ocs-deviceset-gp2-2-data-1-fbhnr   Bound    pvc-11318138-b224-43c8-ae5b-10e6eb51e922   512Gi      RWO            gp2                           44m
+----
+
+You might have to wait a minute for all the PVCs to be Bound. 
+
+If the new rook-ceph-osd pods are all running, and the new PVCs are Bound, congratulations! You just expanded your ceph cluster and may proceed to "Assess Your Cluster During Recovery". 
+
+If the new rook-ceph-osd pods are stuck pending and the new PVCs are also not Bound, proceed to the next step. The PVCs will become Bound once the PVs are available after you have added storage capacity manually. 
+

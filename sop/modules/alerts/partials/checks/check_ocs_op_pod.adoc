@@ -1,0 +1,19 @@
+
+=== OCS Operator Pod Health
+
+Check the OCS operator pod status to see if there is an OCS operator upgrading in progress.
+
+.Find and view the status of the OCS operator: WIP Is Upgrade a status or only pending?
+----
+% oc get pod -n openshift-storage | grep ocs-operator       
+% OCSOP=$(oc get pod -n openshift-storage  -o custom-columns=POD:.metadata.name --no-headers | grep ocs-operator)
+% echo $OCSOP
+% oc get pod/${OCSOP} -n openshift-storage  
+% oc describe pod/${OCSOP} -n openshift-storage 
+----
+
+If you determine the OCS operator is in progress, please be patient, wait 5 minutes and this alert should resolve itself. 
+
+If you have waited or see a different error status condition, please continue troubleshooting. 
+
+

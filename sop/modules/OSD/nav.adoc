@@ -1,10 +1,8 @@
-.Alerts (Reviewed SOPs)
+.Alerts
 * xref:CephClusterReadOnly.adoc[CephClusterReadOnly]
 * xref:CephClusterCriticallyFull.adoc[CephClusterCriticallyFull]
 * xref:CephOSDCriticallyFull.adoc[CephOSDCriticallyFull]
 * xref:CephOSDNearFull.adoc[CephOSDNearFull]
-
-.Alerts (Pending Review SOPs)
 * xref:CephClusterWarningState.adoc[CephClusterWarningState]
 * xref:CephClusterErrorState.adoc[CephClusterErrorState]
 * xref:CephMdsMissingReplicas.adoc[CephMdsMissingReplicas]

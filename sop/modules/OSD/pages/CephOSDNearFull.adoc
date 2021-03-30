@@ -1,0 +1,47 @@
+// begin header
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+:numbered:
+:toc: macro
+:toc-title: pass:[<b>Table of Contents</b>]
+// end header
+:alertname: CephOSDNearFull 
+:message: Back-end storage device is nearing full.
+:description: Utilization of back-end storage device OSD has crossed 75% on host <hostname>. Free up some space or expand the storage cluster or contact support.
+:detailed_description: Detailed Description: One of the OSD storage devices is nearing full. 
+:resolution_description: Determine if you can proceed with scaling *UP* or *OUT* for expansion. Choose the appropriate tab for your deployment below.
+:severity: Warning
+:ceph-component: rook-ceph-mgr
+
+= {alertname}
+
+toc::[]
+
+== Check Description 
+
+*Severity:* {severity}
+
+*Potential Customer Impact:* High
+
+
+== Overview 
+
+{description}
+{detailed_description}
+
+== Prerequisites
+include::partial$prerequisites.adoc[]
+
+==  Alert
+include::partial$gather_logs.adoc[]
+
+include::partial$procedure_resolution_expansion.adoc[]
+
+==  Troubleshooting
+include::partial$troubleshooting.adoc[]
+

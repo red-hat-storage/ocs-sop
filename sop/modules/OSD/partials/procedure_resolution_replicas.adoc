@@ -1,0 +1,5 @@
+=== Make changes to solve alert
+include::partial$check_operator_update.adoc[]
+include::partial$check_operator_sub_status.adoc[]
+include::partial$check_ocs_op_pod.adoc[]
+include::partial$basic_deployment_troubleshooting.adoc[]

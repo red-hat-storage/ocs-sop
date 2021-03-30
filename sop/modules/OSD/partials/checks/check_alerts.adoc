@@ -1,0 +1,45 @@
+
+=== Check Alerts
+
+.Get the route to this cluster's alertmanager:
+[source,role="execute"]
+----
+MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')
+----
+
+Quickly view all alerts to check if your alert is still active. 
+
+.Check all alerts
+[source,role="execute"]
+----
+curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'
+----
+
+*Continue ONLY if you want to view your specific alert or need more details*
+
+.Get your alertname from the alert, set for use in jq:
+[source,role="execute"]
+----
+export MYALERTNAME="<alertname from alert>"
+----
+
+.Check if the alert is still active:
+[source,role="execute"]
+----
+curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERT: .labels.alertname, STATE: .status.state}'
+----
+
+No entries means the alert is no longer active. 
+
+Some alerts, such as mismatch versions, can occur during upgrades and resolve themselves. If this alert is not a mismatch version alert then there should be an investigation into what triggered the alert even though the alert resolved. Look for other active alerts or alerts with similiar timing. 
+
+.If you need more details run:
+[source,role="execute"]
+----
+curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERTDETAILS: .}'
+----
+
+More about the Prometheus Alert endpoint can be found here:
+https://prometheus.io/docs/prometheus/latest/querying/api/#alerts
+
+

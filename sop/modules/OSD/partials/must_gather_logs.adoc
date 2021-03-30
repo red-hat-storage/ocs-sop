@@ -1,0 +1,18 @@
+==  Alert
+=== Gather logs
+
+The OCS team has released its own image for the must-gather tool that runs
+storage specific commands.
+
+You can run this diagnostic tool like this for generic Openshift debugging:
+
+[source,role="execute"]
+----
+oc adm must-gather
+----
+
+The output will then be saved in the current directory inside of a new folder
+called `must-gather.local.(random)`
+
+Please copy this output to a safe location so it can be examined at a later time, if necessary.
+

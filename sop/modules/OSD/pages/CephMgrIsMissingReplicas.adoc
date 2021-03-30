@@ -1,0 +1,47 @@
+// begin header
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+:numbered:
+:toc: macro
+:toc-title: pass:[<b>Table of Contents</b>]
+// end header
+:alertname: CephMgrIsMissingReplicas
+:message: Storage cluster is critically full and needs immediate expansion.
+:description: Ceph Manager is missing replicas. This impacts health status reporting and will cause some of the information reported by `ceph status` to be missing or stale. In addition, the ceph manager is responsible for a Manager framework aimed at expanding the Ceph existing capabilities.
+:detailed_description: Detailed Description: To resolve this alert, you will need to determine the cause of the disappearance of the Ceph Manager and restart if necessary. 
+:resolution_description: 
+:severity: Warning
+:ceph-component: rook-ceph-mgr
+
+= {alertname}
+
+toc::[]
+
+== Check Description 
+
+*Severity:* {severity}
+
+*Potential Customer Impact:* High
+
+
+== Overview
+{description}
+{detailed_description}
+
+== Prerequisites
+include::partial$prerequisites.adoc[]
+
+==  Alert
+include::partial$gather_logs.adoc[]
+
+include::partial$procedure_resolution_replicas.adoc[]
+
+==  Troubleshooting
+include::partial$troubleshooting.adoc[]
+
+

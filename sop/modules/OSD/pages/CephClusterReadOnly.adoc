@@ -20,11 +20,26 @@ endif::[]
 
 = {alertname}
 
-include::partial$alert_information.adoc[]
+toc::[]
+
+== Check Description 
+
+*Severity:* {severity}
+
+*Potential Customer Impact:* High
+
+== Overview
+
+Storage cluster utilization has crossed 85% and will become read-only now. Expand the storage cluster immediately.
+
+== Prerequisites
+include::partial$prerequisites.adoc[]
+
+== Alert
+include::partial$gather_logs.adoc[]
 
 include::partial$procedure_resolution_expansion.adoc[]
 
-include::partial$logs_support.adoc[] 
+== Troubleshooting
 
-
-
+include::partial$troubleshooting.adoc[]

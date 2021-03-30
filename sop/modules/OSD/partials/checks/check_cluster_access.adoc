@@ -1,5 +1,5 @@
 
-*Verify cluster access*
+=== Verify cluster access
 
 .Verify you are admin and cluster server details:
 [source,role="execute"]

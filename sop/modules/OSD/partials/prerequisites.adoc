@@ -1,5 +1,4 @@
 
-== Prerequisites
 To proceed with the prerequisites and resolution, you will need basic cli tools including:
 
 * oc (Openshift CLI)
