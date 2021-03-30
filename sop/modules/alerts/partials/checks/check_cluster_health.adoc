@@ -20,10 +20,8 @@ oc rsh -n openshift-storage $TOOLS_POD
 [source,shell]
 ----
 ceph status
+ceph health status
 ceph osd status
-ceph osd tree
-ceph df
-rados df
-ceph versions
+ceph osd df
 exit
 ----

@@ -25,9 +25,11 @@ oc -n openshift-local-storage get localvolumeset -o yaml
 [...]
 ----
 
-Add storage capacity (i.e. in AWS attach EBS volumes) to each hostname listed. Details of attaching additional storage capacity will depend on your particular environment and are beyond the scope of this document. 
+Add storage capacity (i.e. in AWS attach EBS volumes) to each hostname listed. 
 
-Once you have added capacity to each node, verify LSO has discovered the new storage by viewing the localvolumediscoveryresults details. To view the localvolumediscoveryresults details, first view the localvolumediscovery then choose a node for a spot check:
+IMPORTANT: Details of attaching additional storage capacity will depend on your particular environment and are beyond the scope of this document. 
+
+**Once you have added capacity to each node**, verify LSO has discovered the new storage by viewing the localvolumediscoveryresults details. To view the localvolumediscoveryresults details, first view the localvolumediscovery then choose a node for a spot check:
 
 [source,role="execute"]
 ----
