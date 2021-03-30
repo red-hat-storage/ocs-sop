@@ -19,13 +19,12 @@ endif::[]
 :ceph-component: rook-ceph-mgr
 
 = {alertname}
-:tabs:
 
-[{tabs}] 
-==== 
-Tab 1 Title:: 
-+ 
--- 
+[tabs]
+====
+Tab 1 Title::
++
+--
 This is the content of the first tab.
 
 Another paragraph in the first tab.
@@ -37,7 +36,7 @@ $ a code block
 --
 Tab 2 Title::
 +
-This is the content of the second tab. 
+This is the content of the second tab.
 ====
 
 

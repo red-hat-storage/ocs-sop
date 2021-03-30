@@ -1,4 +1,5 @@
 .Alerts (Reviewed SOPs)
+* xref:basic_template.adoc[basic_template]
 * xref:CephClusterReadOnly.adoc[CephClusterReadOnly]
 * xref:CephClusterCriticallyFull.adoc[CephClusterCriticallyFull]
 * xref:CephOSDCriticallyFull.adoc[CephOSDCriticallyFull]

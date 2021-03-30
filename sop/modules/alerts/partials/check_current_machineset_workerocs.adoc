@@ -1,7 +1,0 @@
-.Check the current machineset for existing workerocs nodes:
-----
-#
-oc get machinesets -n openshift-machine-api | egrep 'NAME|workerocs'
-----
-
-

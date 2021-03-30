@@ -21,9 +21,7 @@ endif::[]
 = {alertname}
 
 include::partial$alert_information.adoc[]
-
 include::partial$procedure_resolution_expansion.adoc[]
-
 include::partial$logs_support.adoc[] 
 
 

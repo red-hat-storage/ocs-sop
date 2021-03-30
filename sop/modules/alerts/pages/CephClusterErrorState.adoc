@@ -11,7 +11,7 @@ endif::[]
 :toc-title: pass:[<b>Table of Contents</b>]
 // end header
 :alertname: CephClusterErrorState
-:message: Storage cluster is in error state
+:message: Storage cluster is in error state.
 :description: Storage cluster is in error state for more than 10m.
 :detailed_description: Detailed Description: This alert reflects that the rook-ceph-mgr job has been in error for an unacceptable amount of time. Check for other alerts that would have triggered prior to this one and troubleshoot those alerts first.
 :resolution_description: General troubleshooting will be required in order to determine the cause of this alert. 

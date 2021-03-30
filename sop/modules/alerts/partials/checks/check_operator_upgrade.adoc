@@ -1,0 +1,7 @@
+Check if an operator upgrade is in progress. WIP
+
+1. Verify an update is in progress.
+  * oc get clusteroperators
+  * oc get pod -n openshift-storage
+ 
+continue with https://docs.openshift.com/container-platform/4.5/support/troubleshooting/troubleshooting-operator-issues.html
