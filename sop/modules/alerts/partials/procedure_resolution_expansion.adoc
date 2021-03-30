@@ -6,8 +6,8 @@ include::partial$prerequisites.adoc[]
 {resolution_description}
 
 
-include::partial$procedures_expansion/tldr_scale_up.adoc[]
 
 include::partial$procedures_expansion/prep_scale_up.adoc[]
 include::partial$procedures_expansion/procedure_scale_up_lso.adoc[]
 
+*Pending scale out*
