@@ -7,7 +7,7 @@ site:
     google_analytics: 'G-PDMKGVZNGE'
 content:
   sources:
-  - url: https://github.com/mid998/ocs-sop.git
+  - url: https://github.com/red-hat-storage/ocs-sop.git
     #- url: .
     branches: [HEAD]
     start_paths: [sop]
