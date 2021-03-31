@@ -4,18 +4,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>CephClusterWarningState :: OCS Standard Operating Procedures</title>
-    <link rel="canonical" href="https://red-hat-storage.github.io/ocs-sop/sop/alerts/CephClusterWarningState.html">
+    <link rel="canonical" href="https://mid998.github.io/ocs-sop/sop/alerts/CephClusterWarningState.html">
+    <meta name="description" content="Storage cluster is in warning state for more than 10m.">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../_/css/site.css">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PDMKGVZNGE"></script>
-    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','G-PDMKGVZNGE')</script>
-    <script>var uiRootPath = '../../_'</script>
+<link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PDMKGVZNGE"></script>
+<script>function gtag() { dataLayer.push(arguments) }; window.dataLayer = window.dataLayer || []; gtag('js', new Date()); gtag('config', 'G-PDMKGVZNGE')</script>
   </head>
   <body class="article">
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="https://red-hat-storage.github.io/ocs-sop">OCS Standard Operating Procedures</a>
+      <a class="navbar-item" href="https://www.redhat.com/en/technologies/cloud-computing/openshift-container-storage" target="_blank">
+          <img src="../../_/img/header_logo_reverse.svg" height="40px" alt="Red Hat Data Services">
+      </a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -24,35 +28,27 @@
     </div>
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
-        <a class="navbar-item" href="#">Home</a>
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="#">Products</a>
+          <a class="navbar-link" href="#">Get Help</a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="#">Product A</a>
-            <a class="navbar-item" href="#">Product B</a>
-            <a class="navbar-item" href="#">Product C</a>
+            <a class="navbar-item" href="https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage" target="_blank">OCS Documentation</a>
+            <a class="navbar-item" href="https://bugzilla.redhat.com/describecomponents.cgi?product=Red%20Hat%20OpenShift%20Container%20Storage" target="_blank">Browse Bugs</a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="#">Services</a>
+          <a class="navbar-link" href="#">Improve Guides</a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="#">Service A</a>
-            <a class="navbar-item" href="#">Service B</a>
-            <a class="navbar-item" href="#">Service C</a>
+            <a class="navbar-item" href="https://github.com/red-hat-storage/ocs-training/blob/master/CONTRIBUTING.adoc" target="_blank">Guidelines</a>
+            <a class="navbar-item" href="https://github.com/red-hat-storage/ocs-training/issues/new/choose" target="_blank">Open Issue</a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="#">Resources</a>
+          <a class="navbar-link" href="#">More Infos</a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="#">Resource A</a>
-            <a class="navbar-item" href="#">Resource B</a>
-            <a class="navbar-item" href="#">Resource C</a>
+            <a class="navbar-item" href="https://www.redhat.com/en/blog/channel/red-hat-storage" target="_blank">Our Blog</a>
+            <a class="navbar-item" href="https://www.youtube.com/channel/UCoyG8VyvB-XUxQl1mD3T3Gw" target="_blank">Youtube</a>
+            <a class="navbar-item" href="https://www.redhat.com/en/technologies/cloud-computing/openshift-container-storage" target="_blank">OCS Technology</a>
           </div>
-        </div>
-        <div class="navbar-item">
-          <span class="control">
-            <a class="button is-primary" href="#">Download</a>
-          </span>
         </div>
       </div>
     </div>
@@ -64,23 +60,35 @@
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
-    <h3 class="title"><a href="../index.html">OCS Standard Operating Procedures</a></h3>
+    <h3 class="title"><a href="../index.html" class=" query-params-link">OCS Standard Operating Procedures</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">Alerts</span>
+    <span class="nav-text">Alerts (Reviewed SOPs)</span>
 <ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="CephClusterReadOnly.html">CephClusterReadOnly</a>
+  </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephClusterCriticallyFull.html">CephClusterCriticallyFull</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="CephClusterErrorState.html">CephClusterErrorState</a>
+    <a class="nav-link" href="CephOSDCriticallyFull.html">CephOSDCriticallyFull</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="CephClusterReadOnly.html">CephClusterReadOnly</a>
+    <a class="nav-link" href="CephOSDNearFull.html">CephOSDNearFull</a>
   </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Alerts (Pending Review SOPs)</span>
+<ul class="nav-list">
   <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="CephClusterWarningState.html">CephClusterWarningState</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="CephClusterErrorState.html">CephClusterErrorState</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephMdsMissingReplicas.html">CephMdsMissingReplicas</a>
@@ -101,22 +109,70 @@
     <a class="nav-link" href="CephNodeDown.html">CephNodeDown</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="CephOSDCriticallyFull.html">CephOSDCriticallyFull</a>
-  </li>
-  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephOSDDiskNotResponding.html">CephOSDDiskNotResponding</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephOSDDiskUnavailable.html">CephOSDDiskUnavailable</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="CephOSDNearFull.html">CephOSDNearFull</a>
-  </li>
-  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephOSDVersionMismatch.html">CephOSDVersionMismatch</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephPGRepairTakingTooLong.html">CephPGRepairTakingTooLong</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">OSD Alerts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephClusterReadOnly.html">CephClusterReadOnly</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephClusterCriticallyFull.html">CephClusterCriticallyFull</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephOSDCriticallyFull.html">CephOSDCriticallyFull</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephOSDNearFull.html">CephOSDNearFull</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephClusterWarningState.html">CephClusterWarningState</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephClusterErrorState.html">CephClusterErrorState</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephMdsMissingReplicas.html">CephMdsMissingReplicas</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephMgrIsAbsent.html">CephMgrIsAbsent</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephMgrIsMissingReplicas.html">CephMgrIsMissingReplicas</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephMonQuorumAtRisk.html">CephMonQuorumAtRisk</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephMonVersionMismatch.html">CephMonVersionMismatch</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephNodeDown.html">CephNodeDown</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephOSDDiskNotResponding.html">CephOSDDiskNotResponding</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephOSDDiskUnavailable.html">CephOSDDiskUnavailable</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephOSDVersionMismatch.html">CephOSDVersionMismatch</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephPGRepairTakingTooLong.html">CephPGRepairTakingTooLong</a>
   </li>
 </ul>
   </li>
@@ -130,7 +186,7 @@
   </div>
   <ul class="components">
     <li class="component is-current">
-      <a class="title" href="../index.html">OCS Standard Operating Procedures</a>
+      <span class="title">OCS Standard Operating Procedures</span>
       <ul class="versions">
         <li class="version is-current is-latest">
           <a href="../index.html">master</a>
@@ -149,215 +205,223 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">OCS Standard Operating Procedures</a></li>
-    <li>Alerts</li>
+    <li>Alerts (Pending Review SOPs)</li>
     <li><a href="CephClusterWarningState.html">CephClusterWarningState</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/red-hat-storage/ocs-sop/edit/main/sop/modules/alerts/pages/CephClusterWarningState.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/mid998/ocs-sop/edit/main/sop/modules/alerts/pages/CephClusterWarningState.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
-<aside class="toc sidebar" data-title="Contents" data-levels="2">
-  <div class="toc-menu"></div>
-</aside>
 <article class="doc">
 <h1 class="page">CephClusterWarningState</h1>
-<div id="preamble">
+<div class="sect1">
+<h2 id="_message"><a class="anchor" href="#_message"></a>1. Message</h2>
 <div class="sectionbody">
-<div id="toc" class="toc">
-<div id="toctitle" class="title"><b>Table of Contents</b></div>
-<ul class="sectlevel1">
-<li><a href="#_check_description">1. Check Description</a></li>
-<li><a href="#_overview">2. Overview</a></li>
-<li><a href="#_prerequsities">3. Prerequsities</a>
-<ul class="sectlevel2">
-<li><a href="#_prerequisite_verify_cluster_access">3.1. Prerequisite - Verify Cluster Access</a></li>
-<li><a href="#_prerequisite_verify_alert">3.2. Prerequisite - Verify Alert</a></li>
-<li><a href="#_prerequisite_document_ocs_ceph_cluster_health">3.3. Prerequisite - Document OCS Ceph Cluster Health</a></li>
-</ul>
-</li>
-<li><a href="#_alert">4. Alert</a>
-<ul class="sectlevel2">
-<li><a href="#_make_changes_to_solve_alert">4.1. Make changes to solve alert</a></li>
-</ul>
-</li>
-<li><a href="#_troubleshooting">5. Troubleshooting</a></li>
-</ul>
+<div class="paragraph">
+<p>Storage cluster is in degraded state.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_check_description"><a class="anchor" href="#_check_description"></a>1. Check Description</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Severity:</strong> Warning</p>
-</div>
-<div class="paragraph">
-<p><strong>Potential Customer Impact:</strong> Warning</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_overview"><a class="anchor" href="#_overview"></a>2. Overview</h2>
+<h2 id="_description"><a class="anchor" href="#_description"></a>2. Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Storage cluster is in warning state for more than 10m.</p>
 </div>
+<div class="paragraph">
+<p>The rook-ceph-mgr job has been in a warning state for an unacceptable amount of time. Check for other alerts that would have triggered prior to this one and troubleshoot those alerts first.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_prerequsities"><a class="anchor" href="#_prerequsities"></a>3. Prerequsities</h2>
+<h2 id="_severity"><a class="anchor" href="#_severity"></a>3. Severity</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_prerequisite_verify_cluster_access"><a class="anchor" href="#_prerequisite_verify_cluster_access"></a>3.1. Prerequisite - Verify Cluster Access</h3>
-<div class="listingblock">
-<div class="title">Verify cluster access:</div>
-<div class="content">
-<pre>Find the cluster name in the alert and run:
-oc whoami --show-server
-
-Check the output to ensure you are in the correct context for the cluster mentioned in the alert. If not, please change context and proceed.proceed.</pre>
+<div class="paragraph">
+<p><strong>Warning</strong></p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_prerequisite_verify_alert"><a class="anchor" href="#_prerequisite_verify_alert"></a>3.2. Prerequisite - Verify Alert</h3>
-<div class="listingblock">
-<div class="title">Verify the alert is still active:</div>
-<div class="content">
-<pre>Get the route to this cluster's alertmanager:
-MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')
-
-Get your alertname from the alert, set for use in jq:
-export MYALERTNAME="&lt;alertname from alert&gt;"
-
-To see if this single alert is active run:
-curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERT: .labels.alertname, STATE: .status.state}'
-
-No entries means the alert is no longer active. Some alerts, such as mismatch versions, can occur during upgrades and resolve themselves. If this alert is not a mismatch version alert then there should be an investigation into what triggered the alert even though the alert resolved. Look for other active alerts or alerts with similiar timing.
-
-If you need more details run:
-curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERTDETAILS: .}'
-
-More about the Prometheus Alert endpoint can be found here:
-https://prometheus.io/docs/prometheus/latest/querying/api/#alerts</pre>
+<div class="sect1">
+<h2 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>4. Prerequisites</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To proceed with the prerequisites and resolution, you will need basic cli tools including:</p>
 </div>
-</div>
+<div class="ulist">
+<ul>
+<li>
+<p>oc (Openshift CLI)</p>
+</li>
+<li>
+<p>jq</p>
+</li>
+<li>
+<p>curl</p>
+</li>
+</ul>
 </div>
 <div class="sect2">
-<h3 id="_prerequisite_document_ocs_ceph_cluster_health"><a class="anchor" href="#_prerequisite_document_ocs_ceph_cluster_health"></a>3.3. Prerequisite - Document OCS Ceph Cluster Health</h3>
-<div class="listingblock">
-<div class="title">Check and document ceph cluster health:</div>
+<h3 id="_verify_cluster_access"><a class="anchor" href="#_verify_cluster_access"></a>4.1. Verify cluster access</h3>
+<div class="listingblock execute">
+<div class="title">Verify you are admin and cluster server details:</div>
 <div class="content">
-<pre>Capture output using normal OSD team methods.
-TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
-oc rsh -n openshift-storage $TOOLS_POD
-
-From the rsh command prompt, run the following and capture the output.
-ceph status
-ceph osd status
-ceph osd tree
-ceph df
-rados df
-ceph versions
-exit</pre>
+<pre class="highlightjs highlight"><code>oc whoami</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If the toolbox is not deployed, please follow the directions below.</p>
+<p>Check the output to ensure you are in the correct context for the cluster mentioned in the alert. If not, please change context and proceed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_check_alerts"><a class="anchor" href="#_check_alerts"></a>4.2. Check Alerts</h3>
+<div class="listingblock execute">
+<div class="title">Get the route to this cluster&#8217;s alertmanager:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Quickly view all alerts to check if your alert is still active.</p>
 </div>
 <div class="listingblock execute">
-<div class="title">Deploy Rook-Ceph toolbox if needed:</div>
+<div class="title">Check all alerts</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Continue ONLY if you want to view your specific alert or need more details</strong></p>
+</div>
+<div class="listingblock execute">
+<div class="title">Get your alertname from the alert, set for use in jq:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>export MYALERTNAME="&lt;alertname from alert&gt;"</code></pre>
+</div>
+</div>
+<div class="listingblock execute">
+<div class="title">Check if the alert is still active:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>No entries means the alert is no longer active.</p>
+</div>
+<div class="paragraph">
+<p>Some alerts, such as mismatch versions, can occur during upgrades and resolve themselves. If this alert is not a mismatch version alert then there should be an investigation into what triggered the alert even though the alert resolved. Look for other active alerts or alerts with similiar timing.</p>
+</div>
+<div class="listingblock execute">
+<div class="title">If you need more details run:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERTDETAILS: .}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>More about the Prometheus Alert endpoint can be found here:
+<a href="https://prometheus.io/docs/prometheus/latest/querying/api/#alerts" class="bare">https://prometheus.io/docs/prometheus/latest/querying/api/#alerts</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_document_ocs_ceph_cluster_health"><a class="anchor" href="#_document_ocs_ceph_cluster_health"></a>4.3. Document OCS Ceph Cluster Health</h3>
+<div class="paragraph">
+<p>You may directly check OCS Ceph Cluster health by using the rook-ceph toolbox.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The rook-ceph toolbox is not supported by Red Hat and is used here only to provide a quick health assessment. Do not use the toolbox to modify your Ceph cluster. Use the toolbox for querying health only.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock execute">
 <div class="content">
 <pre class="highlightjs highlight"><code>oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>After the <code>rook-ceph-tools</code> <strong>Pod</strong> is <code>Running</code>, access the <strong>toolbox</strong> like this:</p>
+</div>
+<div class="listingblock execute">
+<div class="title">Check and document ceph cluster health:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
+oc rsh -n openshift-storage $TOOLS_POD</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Step 2: From the rsh command prompt, run the following and capture the output.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">ceph status
+ceph health
+ceph osd status
+ceph osd df
+exit</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_alert"><a class="anchor" href="#_alert"></a>4. Alert</h2>
+<h2 id="_procedure_for_resolution"><a class="anchor" href="#_procedure_for_resolution"></a>5. Procedure for Resolution</h2>
 <div class="sectionbody">
-<div class="listingblock">
-<div class="title">Document Ceph Cluster health check:</div>
-<div class="content">
-<pre>For OCS specific results run:
-oc adm must-gather --image=registry.redhat.io/ocs4/ocs-must-gather-rhel8:v4.6</pre>
+<div class="sect2">
+<h3 id="_resolution_overview"><a class="anchor" href="#_resolution_overview"></a>5.1. Resolution Overview</h3>
+<div class="paragraph">
+<p></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_make_changes_to_solve_alert"><a class="anchor" href="#_make_changes_to_solve_alert"></a>4.1. Make changes to solve alert</h3>
-<div class="paragraph">
-<p>This alert reflects that the rook-ceph-mgr job has been in a warning state for an unacceptable amount of time. Check for other alerts that would have triggered prior to this one and troubleshoot those alerts first.</p>
-</div>
-<div class="paragraph">
-<p>In general:</p>
-</div>
-<div class="paragraph">
-<p><strong>Check for OCS Operator Update</strong></p>
-</div>
-<div class="paragraph">
-<p>WIP CLI does the status of the operator reflect update in progress?
-<a href="https://docs.openshift.com/container-platform/4.6/operators/admin/olm-status.html" class="bare">https://docs.openshift.com/container-platform/4.6/operators/admin/olm-status.html</a></p>
-</div>
-<div class="paragraph">
-<p>WIP UI
-The cause of the missing replicas must be determined and fixed. Basic troubleshooting starting with operator status all the way to OCP health may be required.</p>
-</div>
-<div class="paragraph">
-<p><strong>OCS Operator Subscription Health:</strong></p>
-</div>
-<div class="listingblock">
-<div class="title">Check the ocs-operator subscription status</div>
+<h3 id="_check_alerts_2"><a class="anchor" href="#_check_alerts_2"></a>5.2. Check Alerts</h3>
+<div class="listingblock execute">
+<div class="title">Get the route to this cluster&#8217;s alertmanager:</div>
 <div class="content">
-<pre>oc get sub ocs-operator -n openshift-storage  -o json | jq .status.conditions</pre>
+<pre class="highlightjs highlight"><code>MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Like all operators, the status conditions types are:</p>
+<p>Quickly view all alerts to check if your alert is still active.</p>
 </div>
-<div class="paragraph">
-<p><strong>CatalogSourcesUnhealthy, InstallPlanMissing, InstallPlanPending, InstallPlanFailed</strong></p>
-</div>
-<div class="paragraph">
-<p>The status for each type should be False. For example:</p>
-</div>
-<div class="listingblock">
+<div class="listingblock execute">
+<div class="title">Check all alerts</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>[
-  {
-    "lastTransitionTime": "2021-01-26T19:21:37Z",
-    "message": "all available catalogsources are healthy",
-    "reason": "AllCatalogSourcesHealthy",
-    "status": "False",
-    "type": "CatalogSourcesUnhealthy"
-  }
-]</code></pre>
+<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The output above shows a false status for type CatalogSourcesUnHealthly, meaning the catalog sources are healthy.  WIP insert basic cluster health/resources check?</p>
+<p><strong>Continue ONLY if you want to view your specific alert or need more details</strong></p>
 </div>
-<div class="paragraph">
-<p><strong>OCS Operator Pod Health:</strong></p>
-</div>
-<div class="paragraph">
-<p>Check the OCS operator pod status to see if there is an OCS operator upgrading in progress.</p>
-</div>
-<div class="listingblock">
-<div class="title">Find and view the status of the OCS operator: WIP Is Upgrade a status or only pending?</div>
+<div class="listingblock execute">
+<div class="title">Get your alertname from the alert, set for use in jq:</div>
 <div class="content">
-<pre>% oc get pod -n openshift-storage | grep ocs-operator
-% OCSOP=$(oc get pod -n openshift-storage  -o custom-columns=POD:.metadata.name --no-headers | grep ocs-operator)
-% echo $OCSOP
-% oc get pod/${OCSOP} -n openshift-storage
-% oc describe pod/${OCSOP} -n openshift-storage</pre>
+<pre class="highlightjs highlight"><code>export MYALERTNAME="&lt;alertname from alert&gt;"</code></pre>
+</div>
+</div>
+<div class="listingblock execute">
+<div class="title">Check if the alert is still active:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If you determine the OCS operator is in progress, please be patient, wait 5 minutes and this alert should resolve itself.</p>
+<p>No entries means the alert is no longer active.</p>
 </div>
 <div class="paragraph">
-<p>If you have waited or see a different error status condition, please continue troubleshooting.</p>
+<p>Some alerts, such as mismatch versions, can occur during upgrades and resolve themselves. If this alert is not a mismatch version alert then there should be an investigation into what triggered the alert even though the alert resolved. Look for other active alerts or alerts with similiar timing.</p>
+</div>
+<div class="listingblock execute">
+<div class="title">If you need more details run:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERTDETAILS: .}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>More about the Prometheus Alert endpoint can be found here:
+<a href="https://prometheus.io/docs/prometheus/latest/querying/api/#alerts" class="bare">https://prometheus.io/docs/prometheus/latest/querying/api/#alerts</a></p>
 </div>
 <div class="listingblock">
 <div class="title">pod status: NOT pending, running, but NOT ready &#8594; Check readiness probe.</div>
@@ -409,33 +473,100 @@ oc get pod | grep rook-ceph-mgr</pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_ocs_operator_pod_health"><a class="anchor" href="#_ocs_operator_pod_health"></a>5.3. OCS Operator Pod Health</h3>
+<div class="paragraph">
+<p>Check the OCS operator pod status to see if there is an OCS operator upgrading in progress.</p>
+</div>
+<div class="listingblock">
+<div class="title">Find and view the status of the OCS operator: WIP Is Upgrade a status or only pending?</div>
+<div class="content">
+<pre>% oc get pod -n openshift-storage | grep ocs-operator
+% OCSOP=$(oc get pod -n openshift-storage  -o custom-columns=POD:.metadata.name --no-headers | grep ocs-operator)
+% echo $OCSOP
+% oc get pod/${OCSOP} -n openshift-storage
+% oc describe pod/${OCSOP} -n openshift-storage</pre>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_troubleshooting"><a class="anchor" href="#_troubleshooting"></a>5. Troubleshooting</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Issue encountered while following the sop</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>If you determine the OCS operator is in progress, please be patient, wait 5 minutes and this alert should resolve itself.</p>
+</div>
+<div class="paragraph">
+<p>If you have waited or see a different error status condition, please continue troubleshooting.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_check_for_ocs_operator_update"><a class="anchor" href="#_check_for_ocs_operator_update"></a>5.4. Check for OCS Operator Update</h3>
+<div class="paragraph">
+<p>WIP CLI does the status of the operator reflect update in progress?
+<a href="https://docs.openshift.com/container-platform/4.6/operators/admin/olm-status.html" class="bare">https://docs.openshift.com/container-platform/4.6/operators/admin/olm-status.html</a></p>
+</div>
+<div class="paragraph">
+<p>WIP UI
+The cause of the missing replicas must be determined and fixed. Basic troubleshooting starting with operator status all the way to OCP health may be required.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ocs_operator_subscription_health"><a class="anchor" href="#_ocs_operator_subscription_health"></a>5.5. OCS Operator Subscription Health</h3>
+<div class="listingblock">
+<div class="title">Check the ocs-operator subscription status</div>
+<div class="content">
+<pre>oc get sub ocs-operator -n openshift-storage  -o json | jq .status.conditions</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Like all operators, the status conditions types are:</p>
+</div>
+<div class="paragraph">
+<p><strong>CatalogSourcesUnhealthy, InstallPlanMissing, InstallPlanPending, InstallPlanFailed</strong></p>
+</div>
+<div class="paragraph">
+<p>The status for each type should be False. For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>Any issues while following the sop should be documented here.</pre>
+<pre class="highlightjs highlight"><code>[
+  {
+    "lastTransitionTime": "2021-01-26T19:21:37Z",
+    "message": "all available catalogsources are healthy",
+    "reason": "AllCatalogSourcesHealthy",
+    "status": "False",
+    "type": "CatalogSourcesUnhealthy"
+  }
+]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output above shows a false status for type CatalogSourcesUnHealthly, meaning the catalog sources are healthy.  WIP insert basic cluster health/resources check?</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_gathering_logs"><a class="anchor" href="#_gathering_logs"></a>6. Gathering Logs</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">Document Ceph Cluster health check:</div>
+<div class="content">
+<pre>For OCS specific results run:
+oc adm must-gather --image=registry.redhat.io/ocs4/ocs-must-gather-rhel8:v4.6</pre>
 </div>
 </div>
 </div>
 </div>
 </article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
   </div>
 </main>
 </div>
 <footer class="footer">
-  <p>This page was built using the Antora default UI.</p>
-  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+  <a class="navbar-item" href="https://www.redhat.com/en/technologies/cloud-computing/openshift-container-storage" target="_blank">
+      <img src="../../_/img/header_logo.svg" alt="Red Hat Data Services">
+  </a>
 </footer>
+<script src="../../_/js/vendor/clipboard.js"></script>
 <script src="../../_/js/site.js"></script>
 <script async src="../../_/js/vendor/highlight.js"></script>
   </body>

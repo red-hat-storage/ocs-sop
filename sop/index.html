@@ -3,19 +3,22 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>OCS Standard Operating Procedures :: OCS Standard Operating Procedures</title>
-    <link rel="canonical" href="https://red-hat-storage.github.io/ocs-sop/sop/index.html">
+    <title>Openshift Data Foundation (formerly OCS)  Standard Operating Procedures :: OCS Standard Operating Procedures</title>
+    <link rel="canonical" href="https://mid998.github.io/ocs-sop/sop/index.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../_/css/site.css">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PDMKGVZNGE"></script>
-    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','G-PDMKGVZNGE')</script>
-    <script>var uiRootPath = '../_'</script>
+<link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PDMKGVZNGE"></script>
+<script>function gtag() { dataLayer.push(arguments) }; window.dataLayer = window.dataLayer || []; gtag('js', new Date()); gtag('config', 'G-PDMKGVZNGE')</script>
   </head>
   <body class="article">
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="https://red-hat-storage.github.io/ocs-sop">OCS Standard Operating Procedures</a>
+      <a class="navbar-item" href="https://www.redhat.com/en/technologies/cloud-computing/openshift-container-storage" target="_blank">
+          <img src="../_/img/header_logo_reverse.svg" height="40px" alt="Red Hat Data Services">
+      </a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -24,35 +27,27 @@
     </div>
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
-        <a class="navbar-item" href="#">Home</a>
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="#">Products</a>
+          <a class="navbar-link" href="#">Get Help</a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="#">Product A</a>
-            <a class="navbar-item" href="#">Product B</a>
-            <a class="navbar-item" href="#">Product C</a>
+            <a class="navbar-item" href="https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage" target="_blank">OCS Documentation</a>
+            <a class="navbar-item" href="https://bugzilla.redhat.com/describecomponents.cgi?product=Red%20Hat%20OpenShift%20Container%20Storage" target="_blank">Browse Bugs</a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="#">Services</a>
+          <a class="navbar-link" href="#">Improve Guides</a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="#">Service A</a>
-            <a class="navbar-item" href="#">Service B</a>
-            <a class="navbar-item" href="#">Service C</a>
+            <a class="navbar-item" href="https://github.com/red-hat-storage/ocs-training/blob/master/CONTRIBUTING.adoc" target="_blank">Guidelines</a>
+            <a class="navbar-item" href="https://github.com/red-hat-storage/ocs-training/issues/new/choose" target="_blank">Open Issue</a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="#">Resources</a>
+          <a class="navbar-link" href="#">More Infos</a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="#">Resource A</a>
-            <a class="navbar-item" href="#">Resource B</a>
-            <a class="navbar-item" href="#">Resource C</a>
+            <a class="navbar-item" href="https://www.redhat.com/en/blog/channel/red-hat-storage" target="_blank">Our Blog</a>
+            <a class="navbar-item" href="https://www.youtube.com/channel/UCoyG8VyvB-XUxQl1mD3T3Gw" target="_blank">Youtube</a>
+            <a class="navbar-item" href="https://www.redhat.com/en/technologies/cloud-computing/openshift-container-storage" target="_blank">OCS Technology</a>
           </div>
-        </div>
-        <div class="navbar-item">
-          <span class="control">
-            <a class="button is-primary" href="#">Download</a>
-          </span>
         </div>
       </div>
     </div>
@@ -64,23 +59,35 @@
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
-    <h3 class="title"><a href="index.html">OCS Standard Operating Procedures</a></h3>
+    <h3 class="title"><a href="index.html" class=" query-params-link">OCS Standard Operating Procedures</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">Alerts</span>
+    <span class="nav-text">Alerts (Reviewed SOPs)</span>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="alerts/CephClusterCriticallyFull.html">CephClusterCriticallyFull</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="alerts/CephClusterErrorState.html">CephClusterErrorState</a>
-  </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="alerts/CephClusterReadOnly.html">CephClusterReadOnly</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="alerts/CephClusterCriticallyFull.html">CephClusterCriticallyFull</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="alerts/CephOSDCriticallyFull.html">CephOSDCriticallyFull</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="alerts/CephOSDNearFull.html">CephOSDNearFull</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Alerts (Pending Review SOPs)</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="alerts/CephClusterWarningState.html">CephClusterWarningState</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="alerts/CephClusterErrorState.html">CephClusterErrorState</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="alerts/CephMdsMissingReplicas.html">CephMdsMissingReplicas</a>
@@ -101,22 +108,70 @@
     <a class="nav-link" href="alerts/CephNodeDown.html">CephNodeDown</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="alerts/CephOSDCriticallyFull.html">CephOSDCriticallyFull</a>
-  </li>
-  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="alerts/CephOSDDiskNotResponding.html">CephOSDDiskNotResponding</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="alerts/CephOSDDiskUnavailable.html">CephOSDDiskUnavailable</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="alerts/CephOSDNearFull.html">CephOSDNearFull</a>
-  </li>
-  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="alerts/CephOSDVersionMismatch.html">CephOSDVersionMismatch</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="alerts/CephPGRepairTakingTooLong.html">CephPGRepairTakingTooLong</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">OSD Alerts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="OSD/CephClusterReadOnly.html">CephClusterReadOnly</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="OSD/CephClusterCriticallyFull.html">CephClusterCriticallyFull</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="OSD/CephOSDCriticallyFull.html">CephOSDCriticallyFull</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="OSD/CephOSDNearFull.html">CephOSDNearFull</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="OSD/CephClusterWarningState.html">CephClusterWarningState</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="OSD/CephClusterErrorState.html">CephClusterErrorState</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="OSD/CephMdsMissingReplicas.html">CephMdsMissingReplicas</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="OSD/CephMgrIsAbsent.html">CephMgrIsAbsent</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="OSD/CephMgrIsMissingReplicas.html">CephMgrIsMissingReplicas</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="OSD/CephMonQuorumAtRisk.html">CephMonQuorumAtRisk</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="OSD/CephMonVersionMismatch.html">CephMonVersionMismatch</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="OSD/CephNodeDown.html">CephNodeDown</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="OSD/CephOSDDiskNotResponding.html">CephOSDDiskNotResponding</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="OSD/CephOSDDiskUnavailable.html">CephOSDDiskUnavailable</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="OSD/CephOSDVersionMismatch.html">CephOSDVersionMismatch</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="OSD/CephPGRepairTakingTooLong.html">CephPGRepairTakingTooLong</a>
   </li>
 </ul>
   </li>
@@ -130,7 +185,7 @@
   </div>
   <ul class="components">
     <li class="component is-current">
-      <a class="title" href="index.html">OCS Standard Operating Procedures</a>
+      <span class="title">OCS Standard Operating Procedures</span>
       <ul class="versions">
         <li class="version is-current is-latest">
           <a href="index.html">master</a>
@@ -149,30 +204,33 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">OCS Standard Operating Procedures</a></li>
+    <li><a href="index.html">Openshift Data Foundation (formerly OCS)  Standard Operating Procedures</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/red-hat-storage/ocs-sop/edit/main/sop/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/mid998/ocs-sop/edit/main/sop/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
+<article class="doc">
+<h1 class="page">Openshift Data Foundation (formerly OCS)  Standard Operating Procedures</h1>
+<div class="paragraph">
+<p>Welcome to Openshift Standard Standard Operating Procedures. These SOPs are provided for free and "as is" and are intended for Internal OCS deployments only. Please select your deploy type from the left navigation menu.</p>
+</div>
+<div class="paragraph">
+<p>To customize these SOPs for your own organization, please clone: <a href="https://github.com/red-hat-storage/ocs-sop.git" class="bare">https://github.com/red-hat-storage/ocs-sop.git</a></p>
+</div>
+</article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
-<article class="doc">
-<h1 class="page">OCS Standard Operating Procedures</h1>
-<div class="paragraph">
-<p>Welcome to OCS Standard Operating Procedures or SoPs!</p>
-</div>
-<div class="paragraph">
-<p>Discover our SoPs in the left navigation menu</p>
-</div>
-</article>
   </div>
 </main>
 </div>
 <footer class="footer">
-  <p>This page was built using the Antora default UI.</p>
-  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+  <a class="navbar-item" href="https://www.redhat.com/en/technologies/cloud-computing/openshift-container-storage" target="_blank">
+      <img src="../_/img/header_logo.svg" alt="Red Hat Data Services">
+  </a>
 </footer>
+<script src="../_/js/vendor/clipboard.js"></script>
 <script src="../_/js/site.js"></script>
 <script async src="../_/js/vendor/highlight.js"></script>
   </body>

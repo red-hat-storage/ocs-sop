@@ -4,18 +4,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>CephClusterCriticallyFull :: OCS Standard Operating Procedures</title>
-    <link rel="canonical" href="https://red-hat-storage.github.io/ocs-sop/sop/alerts/CephClusterCriticallyFull.html">
+    <link rel="canonical" href="https://mid998.github.io/ocs-sop/sop/alerts/CephClusterCriticallyFull.html">
+    <meta name="description" content="Storage cluster utilization has crossed 85%.">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../_/css/site.css">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PDMKGVZNGE"></script>
-    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','G-PDMKGVZNGE')</script>
-    <script>var uiRootPath = '../../_'</script>
+<link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PDMKGVZNGE"></script>
+<script>function gtag() { dataLayer.push(arguments) }; window.dataLayer = window.dataLayer || []; gtag('js', new Date()); gtag('config', 'G-PDMKGVZNGE')</script>
   </head>
   <body class="article">
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="https://red-hat-storage.github.io/ocs-sop">OCS Standard Operating Procedures</a>
+      <a class="navbar-item" href="https://www.redhat.com/en/technologies/cloud-computing/openshift-container-storage" target="_blank">
+          <img src="../../_/img/header_logo_reverse.svg" height="40px" alt="Red Hat Data Services">
+      </a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -24,35 +28,27 @@
     </div>
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
-        <a class="navbar-item" href="#">Home</a>
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="#">Products</a>
+          <a class="navbar-link" href="#">Get Help</a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="#">Product A</a>
-            <a class="navbar-item" href="#">Product B</a>
-            <a class="navbar-item" href="#">Product C</a>
+            <a class="navbar-item" href="https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage" target="_blank">OCS Documentation</a>
+            <a class="navbar-item" href="https://bugzilla.redhat.com/describecomponents.cgi?product=Red%20Hat%20OpenShift%20Container%20Storage" target="_blank">Browse Bugs</a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="#">Services</a>
+          <a class="navbar-link" href="#">Improve Guides</a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="#">Service A</a>
-            <a class="navbar-item" href="#">Service B</a>
-            <a class="navbar-item" href="#">Service C</a>
+            <a class="navbar-item" href="https://github.com/red-hat-storage/ocs-training/blob/master/CONTRIBUTING.adoc" target="_blank">Guidelines</a>
+            <a class="navbar-item" href="https://github.com/red-hat-storage/ocs-training/issues/new/choose" target="_blank">Open Issue</a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="#">Resources</a>
+          <a class="navbar-link" href="#">More Infos</a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="#">Resource A</a>
-            <a class="navbar-item" href="#">Resource B</a>
-            <a class="navbar-item" href="#">Resource C</a>
+            <a class="navbar-item" href="https://www.redhat.com/en/blog/channel/red-hat-storage" target="_blank">Our Blog</a>
+            <a class="navbar-item" href="https://www.youtube.com/channel/UCoyG8VyvB-XUxQl1mD3T3Gw" target="_blank">Youtube</a>
+            <a class="navbar-item" href="https://www.redhat.com/en/technologies/cloud-computing/openshift-container-storage" target="_blank">OCS Technology</a>
           </div>
-        </div>
-        <div class="navbar-item">
-          <span class="control">
-            <a class="button is-primary" href="#">Download</a>
-          </span>
         </div>
       </div>
     </div>
@@ -64,23 +60,35 @@
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
-    <h3 class="title"><a href="../index.html">OCS Standard Operating Procedures</a></h3>
+    <h3 class="title"><a href="../index.html" class=" query-params-link">OCS Standard Operating Procedures</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">Alerts</span>
+    <span class="nav-text">Alerts (Reviewed SOPs)</span>
 <ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="CephClusterReadOnly.html">CephClusterReadOnly</a>
+  </li>
   <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="CephClusterCriticallyFull.html">CephClusterCriticallyFull</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="CephClusterErrorState.html">CephClusterErrorState</a>
+    <a class="nav-link" href="CephOSDCriticallyFull.html">CephOSDCriticallyFull</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="CephClusterReadOnly.html">CephClusterReadOnly</a>
+    <a class="nav-link" href="CephOSDNearFull.html">CephOSDNearFull</a>
   </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Alerts (Pending Review SOPs)</span>
+<ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephClusterWarningState.html">CephClusterWarningState</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="CephClusterErrorState.html">CephClusterErrorState</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephMdsMissingReplicas.html">CephMdsMissingReplicas</a>
@@ -101,22 +109,70 @@
     <a class="nav-link" href="CephNodeDown.html">CephNodeDown</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="CephOSDCriticallyFull.html">CephOSDCriticallyFull</a>
-  </li>
-  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephOSDDiskNotResponding.html">CephOSDDiskNotResponding</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephOSDDiskUnavailable.html">CephOSDDiskUnavailable</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="CephOSDNearFull.html">CephOSDNearFull</a>
-  </li>
-  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephOSDVersionMismatch.html">CephOSDVersionMismatch</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephPGRepairTakingTooLong.html">CephPGRepairTakingTooLong</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">OSD Alerts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephClusterReadOnly.html">CephClusterReadOnly</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephClusterCriticallyFull.html">CephClusterCriticallyFull</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephOSDCriticallyFull.html">CephOSDCriticallyFull</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephOSDNearFull.html">CephOSDNearFull</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephClusterWarningState.html">CephClusterWarningState</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephClusterErrorState.html">CephClusterErrorState</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephMdsMissingReplicas.html">CephMdsMissingReplicas</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephMgrIsAbsent.html">CephMgrIsAbsent</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephMgrIsMissingReplicas.html">CephMgrIsMissingReplicas</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephMonQuorumAtRisk.html">CephMonQuorumAtRisk</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephMonVersionMismatch.html">CephMonVersionMismatch</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephNodeDown.html">CephNodeDown</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephOSDDiskNotResponding.html">CephOSDDiskNotResponding</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephOSDDiskUnavailable.html">CephOSDDiskUnavailable</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephOSDVersionMismatch.html">CephOSDVersionMismatch</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../OSD/CephPGRepairTakingTooLong.html">CephPGRepairTakingTooLong</a>
   </li>
 </ul>
   </li>
@@ -130,7 +186,7 @@
   </div>
   <ul class="components">
     <li class="component is-current">
-      <a class="title" href="../index.html">OCS Standard Operating Procedures</a>
+      <span class="title">OCS Standard Operating Procedures</span>
       <ul class="versions">
         <li class="version is-current is-latest">
           <a href="../index.html">master</a>
@@ -149,133 +205,632 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">OCS Standard Operating Procedures</a></li>
-    <li>Alerts</li>
+    <li>Alerts (Reviewed SOPs)</li>
     <li><a href="CephClusterCriticallyFull.html">CephClusterCriticallyFull</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/red-hat-storage/ocs-sop/edit/main/sop/modules/alerts/pages/CephClusterCriticallyFull.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/mid998/ocs-sop/edit/main/sop/modules/alerts/pages/CephClusterCriticallyFull.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
-<aside class="toc sidebar" data-title="Contents" data-levels="2">
-  <div class="toc-menu"></div>
-</aside>
 <article class="doc">
 <h1 class="page">CephClusterCriticallyFull</h1>
-<div id="preamble">
+<div class="sect1">
+<h2 id="_message"><a class="anchor" href="#_message"></a>1. Message</h2>
 <div class="sectionbody">
-<div id="toc" class="toc">
-<div id="toctitle" class="title"><b>Table of Contents</b></div>
-<ul class="sectlevel1">
-<li><a href="#_check_description">1. Check Description</a></li>
-<li><a href="#_overview">2. Overview</a></li>
-<li><a href="#_prerequsities">3. Prerequsities</a>
-<ul class="sectlevel2">
-<li><a href="#_prerequisite_verify_cluster_access">3.1. Prerequisite - Verify Cluster Access</a></li>
-<li><a href="#_prerequisite_verify_alert">3.2. Prerequisite - Verify Alert</a></li>
-<li><a href="#_prerequisite_document_ocs_ceph_cluster_health">3.3. Prerequisite - Document OCS Ceph Cluster Health</a></li>
-</ul>
+<div class="paragraph">
+<p>Storage cluster is critically full and needs immediate expansion.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description"><a class="anchor" href="#_description"></a>2. Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Storage cluster utilization has crossed 85%.</p>
+</div>
+<div class="paragraph">
+<p>Detailed Description: Storage cluster utilization has crossed 80% and will become read-only at 85%. Your Ceph cluster will become read only once utilization crosses 85%. Expand the storage cluster immediately. It is common to see alerts related to OSD devices full or near full prior to this alert.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_severity"><a class="anchor" href="#_severity"></a>3. Severity</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Critical</strong></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>4. Prerequisites</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To proceed with the prerequisites and resolution, you will need basic cli tools including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>oc (Openshift CLI)</p>
 </li>
-<li><a href="#_alert">4. Alert</a>
-<ul class="sectlevel2">
-<li><a href="#_make_changes_to_solve_alert">4.1. Make changes to solve alert</a></li>
-</ul>
+<li>
+<p>jq</p>
 </li>
-<li><a href="#_troubleshooting">5. Troubleshooting</a></li>
+<li>
+<p>curl</p>
+</li>
 </ul>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_check_description"><a class="anchor" href="#_check_description"></a>1. Check Description</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Severity:</strong> Error</p>
-</div>
-<div class="paragraph">
-<p><strong>Potential Customer Impact:</strong> High</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_overview"><a class="anchor" href="#_overview"></a>2. Overview</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Storage cluster utilization has crossed 80% and will become read-only at 85%. Expand the storage cluster immediately.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_prerequsities"><a class="anchor" href="#_prerequsities"></a>3. Prerequsities</h2>
-<div class="sectionbody">
 <div class="sect2">
-<h3 id="_prerequisite_verify_cluster_access"><a class="anchor" href="#_prerequisite_verify_cluster_access"></a>3.1. Prerequisite - Verify Cluster Access</h3>
-<div class="listingblock">
-<div class="title">Verify cluster access:</div>
+<h3 id="_verify_cluster_access"><a class="anchor" href="#_verify_cluster_access"></a>4.1. Verify cluster access</h3>
+<div class="listingblock execute">
+<div class="title">Verify you are admin and cluster server details:</div>
 <div class="content">
-<pre>Find the cluster name in the alert and run:
-oc whoami --show-server
-
-Check the output to ensure you are in the correct context for the cluster mentioned in the alert. If not, please change context and proceed.proceed.</pre>
+<pre class="highlightjs highlight"><code>oc whoami</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Check the output to ensure you are in the correct context for the cluster mentioned in the alert. If not, please change context and proceed.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_prerequisite_verify_alert"><a class="anchor" href="#_prerequisite_verify_alert"></a>3.2. Prerequisite - Verify Alert</h3>
-<div class="listingblock">
-<div class="title">Verify the alert is still active:</div>
+<h3 id="_check_alerts"><a class="anchor" href="#_check_alerts"></a>4.2. Check Alerts</h3>
+<div class="listingblock execute">
+<div class="title">Get the route to this cluster&#8217;s alertmanager:</div>
 <div class="content">
-<pre>Get the route to this cluster's alertmanager:
-MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')
-
-Get your alertname from the alert, set for use in jq:
-export MYALERTNAME="&lt;alertname from alert&gt;"
-
-To see if this single alert is active run:
-curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERT: .labels.alertname, STATE: .status.state}'
-
-No entries means the alert is no longer active. Some alerts, such as mismatch versions, can occur during upgrades and resolve themselves. If this alert is not a mismatch version alert then there should be an investigation into what triggered the alert even though the alert resolved. Look for other active alerts or alerts with similiar timing.
-
-If you need more details run:
-curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERTDETAILS: .}'
-
-More about the Prometheus Alert endpoint can be found here:
-https://prometheus.io/docs/prometheus/latest/querying/api/#alerts</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_prerequisite_document_ocs_ceph_cluster_health"><a class="anchor" href="#_prerequisite_document_ocs_ceph_cluster_health"></a>3.3. Prerequisite - Document OCS Ceph Cluster Health</h3>
-<div class="listingblock">
-<div class="title">Check and document ceph cluster health:</div>
-<div class="content">
-<pre>Capture output using normal OSD team methods.
-TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
-oc rsh -n openshift-storage $TOOLS_POD
-
-From the rsh command prompt, run the following and capture the output.
-ceph status
-ceph osd status
-ceph osd tree
-ceph df
-rados df
-ceph versions
-exit</pre>
+<pre class="highlightjs highlight"><code>MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If the toolbox is not deployed, please follow the directions below.</p>
+<p>Quickly view all alerts to check if your alert is still active.</p>
 </div>
 <div class="listingblock execute">
-<div class="title">Deploy Rook-Ceph toolbox if needed:</div>
+<div class="title">Check all alerts</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Continue ONLY if you want to view your specific alert or need more details</strong></p>
+</div>
+<div class="listingblock execute">
+<div class="title">Get your alertname from the alert, set for use in jq:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>export MYALERTNAME="&lt;alertname from alert&gt;"</code></pre>
+</div>
+</div>
+<div class="listingblock execute">
+<div class="title">Check if the alert is still active:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>No entries means the alert is no longer active.</p>
+</div>
+<div class="paragraph">
+<p>Some alerts, such as mismatch versions, can occur during upgrades and resolve themselves. If this alert is not a mismatch version alert then there should be an investigation into what triggered the alert even though the alert resolved. Look for other active alerts or alerts with similiar timing.</p>
+</div>
+<div class="listingblock execute">
+<div class="title">If you need more details run:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERTDETAILS: .}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>More about the Prometheus Alert endpoint can be found here:
+<a href="https://prometheus.io/docs/prometheus/latest/querying/api/#alerts" class="bare">https://prometheus.io/docs/prometheus/latest/querying/api/#alerts</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_document_ocs_ceph_cluster_health"><a class="anchor" href="#_document_ocs_ceph_cluster_health"></a>4.3. Document OCS Ceph Cluster Health</h3>
+<div class="paragraph">
+<p>You may directly check OCS Ceph Cluster health by using the rook-ceph toolbox.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The rook-ceph toolbox is not supported by Red Hat and is used here only to provide a quick health assessment. Do not use the toolbox to modify your Ceph cluster. Use the toolbox for querying health only.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock execute">
 <div class="content">
 <pre class="highlightjs highlight"><code>oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>After the <code>rook-ceph-tools</code> <strong>Pod</strong> is <code>Running</code>, access the <strong>toolbox</strong> like this:</p>
+</div>
+<div class="listingblock execute">
+<div class="title">Check and document ceph cluster health:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
+oc rsh -n openshift-storage $TOOLS_POD</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Step 2: From the rsh command prompt, run the following and capture the output.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">ceph status
+ceph health
+ceph osd status
+ceph osd df
+exit</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_alert"><a class="anchor" href="#_alert"></a>4. Alert</h2>
+<h2 id="_procedure_for_resolution"><a class="anchor" href="#_procedure_for_resolution"></a>5. Procedure for Resolution</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_resolution_overview"><a class="anchor" href="#_resolution_overview"></a>5.1. Resolution Overview</h3>
+<div class="paragraph">
+<p>Determine if you can proceed with scaling *UP* or *OUT* for expansion. Choose the appropriate tab for your deployment below.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_preparation_for_scaling_up"><a class="anchor" href="#_preparation_for_scaling_up"></a>5.2. Preparation for Scaling UP</h3>
+<div class="paragraph">
+<p>The procedure for scaling <strong>UP</strong> storage requires adding more storage capacity to existing nodes. In general, this process requires 3 steps:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Check Ceph Cluster Status Before Recovery</strong> - Check ceph status, ceph osd status, check current alerts</p>
+</li>
+<li>
+<p><strong>Add Storage Capacity</strong> - Determine if LSO is in use or not, add capacity accordingly. This will be deployment specific and you will need to have some idea of how your OCS cluster was deployed (i.e. AWS, Azure, bare metal) and how to add storage for your specific deployment.</p>
+</li>
+<li>
+<p><strong>Check Ceph Cluster Status During Recovery</strong> - Essentially same as first item.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_assess_your_cluster_state"><a class="anchor" href="#_assess_your_cluster_state"></a>5.3. Assess Your Cluster State</h3>
+<div class="paragraph">
+<p>Check the current status of the ceph cluster and OSDs using the rook-ceph toolbox:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code>oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After the <code>rook-ceph-tools</code> <strong>Pod</strong> is <code>Running</code>, access the <strong>toolbox</strong> like this:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code>TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
+oc rsh -n openshift-storage $TOOLS_POD</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once inside the <strong>toolbox</strong>, run the following Ceph commands:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code>ceph status</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the output of <code>ceph status</code> look for cluster: health, and data: usage.</p>
+</div>
+<div class="paragraph">
+<p><strong>Typically</strong>, OSDs running out of space to replicate are causing the problem. View current OSD status by running:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code>ceph osd status</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the output of <code>ceph osd status</code> look for the numbers in the used and avail columns. You will track these numbers after adding scaling storage capacity.</p>
+</div>
+<div class="paragraph">
+<p>Do not forget to exit the pod to return back to your command prompt:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code>exit</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This in this situation, it is common to have <strong>MANY</strong> alerts firing or warning all at once. If you have not already checked firing alerts, you may do so now by running:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code>MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Quickly view all alerts to check if your alert is still active.</p>
+</div>
+<div class="listingblock execute">
+<div class="title">Check all alerts</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_determine_lso_or_no_lso"><a class="anchor" href="#_determine_lso_or_no_lso"></a>5.4. Determine LSO or No LSO</h3>
+<div class="paragraph">
+<p>To determine is LSO is installed and in use, run the following commands:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code>oc get csv -A | grep local-storage</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre>openshift-local-storage                local-storage-operator.4.6.0-202103130248.p0   Local Storage                 4.6.0-202103130248.p0              Succeeded</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you see output like above ending with Succeeded, LSO is installed.</p>
+</div>
+<div class="paragraph">
+<p>Determine if LSO is in use by looking for PVs that begin with the "local-pv" prefix, and PVC names that contain "ocs-deviceset-" prefix then the name of the storageClass used in the storage cluster definition, by running the following commands:</p>
+</div>
+<div class="listingblock execute">
+<div class="title">Look for PV names with local-pv prefixes:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>oc -n openshift-storage get pvc | grep local-pv</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre>ocs-deviceset-localblksc-demo-0-data-0-jlp6g   Bound    local-pv-f4d1075c                          50Gi       RWO            localblkscdemo               140m
+ocs-deviceset-localblksc-demo-1-data-0-c8pmq   Bound    local-pv-bf5ca51e                          50Gi       RWO            localblkscdemo               140m
+ocs-deviceset-localblksc-demo-2-data-0-nzzn5   Bound    local-pv-fb64d972                          50Gi       RWO            localblkscdemo               140m</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice the storage class name embedded in the name of the PVC, right after "ocs-deviceset-". In our example demo case, this is "localblksc-demo" and can be verified to be in use by the storage cluster by running:</p>
+</div>
+<div class="listingblock execute">
+<div class="title">Check the storageClassName in the storage cluster matches:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>oc -n openshift-storage get storagecluster -o yaml | grep storageClassName</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre>storageClassName: localblksc-demo</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If PVs named local-pv* are present and are bound to PVCs that contain the name of the storageClass in use by storagecluster definition, LSO is in use.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_adding_storage_capacity_when_local_storage_operator_is_in_use"><a class="anchor" href="#_adding_storage_capacity_when_local_storage_operator_is_in_use"></a>5.5. Adding Storage Capacity when Local Storage Operator is in USE</h3>
+<div class="paragraph">
+<p>Follow the cli instructions below or the webui instructions <a href="https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage/4.6/html/scaling_storage/scaling-up-storage-capacity_rhocs#scaling-up-storage-by-adding-capacity-to-your-openshift-container-storage-nodes-using-local-storage-devices_rhocs">OCS - Scaling up storage by adding capacity to your OpenShift Container Storage nodes using local storage devices</a>.</p>
+</div>
+<div class="paragraph">
+<p>To determine which nodes will need additional capacity, view the localvolumeset and look for values: with key: kubernetes.io/hostname by running the following command:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code>oc -n openshift-local-storage get localvolumeset -o yaml</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre>[...]
+    nodeSelector:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - ip-10-0-149-49
+          - ip-10-0-179-37
+          - ip-10-0-209-228
+    storageClassName: localblksc-demo
+[...]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Add storage capacity (i.e. in AWS attach EBS volumes) to each hostname listed.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Details of attaching additional storage capacity will depend on your particular environment and are beyond the scope of this document.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Once you have added capacity to each node</strong>, verify LSO has discovered the new storage by viewing the localvolumediscoveryresults details. To view the localvolumediscoveryresults details, first view the localvolumediscovery then choose a node for a spot check:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code>oc -n openshift-local-storage get localvolumediscoveryresults</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you do not see your new storage please rerun the command a few times to allow discovery to complete.</p>
+</div>
+<div class="paragraph">
+<p>Choose one of the localvolumediscoveryresults from above to inspect details. When new storage has been "discovered" it will be reflected under status: discoveredDevices.</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code>oc -n openshift-local-storage get localvolumediscoveryresults/discovery-result-ip-10-0-149-49.us-east-2.compute.internal -o yaml</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output</div>
+<div class="content">
+<pre>[...]
+  - deviceID: /dev/disk/by-id/nvme-Amazon_Elastic_Block_Store_vol0b86476e1d962d061
+    fstype: ""
+    model: 'Amazon Elastic Block Store              '
+    path: /dev/nvme2n1
+    property: NonRotational
+    serial: vol0b86476e1d962d061
+    size: 53687091200
+    status:
+      state: Available
+    type: disk
+    vendor: ""
+[...]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Expand the OCS cluster by directly editing the ocs-storagecluster definition, finding spec: count: and increasing the count by 1:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code>oc -n openshift-storage edit storagecluster/ocs-storagecluster</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output</div>
+<div class="content">
+<pre>spec:
+  encryption: {}
+  externalStorage: {}
+  [...]
+  monDataDirHostPath: /var/lib/rook
+  storageDeviceSets:
+  - config: {}
+    count: 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the example above "count: 1" becomes "count: 2".</p>
+</div>
+<div class="paragraph">
+<p>A successful edit of storagecluster/ocs-storagecluster will show the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>storagecluster.ocs.openshift.io/ocs-storagecluster edited</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_assess_your_cluster_during_recovery"><a class="anchor" href="#_assess_your_cluster_during_recovery"></a>5.6. Assess Your Cluster During Recovery</h3>
+<div class="paragraph">
+<p>Watch the expansion progress by viewing ceph status and ceph osd status. This step is a repeat of Assess Your Cluster however, this time you will be specifically looking for evidence of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>New osds for the new storage</p>
+</li>
+<li>
+<p>Status of recovery in io:</p>
+</li>
+<li>
+<p>Progress of OSD rebalancing across all (existing and new) OSDs</p>
+</li>
+<li>
+<p>Finally ceph health: and all alerts return to normal</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In case you did not do this from the previous Assess Your Cluster section:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code>oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After the <code>rook-ceph-tools</code> <strong>Pod</strong> is <code>Running</code>, access the <strong>toolbox</strong> like this:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code>TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
+oc rsh -n openshift-storage $TOOLS_POD</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once inside the <strong>toolbox</strong>, run the following Ceph commands:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code>ceph status</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre>  cluster:
+    id:     4e949bf7-7e24-4c0e-898e-f5985b514a99
+    health: HEALTH_ERR
+            3 backfillfull osd(s)
+            3 pool(s) backfillfull
+            Degraded data redundancy: 18634/33627 objects degraded (55.414%), 122 pgs degraded
+            Full OSDs blocking recovery: 93 pgs recovery_toofull
+
+  services:
+    mon: 3 daemons, quorum a,b,c (age 59m)
+    mgr: a(active, since 59m)
+    mds: ocs-storagecluster-cephfilesystem:1 {0=ocs-storagecluster-cephfilesystem-a=up:active} 1 up:standby-replay
+    osd: 6 osds: 6 up (since 43s), 6 in (since 43s)
+
+  task status:
+    scrub status:
+        mds.ocs-storagecluster-cephfilesystem-a: idle
+        mds.ocs-storagecluster-cephfilesystem-b: idle
+
+  data:
+    pools:   3 pools, 288 pgs
+    objects: 11.21k objects, 43 GiB
+    usage:   137 GiB used, 163 GiB / 300 GiB avail
+    pgs:     18634/33627 objects degraded (55.414%)
+             45/33627 objects misplaced (0.134%)
+             165 active+clean
+             93  active+recovery_toofull+degraded
+             29  active+recovery_wait+degraded
+             1   active+recovering
+
+  io:
+    client:   3.0 KiB/s rd, 75 MiB/s wr, 3 op/s rd, 38 op/s wr
+    recovery: 71 MiB/s, 0 keys/s, 20 objects/s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Items to notice:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The cluster: health: is still HEALTH_ERR which is expected until the cluster full recovers.</p>
+</li>
+<li>
+<p>service: osds reflect the total number of desired OSDs, and how many are currently up. This should eventually change to have desired match up.</p>
+</li>
+<li>
+<p>io: recovery: being present means a recovery is taking place. This line will disappear when the recovery is complete.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To actively watch the OSD recovery, run the following:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code>ceph osd status</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Watch the output of <code>ceph osd status</code> for detail on how the OSDs are rebalancing. You will see changes in the used and avail columns as ceph moves data to achieve a health state.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example output while data is being rebalanced:</div>
+<div class="content">
+<pre>+----+--------------------------------------------+-------+-------+--------+---------+--------+---------+-----------+
+| id |                    host                    |  used | avail | wr ops | wr data | rd ops | rd data |   state   |
++----+--------------------------------------------+-------+-------+--------+---------+--------+---------+-----------+
+| 0  | ip-10-0-179-37.us-east-2.compute.internal  | 33.9G | 16.0G |    0   |   830k  |    0   |     0   | exists,up |
+| 1  | ip-10-0-209-228.us-east-2.compute.internal | 35.0G | 14.9G |    3   |  5652k  |    0   |     0   | exists,up |
+| 2  | ip-10-0-149-49.us-east-2.compute.internal  | 32.4G | 17.5G |    0   |  1638k  |    0   |     0   | exists,up |
+| 3  | ip-10-0-179-37.us-east-2.compute.internal  | 13.5G | 86.4G |    3   |  8532k  |    2   |   106   | exists,up |
+| 4  | ip-10-0-209-228.us-east-2.compute.internal | 12.2G | 87.7G |    8   |  8183k  |    0   |     0   | exists,up |
+| 5  | ip-10-0-149-49.us-east-2.compute.internal  | 15.2G | 84.7G |    3   |  4118k  |    0   |     0   | exists,up |
++----+--------------------------------------------+-------+-------+--------+---------+--------+---------+-----------+</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once the recovery process has completed, <code>ceph status</code> will show:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>cluster: health: HEALTH_OK</p>
+</li>
+<li>
+<p>All OSDs desired and present in service: osds:</p>
+</li>
+<li>
+<p>io: recovery: will not be present since recovery has completed</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition, <code>ceph osd status</code> will show:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Fairly even distribution of used/avail across all OSDs</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Example out of <code>ceph osd status</code> after recovery:</div>
+<div class="content">
+<pre>+----+--------------------------------------------+-------+-------+--------+---------+--------+---------+-----------+
+| id |                    host                    |  used | avail | wr ops | wr data | rd ops | rd data |   state   |
++----+--------------------------------------------+-------+-------+--------+---------+--------+---------+-----------+
+| 0  | ip-10-0-209-93.us-east-2.compute.internal  | 1104M | 48.9G |    0   |     0   |    0   |     0   | exists,up |
+| 1  | ip-10-0-140-27.us-east-2.compute.internal  | 1116M | 48.9G |    0   |     0   |    0   |     0   | exists,up |
+| 2  | ip-10-0-183-136.us-east-2.compute.internal | 1092M | 48.9G |    0   |  3276   |    0   |     0   | exists,up |
+| 3  | ip-10-0-140-27.us-east-2.compute.internal  | 1110M | 48.9G |    0   |  7372   |    0   |     0   | exists,up |
+| 4  | ip-10-0-183-136.us-east-2.compute.internal | 1134M | 48.8G |    0   |  2457   |    0   |     0   | exists,up |
+| 5  | ip-10-0-209-93.us-east-2.compute.internal  | 1121M | 48.9G |    0   |     0   |    2   |   106   | exists,up |
++----+--------------------------------------------+-------+-------+--------+---------+--------+---------+-----------+</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Do not forget to exit the pod to return back to your command prompt:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code>exit</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alerts will resolve themselves as the cluster recovers.</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code>MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')</code></pre>
+</div>
+</div>
+<div class="listingblock execute">
+<div class="title">Check all alerts. You may have to run this several times to watch the alerts resolve:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This procedure is complete.</p>
+</div>
+<div class="paragraph">
+<p><strong>Pending scale out</strong></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_gathering_logs"><a class="anchor" href="#_gathering_logs"></a>6. Gathering Logs</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="title">Document Ceph Cluster health check:</div>
@@ -284,71 +839,21 @@ exit</pre>
 oc adm must-gather --image=registry.redhat.io/ocs4/ocs-must-gather-rhel8:v4.6</pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_make_changes_to_solve_alert"><a class="anchor" href="#_make_changes_to_solve_alert"></a>4.1. Make changes to solve alert</h3>
-<div class="paragraph">
-<p>Expand the ceph cluster by scaling present machineset.</p>
-</div>
-<div class="listingblock">
-<div class="title">Check on our current machinesets:</div>
-<div class="content">
-<pre>oc get machines -n openshift-machine-api | egrep 'NAME|workerocs'</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Scale the current machineset:</div>
-<div class="content">
-<pre># Scale the replicas to 1 more than the Desired column above. i.e. If the current "Desired" is 1, make the replicas=2
-oc get machinesets -n openshift-machine-api -o name | grep workerocs | xargs -n1 -t oc scale -n openshift-machine-api --replicas=2</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Watch and verify the new machines are ready:</div>
-<div class="content">
-<pre>watch "oc get machinesets -n openshift-machine-api | egrep 'NAME|workerocs'"</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">WIP Add capacity via the OCP web console:</div>
-<div class="content">
-<pre>Can this be done (easily) via the cli?
-If not, include 7.2 Add storage capacity from training or OCS docs.</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Enter the tools pod that you created in <a href="#Using the Rook-Ceph toolbox to check on the Ceph backing storage">the previous section</a>:</div>
-<div class="content">
-<pre>WIP</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_troubleshooting"><a class="anchor" href="#_troubleshooting"></a>5. Troubleshooting</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Issue encountered while following the sop</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>Any issues while following the sop should be documented here.</pre>
-</div>
-</div>
 </div>
 </div>
 </article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
   </div>
 </main>
 </div>
 <footer class="footer">
-  <p>This page was built using the Antora default UI.</p>
-  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+  <a class="navbar-item" href="https://www.redhat.com/en/technologies/cloud-computing/openshift-container-storage" target="_blank">
+      <img src="../../_/img/header_logo.svg" alt="Red Hat Data Services">
+  </a>
 </footer>
+<script src="../../_/js/vendor/clipboard.js"></script>
 <script src="../../_/js/site.js"></script>
 <script async src="../../_/js/vendor/highlight.js"></script>
   </body>
