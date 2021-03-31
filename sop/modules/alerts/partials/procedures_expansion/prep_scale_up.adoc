@@ -46,9 +46,19 @@ Do not forget to exit the pod to return back to your command prompt:
 exit
 ----
 
-This in this situation, it is common to have *MANY* alerts firing or warning all at once. You may track current alert statuses by running:
+This in this situation, it is common to have *MANY* alerts firing or warning all at once. If you have not already checked firing alerts, you may do so now by running:
+
+[source,role="execute"]
 ----
-WIP: findall_alerts.sh instructions here 
+MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')
+----
+
+Quickly view all alerts to check if your alert is still active. 
+
+.Check all alerts
+[source,role="execute"]
+----
+curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'
 ----
 
 === Determine LSO or No LSO

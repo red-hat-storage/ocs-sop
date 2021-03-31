@@ -215,8 +215,18 @@ exit
 ----
 
 Alerts will resolve themselves as the cluster recovers.
+
+[source,role="execute"]
 ----
-WIP: findall_alerts.sh instructions here 
+MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')
 ----
+
+
+.Check all alerts. You may have to run this several times to watch the alerts resolve:
+[source,role="execute"]
+----
+curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'
+----
+
 
 This procedure is complete. 

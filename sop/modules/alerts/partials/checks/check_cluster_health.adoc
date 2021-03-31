@@ -2,6 +2,9 @@
 === Document OCS Ceph Cluster Health
 
 You may directly check OCS Ceph Cluster health by using the rook-ceph toolbox.
+
+NOTE: The rook-ceph toolbox is not supported by Red Hat and is used here only to provide a quick health assessment. Do not use the toolbox to modify your Ceph cluster. Use the toolbox for querying health only.
+
 [source,role="execute"]
 ----
 oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'
