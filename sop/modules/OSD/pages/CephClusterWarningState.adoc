@@ -1,20 +1,10 @@
-// begin header
-ifdef::env-github[]
-:tip-caption: :bulb:
-:note-caption: :information_source:
-:important-caption: :heavy_exclamation_mark:
-:caution-caption: :fire:
-:warning-caption: :warning:
-endif::[]
-:numbered:
-:toc: macro
-:toc-title: pass:[<b>Table of Contents</b>]
-// end header
+include::partial$alert_header.adoc[]
+
 :alertname: CephClusterWarningState
 :message: Storage cluster is in degraded state.
 :description: Storage cluster is in warning state for more than 10m.
-:detailed_description: The rook-ceph-mgr job has been in a warning state for an unacceptable amount of time. Check for other alerts that would have triggered prior to this one and troubleshoot those alerts first. 
-:resolution_description: 
+:detailed_description: The rook-ceph-mgr job (Prometheus) has been in a warning state for an unacceptable amount of time. Check for other alerts that would have triggered prior to this one and troubleshoot those alerts first.
+:resolution_description: General troubleshooting will be required in order to determine the cause of this alert. This alert will trigger along with other (usually many other) alerts. Please view and troubleshoot the other alerts first.
 :severity: Warning
 :ceph-component: rook-ceph-mgr
 
@@ -28,18 +18,20 @@ toc::[]
 
 *Potential Customer Impact:* High
 
-
 == Overview
 {description}
+
 {detailed_description}
 
 == Prerequisites
 include::partial$prerequisites.adoc[]
 
 ==  Alert
-include::partial$gather_logs.adoc[]
+=== Make changes to solve alert
+{resolution_description}
 
-include::partial$procedure_resolution_basic_troubleshooting.adoc[]
+include::partial$pod_debug.adoc[]
+include::partial$gather_logs.adoc[]
 
 ==  Troubleshooting
 include::partial$troubleshooting.adoc[]

@@ -1,20 +1,10 @@
-// begin header
-ifdef::env-github[]
-:tip-caption: :bulb:
-:note-caption: :information_source:
-:important-caption: :heavy_exclamation_mark:
-:caution-caption: :fire:
-:warning-caption: :warning:
-endif::[]
-:numbered:
-:toc: macro
-:toc-title: pass:[<b>Table of Contents</b>]
-// end header
+include::partial$alert_header.adoc[]
+
 :alertname: CephMonQuorumAtRisk
-:message: Storage metrics collector service not available anymore.
-:description: Ceph Manager has disappeared from Prometheus target discovery.
+:message: Storage quorum at risk
+:description: Storage cluster quorum is low.
 :detailed_description: 
-:severity: Critical
+:severity: Error
 :resolution_description: 
 :ceph-component: rook-ceph-mgr
 
@@ -30,15 +20,20 @@ toc::[]
 
 == Overview
 {description}
+
 {detailed_description}
 
 == Prerequisites
 include::partial$prerequisites.adoc[]
 
 ==  Alert
-include::partial$gather_logs.adoc[]
 
-include::partial$procedure_resolution_replicas.adoc[]
+WIP: Needs procedure for quorum recovery.
+
+Follow the general pod debug workflow outlined below.
+
+include::partial$pod_debug.adoc[]
+include::partial$gather_logs.adoc[]
 
 ==  Troubleshooting
 include::partial$troubleshooting.adoc[]

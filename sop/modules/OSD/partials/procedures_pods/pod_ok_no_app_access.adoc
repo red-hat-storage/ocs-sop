@@ -1,9 +1,0 @@
-
-If you are at this step, then the pod is ok. Proceed to check the service. 
-
-[subs="verbatim,attributes"]
-.pod status: NOT pending, running, ready, no access to app -> Start debug workflow for service.
------
-
------
-

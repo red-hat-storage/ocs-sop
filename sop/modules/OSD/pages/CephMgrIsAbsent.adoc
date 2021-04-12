@@ -1,21 +1,11 @@
-// begin header
-ifdef::env-github[]
-:tip-caption: :bulb:
-:note-caption: :information_source:
-:important-caption: :heavy_exclamation_mark:
-:caution-caption: :fire:
-:warning-caption: :warning:
-endif::[]
-:numbered:
-:toc: macro
-:toc-title: pass:[<b>Table of Contents</b>]
-// end header
+include::partial$alert_header.adoc[]
+
 :alertname: CephMgrIsAbsent
 :message: Storage metrics collector service not available anymore.
 :description: Ceph Manager has disappeared from Prometheus target discovery.
 :detailed_description: 
-:severity: Critical
-:resolution_description: 
+:severity: Warning
+:resolution_description: Verify the rook-ceph-mgr pod is failing and restart if necessary. If the ceph mgr pod restart fails, use general basic pod troubleshooting to resolve.
 :ceph-component: rook-ceph-mgr
 
 = {alertname}
@@ -28,18 +18,42 @@ toc::[]
 
 *Potential Customer Impact:* High
 
-
 == Overview
 {description}
+
 {detailed_description}
 
 == Prerequisites
 include::partial$prerequisites.adoc[]
 
 ==  Alert
-include::partial$gather_logs.adoc[]
+=== Make change to solve the alert
+{resolution_description}
 
-include::partial$procedure_resolution_replicas.adoc[]
+.Verify the ceph mgr pod is failing:
+[source,role="execute"]
+----
+oc get pods | grep mgr
+----
+
+.Describe the ceph mgr pod for more detail:
+[source,role="execute"]
+----
+oc describe pods/<rook-ceph-mgr pod name from previous step>
+----
+
+Analyze errors (i.e. resource issues?)
+
+Try deleting the pod and watch for a successful restart:
+[source,role="execute"]
+----
+oc get pods | grep mgr
+----
+
+If above fails, follow general pod troubleshooting procedures.
+
+include::partial$pod_debug.adoc[]
+include::partial$gather_logs.adoc[]
 
 ==  Troubleshooting
 include::partial$troubleshooting.adoc[]

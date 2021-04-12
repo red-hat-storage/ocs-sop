@@ -1,15 +1,13 @@
-// begin header
-ifdef::env-github[]
-:tip-caption: :bulb:
-:note-caption: :information_source:
-:important-caption: :heavy_exclamation_mark:
-:caution-caption: :fire:
-:warning-caption: :warning:
-endif::[]
-:numbered:
-:toc: macro
-:toc-title: pass:[<b>Table of Contents</b>]
-// end header
+include::partial$alert_header.adoc[]
+
+:alertname: CephPGRepairTakingTooLong
+:message:  Self heal problems detected
+:description: Self heal operations taking too long.
+:detailed_description:
+:severity: Warning
+:resolution_description: The self healing problems have been detected. Check for inconsistent placement groups and repair. Verify this is the correct KCS - https://access.redhat.com/solutions/1589113[KCS with PGRepair details]
+:ceph-component: rook-ceph-mgr
+
 = CephPGRepairTakingTooLong
 
 toc::[]
@@ -22,24 +20,20 @@ toc::[]
 
 
 == Overview
-The self healing problems have been detected. Check for inconsistent placement groups and repair.
-https://access.redhat.com/solutions/1589113
+{description}
+
+{detailed_description}
 
 == Prerequsities
 include::partial$prerequisites.adoc[]
 
 ==  Alert
-include::partial$gather_logs.adoc[]
-
-See prequistes.
 
 
 === Make changes to solve alert
+{resolution_description}
 
-WIP
-
-Check with team:
-Checkk other alerts first or go for ceph pg repair steps?
+include::partial$gather_logs.adoc[]
 
 == Troubleshooting
 include::partial$troubleshooting.adoc[] 

@@ -1,9 +1,0 @@
-
-
-:bad-pod: $\{MYPOD\}
-include::partial$procedures_pods/pod_not_ready.adoc[]
-include::partial$procedures_pods/pod_not_running.adoc[]
-include::partial$procedures_pods/pod_ok_no_app_access.adoc[]
-include::partial$procedures_pods/pod_pending.adoc[]
-include::partial$procedures_pods/pod_status.adoc[]
-

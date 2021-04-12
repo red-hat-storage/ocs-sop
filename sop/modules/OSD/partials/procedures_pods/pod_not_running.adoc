@@ -1,7 +1,0 @@
-[subs="verbatim,attributes"]
-.pod status: NOT pending, but NOT running -> Check for app or image issues.
-----
-oc logs pod/{bad-pod}
-oc describe pod/{bad-pod}
-----
-

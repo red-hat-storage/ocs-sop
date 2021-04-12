@@ -1,20 +1,10 @@
-// begin header
-ifdef::env-github[]
-:tip-caption: :bulb:
-:note-caption: :information_source:
-:important-caption: :heavy_exclamation_mark:
-:caution-caption: :fire:
-:warning-caption: :warning:
-endif::[]
-:numbered:
-:toc: macro
-:toc-title: pass:[<b>Table of Contents</b>]
-// end header
-:alertname: CephOSDCriticallyFull 
+include::partial$alert_header.adoc[]
+
+:alertname: CephOSDCriticallyFull
 :message: Back-end storage device is critically full.
 :description: Utilization of back-end storage device (OSD)  has crossed 85%. Immediately free up some space or expand the storage cluster or contact support.
 :detailed_description: Detailed Description: One of the OSD storage devices is critically full. Expand the cluster immediately.
-:resolution_description: Determine if you can proceed with scaling *UP* or *OUT* for expansion. Choose the appropriate tab for your deployment below.
+:resolution_description:
 :severity: Error
 :ceph-component: rook-ceph-mgr
 
@@ -32,15 +22,16 @@ toc::[]
 == Overview
 
 {description}
+
 {detailed_description}
 
 == Prerequisites
 include::partial$prerequisites.adoc[]
 
 ==  Alert
-include::partial$gather_logs.adoc[]
-
 include::partial$procedure_resolution_expansion.adoc[]
+
+include::partial$gather_logs.adoc[]
 
 ==  Troubleshooting
 include::partial$troubleshooting.adoc[]

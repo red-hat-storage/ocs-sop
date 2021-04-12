@@ -1,20 +1,11 @@
-// begin header
-ifdef::env-github[]
-:tip-caption: :bulb:
-:note-caption: :information_source:
-:important-caption: :heavy_exclamation_mark:
-:caution-caption: :fire:
-:warning-caption: :warning:
-endif::[]
-:numbered:
-:toc: macro
-:toc-title: pass:[<b>Table of Contents</b>]
-// end header
+include::partial$alert_header.adoc[]
+
 :alertname: CephClusterCriticallyFull
 :message: Storage cluster is critically full and needs immediate expansion.
 :description: Storage cluster utilization has crossed 85%.
-:detailed_description: Detailed Description: Storage cluster utilization has crossed 80% and will become read-only at 85%. Your Ceph cluster will become read only once utilization crosses 85%. Expand the storage cluster immediately. It is common to see alerts related to OSD devices full or near full prior to this alert.
-:resolution_description: Determine if you can proceed with scaling *UP* or *OUT* for expansion. Choose the appropriate tab for your deployment below.
+:detailed_description: Detailed Description: Storage cluster utilization has crossed 80% and will become read-only at 85%. Your Ceph cluster will become read only once utilization crosses 85%. Expand the storage cluster immediately. \
+  It is common to see alerts related to   OSD devices full or near full prior to this alert.
+:resolution_description:
 :severity: Critical
 :ceph-component: rook-ceph-mgr
 
@@ -22,24 +13,23 @@ endif::[]
 
 toc::[]
 
-== Check Description 
-
+== Check Description
 *Severity:* {severity}
 
 *Potential Customer Impact:* High
 
-
 == Overview
 {description}
+
 {detailed_description}
 
 == Prerequisites
 include::partial$prerequisites.adoc[]
 
 ==  Alert
-include::partial$gather_logs.adoc[]
-
 include::partial$procedure_resolution_expansion.adoc[]
+
+include::partial$gather_logs.adoc[]
 
 ==  Troubleshooting
 include::partial$troubleshooting.adoc[]

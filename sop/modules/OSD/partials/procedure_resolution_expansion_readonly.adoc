@@ -1,0 +1,56 @@
+
+=== Notify Customer: Make changes to solve the alert
+
+{resolution_description}
+
+==== Delete Data
+
+
+The customer may NOT delete data while in readonly mode.
+
+If the customer wants to delete data after the cluster is in readonly mode, the resolution procedure is:
+
+  * Raise the threshold for readonly
+  * Allow the cluster to drop of out readonly
+  * Instruct the customer to delete data
+  * Restore the original thresholds
+
+This is essentially the same procedure stated in https://access.redhat.com/solutions/5486241[Scaling up (adding new disks) OCS 4 fails due to cluster state being unhealthy because of lack of capacity.]
+
+include::partial$deploy_toolbox.adoc[]
+
+.Raise the full threshold:
+[source,role="execute"]
+----
+ceph osd set-full-ratio 0.9
+----
+
+.Watch the Ceph cluster come out of readonly mode:
+[source,role="execute"]
+----
+ceph health
+----
+
+Notify the customer once the cluster is healthy. When the customer is done deleting data, return the threshold to the previous value.
+
+.Return threshold to previous value (.85 is default):
+[source,role="execute"]
+----
+ceph osd set-full-ratio 0.85
+----
+
+Do not forget to exit
+[source,role="execute"]
+----
+exit
+----
+
+
+==== Current size < 1 TB, Expand to 4 TB
+
+WIP: Assess ability to expand. Note, if OCS nodes are not dedicated (regular worker nodes) it is not possible to guarantee resources between the time SRE assesses and customer responds.
+
+The customer may increase capacity via the addon and the cluster will resolve the alert through self healing processes.
+
+==== Current size = 4TB
+Please contact Dedicated Support.

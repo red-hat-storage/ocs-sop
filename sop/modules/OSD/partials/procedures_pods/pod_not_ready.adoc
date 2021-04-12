@@ -1,5 +1,0 @@
-[subs="verbatim,attributes"]
-.pod status: NOT pending, running, but NOT ready -> Check readiness probe.
-----
-oc describe pod/{bad-pod}
-----

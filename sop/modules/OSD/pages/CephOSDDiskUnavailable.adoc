@@ -1,48 +1,45 @@
-// begin header
-ifdef::env-github[]
-:tip-caption: :bulb:
-:note-caption: :information_source:
-:important-caption: :heavy_exclamation_mark:
-:caution-caption: :fire:
-:warning-caption: :warning:
-endif::[]
-:numbered:
-:toc: macro
-:toc-title: pass:[<b>Table of Contents</b>]
-// end header
-= CephOSDDiskUnavailable
+include::partial$alert_header.adoc[]
+
+:alertname: CephOSDDiskUnavailable
+:message: Disk not accessible.
+:description: Disk device {{ $labels.device }} not accessible on host {{ $labels.host }}.
+:detailed_description: Detailed Description: A disk device is not responding. Check alert details for disk and host. Replace disk if necessary.
+
+:resolution_description:
+:severity: Error
+:ceph-component: rook-ceph-mgr
+
+= {alertname}
 
 toc::[]
 
-== Check Description 
-
-*Severity:* Error
+== Check Description
+*Severity:* {severity}
 
 *Potential Customer Impact:* High
 
-
 == Overview
+{description}
 
-A disk device is not responding. Check alert details for disk and host. Replace disk if necessary.
+{detailed_description}
 
 == Prerequsities
 
 include::partial$prerequisites.adoc[]
 
 ==  Alert
-include::partial$gather_logs.adoc[]
-
-
-
-
-
 
 === Make changes to solve alert
-WIP Necessary in AWS deployments? Looks for other alerts?
 
+The missing/unresponsive disk(volume) must be replaced as soon as possible. This procedure determines which node is having disk issues.
+
+==== Determine OCS Nodes
+WIP
+
+include::partial$gather_logs.adoc[]
 
 == Troubleshooting
-include::partial$troubleshooting.adoc[] 
+include::partial$troubleshooting.adoc[]
 
 
 

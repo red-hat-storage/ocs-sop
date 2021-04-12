@@ -5,9 +5,20 @@ include::partial$prerequisites.adoc[]
 === Resolution Overview
 {resolution_description}
 
-
-
 include::partial$procedures_expansion/prep_scale_up.adoc[]
+
+[tabs]
+====
+LSO: SCALE UP::
++
+--
 include::partial$procedures_expansion/procedure_scale_up_lso.adoc[]
+--
+NON LSO: SCALE UP::
++
+--
+include::partial$procedures_expansion/procedure_scale_up_no_lso.adoc[]
+--
+====
 
 *Pending scale out*

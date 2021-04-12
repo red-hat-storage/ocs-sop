@@ -1,5 +1,5 @@
 
-=== Document OCS Ceph Cluster Health
+=== Check/Document OCS Ceph Cluster Health
 
 You may directly check OCS Ceph Cluster health by using the rook-ceph toolbox.
 
@@ -28,3 +28,5 @@ ceph osd status
 ceph osd df
 exit
 ----
+
+Do not forget to exit. 

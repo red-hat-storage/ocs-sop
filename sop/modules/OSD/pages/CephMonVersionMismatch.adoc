@@ -1,45 +1,41 @@
-// begin header
-ifdef::env-github[]
-:tip-caption: :bulb:
-:note-caption: :information_source:
-:important-caption: :heavy_exclamation_mark:
-:caution-caption: :fire:
-:warning-caption: :warning:
-endif::[]
-:numbered:
-:toc: macro
-:toc-title: pass:[<b>Table of Contents</b>]
-// end header
-:alertname: CephMgrIsAbsent
-:message: Storage metrics collector service not available anymore.
-:description: Ceph Manager has disappeared from Prometheus target discovery.
-:detailed_description: 
-:severity: Critical
-:resolution_description: 
+include::partial$alert_header.adoc[]
+
+:alertname: CephMonVersionMisMatch
+:message: There are multiple versions of storage services running.
+:description: There are {{ $value }} different versions of Ceph Mon components running.
+:detailed_description: Detailed Description: Typically this alert triggers during an upgrade that is taking a long time.
+:resolution_description: This alert is often triggered during an upgrade. Please check if an upgrade is in progress.
+:severity: Warning
 :ceph-component: rook-ceph-mgr
 
 = {alertname}
 
 toc::[]
 
-== Check Description 
-
+== Check Description
 *Severity:* {severity}
 
 *Potential Customer Impact:* High
 
 == Overview
 {description}
+
 {detailed_description}
 
-== Prerequisites
+== Prerequsities
+
 include::partial$prerequisites.adoc[]
 
 ==  Alert
+
+=== Make changes to solve alert
+
+Check if an operator upgrade is in progress.
+
+include::partial$check_operator.adoc[]
 include::partial$gather_logs.adoc[]
 
-include::partial$procedure_resolution_replicas.adoc[]
-
-==  Troubleshooting
+== Troubleshooting
 include::partial$troubleshooting.adoc[]
+
 
