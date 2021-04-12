@@ -1,7 +1,7 @@
 site:
   title: OCS SoPs
-  #url: https://red-hat-storage.github.io/ocs-sop
-  url: https://mid998.github.io/ocs-sop
+  url: https://red-hat-storage.github.io/ocs-sop
+  #url: https://mid998.github.io/ocs-sop
   start_page: sop::index.adoc
   robots: allow
 content:
