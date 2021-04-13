@@ -1,6 +1,6 @@
 include::partial$alert_header.adoc[]
 
-:alertname: CephMonVersionMisMatch
+:alertname: CephMonVersionMismatch
 :message: There are multiple versions of storage services running.
 :description: There are {{ $value }} different versions of Ceph Mon components running.
 :detailed_description: Detailed Description: Typically this alert triggers during an upgrade that is taking a long time.
@@ -37,5 +37,4 @@ include::partial$gather_logs.adoc[]
 
 == Troubleshooting
 include::partial$troubleshooting.adoc[]
-
 
