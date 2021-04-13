@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>CephNodeDown :: OCS Standard Operating Procedures</title>
-    <link rel="canonical" href="https://mid998.github.io/ocs-sop/sop/alerts/CephNodeDown.html">
-    <meta name="description" content="A storage node went down. Please check the node immediately. The alert should contain the node name.">
+    <title>AlertName :: OCS Standard Operating Procedures</title>
+    <link rel="canonical" href="https://mid998.github.io/ocs-sop/sop/alerts/basic_template.html">
+    <meta name="description" content="Description from the actual alert.">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../_/css/site.css">
 <link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
@@ -105,7 +105,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephMonVersionMismatch.html">CephMonVersionMismatch</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephNodeDown.html">CephNodeDown</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -205,20 +205,55 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">OCS Standard Operating Procedures</a></li>
-    <li>Alerts (Pending Review SOPs)</li>
-    <li><a href="CephNodeDown.html">CephNodeDown</a></li>
+    <li><a href="basic_template.html">AlertName</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/red-hat-storage/ocs-sop/edit/main/sop/modules/alerts/pages/CephNodeDown.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/red-hat-storage/ocs-sop/edit/main/sop/modules/alerts/pages/basic_template.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">CephNodeDown</h1>
+<h1 class="page">AlertName</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset1_tab-1-title"></a>Tab 1 Title</p>
+</li>
+<li>
+<p><a id="tabset1_tab-2-title"></a>Tab 2 Title</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_tab-1-title">
+<div class="paragraph">
+<p>This is the content of the first tab.</p>
+</div>
+<div class="paragraph">
+<p>Another paragraph in the first tab.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ a code block</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_tab-2-title">
+<div class="paragraph">
+<p>This is the content of the second tab.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="sect1">
 <h2 id="_message"><a class="anchor" href="#_message"></a>1. Message</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A storage node went down. Please check the node immediately. The alert should contain the node name.</p>
+<p>Message from the actual alert.</p>
 </div>
 </div>
 </div>
@@ -226,10 +261,10 @@
 <h2 id="_description"><a class="anchor" href="#_description"></a>2. Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A storage node went down. Please check the node immediately. The alert should contain the node name.</p>
+<p>Description from the actual alert.</p>
 </div>
 <div class="paragraph">
-<p></p>
+<p>Detailed Description: Fill this in if necessary or leave ''</p>
 </div>
 </div>
 </div>
@@ -237,7 +272,7 @@
 <h2 id="_severity"><a class="anchor" href="#_severity"></a>3. Severity</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Error</strong></p>
+<p><strong>Critical, Error, Warning</strong></p>
 </div>
 </div>
 </div>
@@ -375,172 +410,7 @@ exit</code></pre>
 <div class="sect2">
 <h3 id="_resolution_overview"><a class="anchor" href="#_resolution_overview"></a>5.1. Resolution Overview</h3>
 <div class="paragraph">
-<p></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_check_alerts_2"><a class="anchor" href="#_check_alerts_2"></a>5.2. Check Alerts</h3>
-<div class="listingblock execute">
-<div class="title">Get the route to this cluster&#8217;s alertmanager:</div>
-<div class="content">
-<pre class="highlightjs highlight"><code>MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Quickly view all alerts to check if your alert is still active.</p>
-</div>
-<div class="listingblock execute">
-<div class="title">Check all alerts</div>
-<div class="content">
-<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p><strong>Continue ONLY if you want to view your specific alert or need more details</strong></p>
-</div>
-<div class="listingblock execute">
-<div class="title">Get your alertname from the alert, set for use in jq:</div>
-<div class="content">
-<pre class="highlightjs highlight"><code>export MYALERTNAME="&lt;alertname from alert&gt;"</code></pre>
-</div>
-</div>
-<div class="listingblock execute">
-<div class="title">Check if the alert is still active:</div>
-<div class="content">
-<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>No entries means the alert is no longer active.</p>
-</div>
-<div class="paragraph">
-<p>Some alerts, such as mismatch versions, can occur during upgrades and resolve themselves. If this alert is not a mismatch version alert then there should be an investigation into what triggered the alert even though the alert resolved. Look for other active alerts or alerts with similiar timing.</p>
-</div>
-<div class="listingblock execute">
-<div class="title">If you need more details run:</div>
-<div class="content">
-<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERTDETAILS: .}'</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>More about the Prometheus Alert endpoint can be found here:
-<a href="https://prometheus.io/docs/prometheus/latest/querying/api/#alerts" class="bare">https://prometheus.io/docs/prometheus/latest/querying/api/#alerts</a></p>
-</div>
-<div class="listingblock">
-<div class="title">pod status: NOT pending, running, but NOT ready &#8594; Check readiness probe.</div>
-<div class="content">
-<pre>oc describe pod/${MYPOD}</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">pod status: NOT pending, but NOT running &#8594; Check for app or image issues.</div>
-<div class="content">
-<pre>oc logs pod/${MYPOD}
-oc describe pod/${MYPOD}</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If you are at this step, then the pod is ok. Proceed to check the service.</p>
-</div>
-<div class="listingblock">
-<div class="title">pod status: NOT pending, running, ready, no access to app &#8594; Start debug workflow for service.</div>
-<div class="content">
-<pre></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">pod status: pending &#8594; Check for resource issues, pending pvcs, node assignment, kubelet problems.</div>
-<div class="content">
-<pre>oc get pod | grep rook-ceph-mgr
-# Examine the output for a rook-ceph-mgr that is in the pending state, not running or not ready
-MYPOD=&lt;pod identified as the problem pod&gt;
-oc describe pod/${MYPOD}</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Look for resource limitations or pending pvcs. Otherwise, check for node assignment.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>oc get pod/${MYPOD} -o wide</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If a node was assigned, check kubelet on the node.</p>
-</div>
-<div class="listingblock">
-<div class="title">Get pod status:</div>
-<div class="content">
-<pre>oc project openshift-storage
-oc get pod | grep rook-ceph-mgr</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_ocs_operator_pod_health"><a class="anchor" href="#_ocs_operator_pod_health"></a>5.3. OCS Operator Pod Health</h3>
-<div class="paragraph">
-<p>Check the OCS operator pod status to see if there is an OCS operator upgrading in progress.</p>
-</div>
-<div class="listingblock">
-<div class="title">Find and view the status of the OCS operator: WIP Is Upgrade a status or only pending?</div>
-<div class="content">
-<pre>% oc get pod -n openshift-storage | grep ocs-operator
-% OCSOP=$(oc get pod -n openshift-storage  -o custom-columns=POD:.metadata.name --no-headers | grep ocs-operator)
-% echo $OCSOP
-% oc get pod/${OCSOP} -n openshift-storage
-% oc describe pod/${OCSOP} -n openshift-storage</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If you determine the OCS operator is in progress, please be patient, wait 5 minutes and this alert should resolve itself.</p>
-</div>
-<div class="paragraph">
-<p>If you have waited or see a different error status condition, please continue troubleshooting.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_check_for_ocs_operator_update"><a class="anchor" href="#_check_for_ocs_operator_update"></a>5.4. Check for OCS Operator Update</h3>
-<div class="paragraph">
-<p>WIP CLI does the status of the operator reflect update in progress?
-<a href="https://docs.openshift.com/container-platform/4.6/operators/admin/olm-status.html" class="bare">https://docs.openshift.com/container-platform/4.6/operators/admin/olm-status.html</a></p>
-</div>
-<div class="paragraph">
-<p>WIP UI
-The cause of the missing replicas must be determined and fixed. Basic troubleshooting starting with operator status all the way to OCP health may be required.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_ocs_operator_subscription_health"><a class="anchor" href="#_ocs_operator_subscription_health"></a>5.5. OCS Operator Subscription Health</h3>
-<div class="listingblock">
-<div class="title">Check the ocs-operator subscription status</div>
-<div class="content">
-<pre>oc get sub ocs-operator -n openshift-storage  -o json | jq .status.conditions</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Like all operators, the status conditions types are:</p>
-</div>
-<div class="paragraph">
-<p><strong>CatalogSourcesUnhealthy, InstallPlanMissing, InstallPlanPending, InstallPlanFailed</strong></p>
-</div>
-<div class="paragraph">
-<p>The status for each type should be False. For example:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code>[
-  {
-    "lastTransitionTime": "2021-01-26T19:21:37Z",
-    "message": "all available catalogsources are healthy",
-    "reason": "AllCatalogSourcesHealthy",
-    "status": "False",
-    "type": "CatalogSourcesUnhealthy"
-  }
-]</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The output above shows a false status for type CatalogSourcesUnHealthly, meaning the catalog sources are healthy.  WIP insert basic cluster health/resources check?</p>
+<p>Fill this in if necessary or leave ''</p>
 </div>
 </div>
 </div>

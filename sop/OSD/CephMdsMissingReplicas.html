@@ -124,19 +124,40 @@
   </li>
   <li class="nav-item" data-depth="0">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">OSD Alerts</span>
+    <span class="nav-text">Dedicated Alerts</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="CephClusterReadOnly.html">CephClusterReadOnly</a>
+    <a class="nav-link" href="CephClusterCriticallyFull.html">CephClusterCriticallyFull</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="CephClusterCriticallyFull.html">CephClusterCriticallyFull</a>
+    <a class="nav-link" href="CephOSDNearFull.html">CephOSDNearFull</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephOSDCriticallyFull.html">CephOSDCriticallyFull</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="CephOSDNearFull.html">CephOSDNearFull</a>
+    <a class="nav-link" href="CephOSDDiskUnavailable.html">CephOSDDiskUnavailable</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="CephOSDDiskNotResponding.html">CephOSDDiskNotResponding</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="CephNodeDown.html">CephNodeDown</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="CephMonVersionMismatch.html">CephMonVersionMismatch</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="CephOSDVersionMismatch.html">CephOSDVersionMismatch</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="CephMgrIsMissingReplicas.html">CephMgrIsMissingReplicas</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="CephMdsMissingReplicas.html">CephMdsMissingReplicas</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="CephClusterReadOnly.html">CephClusterReadOnly</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephClusterWarningState.html">CephClusterWarningState</a>
@@ -144,32 +165,11 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephClusterErrorState.html">CephClusterErrorState</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="CephMdsMissingReplicas.html">CephMdsMissingReplicas</a>
-  </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephMgrIsAbsent.html">CephMgrIsAbsent</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="CephMgrIsMissingReplicas.html">CephMgrIsMissingReplicas</a>
-  </li>
-  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephMonQuorumAtRisk.html">CephMonQuorumAtRisk</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="CephMonVersionMismatch.html">CephMonVersionMismatch</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="CephNodeDown.html">CephNodeDown</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="CephOSDDiskNotResponding.html">CephOSDDiskNotResponding</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="CephOSDDiskUnavailable.html">CephOSDDiskUnavailable</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="CephOSDVersionMismatch.html">CephOSDVersionMismatch</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephPGRepairTakingTooLong.html">CephPGRepairTakingTooLong</a>
@@ -205,7 +205,7 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">OCS Standard Operating Procedures</a></li>
-    <li>OSD Alerts</li>
+    <li>Dedicated Alerts</li>
     <li><a href="CephMdsMissingReplicas.html">CephMdsMissingReplicas</a></li>
   </ul>
 </nav>
@@ -225,7 +225,7 @@
 <ul class="sectlevel2">
 <li><a href="#_verify_cluster_access">3.1. Verify cluster access</a></li>
 <li><a href="#_check_alerts">3.2. Check Alerts</a></li>
-<li><a href="#_document_ocs_ceph_cluster_health">3.3. Document OCS Ceph Cluster Health</a></li>
+<li><a href="#_optional_document_ocs_ceph_cluster_health">3.3. (Optional) Document OCS Ceph Cluster Health</a></li>
 </ul>
 </li>
 <li><a href="#_alert">4. Alert</a>
@@ -253,40 +253,36 @@
 <h2 id="_overview"><a class="anchor" href="#_overview"></a>2. Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Minimum required replicas for storage metadata service not available. Might affect the working of storage cluster.
-Detailed Description: Minimum required replicas for the storage metadata service (MDS) are not available. MDS is responsible for file metadata. Degradation of the MDS service can affect the working of the storage cluster and should be fixed as soon as possible.</p>
+<p>Minimum required replicas for storage metadata service not available. Might affect the working of storage cluster.</p>
+</div>
+<div class="paragraph">
+<p>Detailed Description: Minimum required replicas for the storage metadata service (MDS) are not available. MDS is responsible for file metadata. Degradation of the MDS service can affect the working of the storage cluster and should be fixed as soon as possible.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>3. Prerequisites</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>To proceed with the prerequisites and resolution, you will need basic cli tools including:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>oc (Openshift CLI)</p>
-</li>
-<li>
-<p>jq</p>
-</li>
-<li>
-<p>curl</p>
-</li>
-</ul>
-</div>
 <div class="sect2">
 <h3 id="_verify_cluster_access"><a class="anchor" href="#_verify_cluster_access"></a>3.1. Verify cluster access</h3>
+<div class="paragraph">
+<p>Check the output to ensure you are in the correct context for the cluster mentioned in the alert. If not, please change context and proceed.</p>
+</div>
 <div class="listingblock execute">
-<div class="title">Verify you are admin and cluster server details:</div>
+<div class="title">List clusters you have permission to access:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>oc whoami</code></pre>
+<pre class="highlightjs highlight"><code>ocm list clusters</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Check the output to ensure you are in the correct context for the cluster mentioned in the alert. If not, please change context and proceed.</p>
+<p>From the list above, find the cluster id of the cluster named in the alert. If you do not see the alerting cluster in the list above please contact: WIP</p>
+</div>
+<div class="listingblock execute">
+<div class="title">Grab your credentials and place in kubeconfig:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>ocm get /api/clusters_mgmt/v1/clusters/&lt;cluster id&gt;/credentials \
+  | jq -r .kubeconfig</code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -298,7 +294,7 @@ Detailed Description: Minimum required replicas for the storage metadata service
 </div>
 </div>
 <div class="paragraph">
-<p>Quickly view all alerts to check if your alert is still active.</p>
+<p>WIP: Separate prometheus stack. Verify route.</p>
 </div>
 <div class="listingblock execute">
 <div class="title">Check all alerts</div>
@@ -306,40 +302,9 @@ Detailed Description: Minimum required replicas for the storage metadata service
 <pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p><strong>Continue ONLY if you want to view your specific alert or need more details</strong></p>
-</div>
-<div class="listingblock execute">
-<div class="title">Get your alertname from the alert, set for use in jq:</div>
-<div class="content">
-<pre class="highlightjs highlight"><code>export MYALERTNAME="&lt;alertname from alert&gt;"</code></pre>
-</div>
-</div>
-<div class="listingblock execute">
-<div class="title">Check if the alert is still active:</div>
-<div class="content">
-<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>No entries means the alert is no longer active.</p>
-</div>
-<div class="paragraph">
-<p>Some alerts, such as mismatch versions, can occur during upgrades and resolve themselves. If this alert is not a mismatch version alert then there should be an investigation into what triggered the alert even though the alert resolved. Look for other active alerts or alerts with similiar timing.</p>
-</div>
-<div class="listingblock execute">
-<div class="title">If you need more details run:</div>
-<div class="content">
-<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERTDETAILS: .}'</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>More about the Prometheus Alert endpoint can be found here:
-<a href="https://prometheus.io/docs/prometheus/latest/querying/api/#alerts" class="bare">https://prometheus.io/docs/prometheus/latest/querying/api/#alerts</a></p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="_document_ocs_ceph_cluster_health"><a class="anchor" href="#_document_ocs_ceph_cluster_health"></a>3.3. Document OCS Ceph Cluster Health</h3>
+<h3 id="_optional_document_ocs_ceph_cluster_health"><a class="anchor" href="#_optional_document_ocs_ceph_cluster_health"></a>3.3. (Optional) Document OCS Ceph Cluster Health</h3>
 <div class="paragraph">
 <p>You may directly check OCS Ceph Cluster health by using the rook-ceph toolbox.
 .Check and document ceph cluster health:</p>
@@ -355,10 +320,6 @@ oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">ceph status
 ceph osd status
-ceph osd tree
-ceph df
-rados df
-ceph versions
 exit</code></pre>
 </div>
 </div>
@@ -368,129 +329,55 @@ exit</code></pre>
 <div class="sect1">
 <h2 id="_alert"><a class="anchor" href="#_alert"></a>4. Alert</h2>
 <div class="sectionbody">
-<div class="listingblock">
-<div class="title">Document Ceph Cluster health check:</div>
-<div class="content">
-<pre>For OCS specific results run:
-oc adm must-gather --image=registry.redhat.io/ocs4/ocs-must-gather-rhel8:v4.6</pre>
-</div>
-</div>
 <div class="sect2">
 <h3 id="_make_changes_to_solve_alert"><a class="anchor" href="#_make_changes_to_solve_alert"></a>4.1. Make changes to solve alert</h3>
 <div class="paragraph">
-<p><strong>Check for OCS Operator Update</strong></p>
+<p>Follow the general pod debug workflow outlined below.</p>
 </div>
-<div class="paragraph">
-<p>WIP CLI does the status of the operator reflect update in progress?
-<a href="https://docs.openshift.com/container-platform/4.6/operators/admin/olm-status.html" class="bare">https://docs.openshift.com/container-platform/4.6/operators/admin/olm-status.html</a></p>
-</div>
-<div class="paragraph">
-<p>WIP UI
-The cause of the missing replicas must be determined and fixed. Basic troubleshooting starting with operator status all the way to OCP health may be required.</p>
-</div>
-<div class="paragraph">
-<p><strong>OCS Operator Subscription Health:</strong></p>
-</div>
-<div class="listingblock">
-<div class="title">Check the ocs-operator subscription status</div>
-<div class="content">
-<pre>oc get sub ocs-operator -n openshift-storage  -o json | jq .status.conditions</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Like all operators, the status conditions types are:</p>
-</div>
-<div class="paragraph">
-<p><strong>CatalogSourcesUnhealthy, InstallPlanMissing, InstallPlanPending, InstallPlanFailed</strong></p>
-</div>
-<div class="paragraph">
-<p>The status for each type should be False. For example:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code>[
-  {
-    "lastTransitionTime": "2021-01-26T19:21:37Z",
-    "message": "all available catalogsources are healthy",
-    "reason": "AllCatalogSourcesHealthy",
-    "status": "False",
-    "type": "CatalogSourcesUnhealthy"
-  }
-]</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The output above shows a false status for type CatalogSourcesUnHealthly, meaning the catalog sources are healthy.  WIP insert basic cluster health/resources check?</p>
-</div>
-<div class="paragraph">
-<p><strong>OCS Operator Pod Health:</strong></p>
-</div>
-<div class="paragraph">
-<p>Check the OCS operator pod status to see if there is an OCS operator upgrading in progress.</p>
-</div>
-<div class="listingblock">
-<div class="title">Find and view the status of the OCS operator: WIP Is Upgrade a status or only pending?</div>
-<div class="content">
-<pre>% oc get pod -n openshift-storage | grep ocs-operator
-% OCSOP=$(oc get pod -n openshift-storage  -o custom-columns=POD:.metadata.name --no-headers | grep ocs-operator)
-% echo $OCSOP
-% oc get pod/${OCSOP} -n openshift-storage
-% oc describe pod/${OCSOP} -n openshift-storage</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If you determine the OCS operator is in progress, please be patient, wait 5 minutes and this alert should resolve itself.</p>
-</div>
-<div class="paragraph">
-<p>If you have waited or see a different error status condition, please continue troubleshooting.</p>
-</div>
-<div class="listingblock">
-<div class="title">pod status: NOT pending, running, but NOT ready &#8594; Check readiness probe.</div>
-<div class="content">
-<pre>oc describe pod/${MYPOD}</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">pod status: NOT pending, but NOT running &#8594; Check for app or image issues.</div>
-<div class="content">
-<pre>oc logs pod/${MYPOD}
-oc describe pod/${MYPOD}</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If you are at this step, then the pod is ok. Proceed to check the service.</p>
-</div>
-<div class="listingblock">
-<div class="title">pod status: NOT pending, running, ready, no access to app &#8594; Start debug workflow for service.</div>
-<div class="content">
-<pre></pre>
-</div>
-</div>
-<div class="listingblock">
+<div class="listingblock execute">
 <div class="title">pod status: pending &#8594; Check for resource issues, pending pvcs, node assignment, kubelet problems.</div>
 <div class="content">
-<pre>oc get pod | grep rook-ceph-mds
-# Examine the output for a rook-ceph-mds that is in the pending state, not running or not ready
-MYPOD=&lt;pod identified as the problem pod&gt;
-oc describe pod/${MYPOD}</pre>
+<pre class="highlightjs highlight"><code>oc project openshift-storage
+oc get pod | grep rook-ceph-mds</code></pre>
+</div>
+</div>
+<div class="listingblock execute">
+<div class="title">Set MYPOD for convenience:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code># Examine the output for a rook-ceph-mds that is in the pending state, not running or not ready
+MYPOD=&lt;pod identified as the problem pod&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Look for resource limitations or pending pvcs. Otherwise, check for node assignment.</p>
 </div>
-<div class="listingblock">
+<div class="listingblock execute">
 <div class="content">
-<pre>oc get pod/${MYPOD} -o wide</pre>
+<pre class="highlightjs highlight"><code>oc get pod/${MYPOD} -o wide</code></pre>
+</div>
+</div>
+<div class="listingblock execute">
+<div class="title">pod status: NOT pending, running, but NOT ready &#8594; Check readiness probe.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>oc describe pod/${MYPOD}</code></pre>
+</div>
+</div>
+<div class="listingblock execute">
+<div class="title">pod status: NOT pending, but NOT running &#8594; Check for app or image issues.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>oc logs pod/${MYPOD}</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>If a node was assigned, check kubelet on the node.</p>
 </div>
-<div class="listingblock">
-<div class="title">Get pod status:</div>
+<div class="paragraph">
+<p>(Optional log gathering)</p>
+</div>
+<div class="listingblock execute">
+<div class="title">Document Ceph Cluster health check:</div>
 <div class="content">
-<pre>oc project openshift-storage
-oc get pod | grep rook-ceph-mds</pre>
+<pre class="highlightjs highlight"><code>oc adm must-gather --image=registry.redhat.io/ocs4/ocs-must-gather-rhel8:v4.6</code></pre>
 </div>
 </div>
 </div>
