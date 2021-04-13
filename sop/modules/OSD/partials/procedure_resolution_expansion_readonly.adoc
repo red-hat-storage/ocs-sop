@@ -6,7 +6,7 @@
 ==== Delete Data
 
 
-The customer may NOT delete data while in readonly mode.
+The customer may NOT delete data while in read-only mode.
 
 If the customer wants to delete data after the cluster is in readonly mode, the resolution procedure is:
 
