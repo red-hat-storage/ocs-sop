@@ -4,7 +4,7 @@
 {resolution_description}
 
 ==== Delete Data
-IMPORTANT: OCS CEPH CLUSTER IS NOT IN READONLY MODE. The following instructions only apply to OCS clusters that are near or full but NOT in readonly mode. Readonly mode would prevent any changes including deleting data (i.e. PVC/PV deletions)
+IMPORTANT: OCS CEPH CLUSTER IS NOT IN READONLY MODE. The following instructions only apply to OCS clusters that are near or full but NOT in read-only mode. Read-only mode would prevent any changes including deleting data (i.e. PVC/PV deletions)
 
 The customer may delete data and the cluster will resolve the alert through self healing processes.
 
