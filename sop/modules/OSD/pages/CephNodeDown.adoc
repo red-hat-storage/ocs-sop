@@ -1,44 +1,85 @@
-// begin header
-ifdef::env-github[]
-:tip-caption: :bulb:
-:note-caption: :information_source:
-:important-caption: :heavy_exclamation_mark:
-:caution-caption: :fire:
-:warning-caption: :warning:
-endif::[]
-:numbered:
-:toc: macro
-:toc-title: pass:[<b>Table of Contents</b>]
-// end header
-= CephNodeDown
+include::partial$alert_header.adoc[]
+
+:alertname: CephNodeDown
+:message: A storage node went down. Please check the node immediately. The alert should contain the node name.
+:description: A storage node went down. Please check the node immediately. The alert should contain the node name.
+:detailed_description:
+:resolution_description: Resolution to this alert involves replacing the failed node with a new node of the same or larger capacity and ensuring OCS osd pods are properly placed on the new node.
+:severity: Error
+:ceph-component: rook-ceph-mgr
+= {alertname}
 
 toc::[]
 
 == Check Description 
 
-*Severity:* Error
+*Severity:* {severity}
 
 *Potential Customer Impact:* High
 
 
 == Overview
+{description}
 
-A storage node went down. Please check the node immediately. The alert should contain the node name.
+{detailed_description}
 
-== Prerequsities
-
+== Prerequisites
 include::partial$prerequisites.adoc[]
 
 ==  Alert
-include::partial$gather_logs.adoc[]
-
-
-
-
-
 
 === Make changes to solve alert
-WIP - needs verify node is down and replacement instructions
+
+.Document the current OCS pods (running and failing):
+[source,role="execute"]
+----
+oc -n openshift-storage get pods
+----
+
+WIP: Link to node replacement SOP
+
+The OCS resource requirements must be met in order for the osd pods to be scheduled on the new node. This may take a few minutes as the ceph cluster recovers data for the failing but now recovering osd.
+
+To watch this recovery in action ensure the osd pods were actually placed on the new worker node.
+
+.Check if the previous failing osd pods are now running:
+[source,role="execute"]
+----
+oc -n openshift-storage get pods
+----
+
+If the previously failing osd pods have not been scheduled, use describe and check events for reasons the pods were not rescheduled.
+
+.Describe events for failing osd pod:
+[source,role="execute"]
+----
+oc -n openshift-storage get pods | grep osd
+----
+
+Find a failing osd pod(s):
+[source,role="execute"]
+----
+oc -n openshift-storage describe pods/<osd podname from previous step>
+----
+
+In the event section look for failure reasons, such as resources not being met.
+
+
+In addition, you may use the rook-ceph-toolbox to watch the recovery. This step is optional but can be helpful for large Ceph clusters.
+
+include::partial$deploy_toolbox.adoc[]
+
+
+.From the rsh command prompt, run the following and watch for "recovery" under the io section:
+[source,shell]
+----
+ceph status
+----
+
+How long recovery takes will depend on the size of the Ceph cluster.
+WIP: Note about health status and no recovery for small quick clusters.
+
+include::partial$gather_logs.adoc[]
 
 == Troubleshooting
 include::partial$troubleshooting.adoc[] 

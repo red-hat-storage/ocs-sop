@@ -1,7 +1,18 @@
 
-=== Make changes to solve the alert
+=== Notify Customer: Make changes to solve the alert
+
 {resolution_description}
 
-include::partial$procedures_expansion/prep_scale_up.adoc[]
-include::partial$procedures_expansion/procedure_scale_up_lso.adoc[]
+==== Delete Data
+IMPORTANT: OCS CEPH CLUSTER IS NOT IN READONLY MODE. The following instructions only apply to OCS clusters that are near or full but NOT in read-only mode. Read-only mode would prevent any changes including deleting data (i.e. PVC/PV deletions)
 
+The customer may delete data and the cluster will resolve the alert through self healing processes.
+
+==== Current size < 1 TB, Expand to 4 TB
+
+WIP: Assess ability to expand. Note, if OCS nodes are not dedicated (regular worker nodes) it is not possible to guarantee resources between the time SRE assesses and customer responds.
+
+The customer may increase capacity via the addon and the cluster will resolve the alert through self healing processes.
+
+==== Current size = 4TB
+Please contact Dedicated Support.

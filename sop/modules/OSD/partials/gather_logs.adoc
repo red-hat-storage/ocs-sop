@@ -1,7 +1,9 @@
 
+(Optional log gathering)
+
 .Document Ceph Cluster health check:
+[source,role="execute"]
 ----
-For OCS specific results run:
 oc adm must-gather --image=registry.redhat.io/ocs4/ocs-must-gather-rhel8:v4.6
 ----
 

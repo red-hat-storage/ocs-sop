@@ -1,15 +1,5 @@
-// begin header
-ifdef::env-github[]
-:tip-caption: :bulb:
-:note-caption: :information_source:
-:important-caption: :heavy_exclamation_mark:
-:caution-caption: :fire:
-:warning-caption: :warning:
-endif::[]
-:numbered:
-:toc: macro
-:toc-title: pass:[<b>Table of Contents</b>]
-// end header
+include::partial$alert_header.adoc[]
+
 :alertname: CephClusterReadOnly
 :message: Storage cluster is read-only now and needs immediate data deletion or cluster expansion.
 :description: Storage cluster utilization has crossed 85%.
@@ -29,16 +19,17 @@ toc::[]
 *Potential Customer Impact:* High
 
 == Overview
+{description}
 
-Storage cluster utilization has crossed 85% and will become read-only now. Expand the storage cluster immediately.
+{detailed_description}
 
 == Prerequisites
 include::partial$prerequisites.adoc[]
 
 == Alert
-include::partial$gather_logs.adoc[]
 
-include::partial$procedure_resolution_expansion.adoc[]
+include::partial$procedure_resolution_expansion_readonly.adoc[]
+include::partial$gather_logs.adoc[]
 
 == Troubleshooting
 

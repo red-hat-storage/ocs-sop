@@ -1,64 +1,6 @@
-=== Adding Storage Capacity when Local Storage Operator is in USE
+=== Adding Storage Capacity - No Local Storage Operator (LSO)
 
-Follow the cli instructions below or the webui instructions link:https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage/4.6/html/scaling_storage/scaling-up-storage-capacity_rhocs#scaling-up-storage-by-adding-capacity-to-your-openshift-container-storage-nodes-using-local-storage-devices_rhocs[OCS - Scaling up storage by adding capacity to your OpenShift Container Storage nodes using local storage devices].
-
-To determine which nodes will need additional capacity, view the localvolumeset and look for values: with key: kubernetes.io/hostname by running the following command:
-
-[source,role="execute"]
-----
-oc -n openshift-local-storage get localvolumeset -o yaml
-----
-
-.Example output:
-----
-[...]
-    nodeSelector:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: kubernetes.io/hostname
-          operator: In
-          values:
-          - ip-10-0-149-49
-          - ip-10-0-179-37
-          - ip-10-0-209-228
-    storageClassName: localblksc-demo
-[...]
-----
-
-Add storage capacity (i.e. in AWS attach EBS volumes) to each hostname listed. Details of attaching additional storage capacity will depend on your particular environment and are beyond the scope of this document. 
-
-Once you have added capacity to each node, verify LSO has discovered the new storage by viewing the localvolumediscoveryresults details. To view the localvolumediscoveryresults details, first view the localvolumediscovery then choose a node for a spot check:
-
-[source,role="execute"]
-----
-oc -n openshift-local-storage get localvolumediscoveryresults
-----
-
-If you do not see your new storage please rerun the command a few times to allow discovery to complete. 
-
-Choose one of the localvolumediscoveryresults from above to inspect details. When new storage has been "discovered" it will be reflected under status: discoveredDevices. 
-
-[source,role="execute"]
-----
-oc -n openshift-local-storage get localvolumediscoveryresults/discovery-result-ip-10-0-149-49.us-east-2.compute.internal -o yaml
-----
-
-.Example output
-----
-[...]
-  - deviceID: /dev/disk/by-id/nvme-Amazon_Elastic_Block_Store_vol0b86476e1d962d061
-    fstype: ""
-    model: 'Amazon Elastic Block Store              '
-    path: /dev/nvme2n1
-    property: NonRotational
-    serial: vol0b86476e1d962d061
-    size: 53687091200
-    status:
-      state: Available
-    type: disk
-    vendor: ""
-[...]
-----
+Follow the cli instructions below or the webui instructions link:https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage/4.6/html/scaling_storage/scaling-up-storage-capacity_rhocs#proc_scaling-up-storage-by-adding-capacity-to-your-openshift-container-storage-nodes-on-aws-vmware-infrastructure_rhocs[OCS - Scaling up storage by adding capacity to your OpenShift Container Storage].
 
 Expand the OCS cluster by directly editing the ocs-storagecluster definition, finding spec: count: and increasing the count by 1:
 [source,role="execute"]
@@ -213,8 +155,18 @@ exit
 ----
 
 Alerts will resolve themselves as the cluster recovers.
+
+[source,role="execute"]
 ----
-WIP: findall_alerts.sh instructions here 
+MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')
 ----
+
+
+.Check all alerts. You may have to run this several times to watch the alerts resolve:
+[source,role="execute"]
+----
+curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'
+----
+
 
 This procedure is complete. 
