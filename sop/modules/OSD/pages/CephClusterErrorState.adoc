@@ -23,6 +23,8 @@ toc::[]
 
 {detailed_description}
 
+include::parital$architecture.adoc[]
+
 == Prerequisites
 include::partial$prerequisites.adoc[]
 

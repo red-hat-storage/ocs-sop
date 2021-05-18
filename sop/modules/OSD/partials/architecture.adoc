@@ -1,0 +1,9 @@
+
+
+=== OpenShift Data Foundation Dedicated Architecture ===
+Red Hat OpenShift Data Foundation Dedicated (ODF Dedicated) is deployed in converged mode on OpenShift Dedicated Clusters by the OpenShift Cluster Manager add-on infrastructure.
+
+.Related Links
+- https://docs.google.com/document/d/1ISEY16OfsvEPmlJEjEwPvDvDs0KyNzgl369A-V6-GRA/edit#heading=h.mznotzn8pklp[ODF Dedicated Converged Add-on Architecure ]
+- https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage/4.6/html/planning_your_deployment/ocs-architecture_rhocs[ODF Product Architecture]
+
