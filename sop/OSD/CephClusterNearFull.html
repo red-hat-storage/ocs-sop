@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>CephOSDNearFull :: OCS Standard Operating Procedures</title>
-    <link rel="canonical" href="https://mid998.github.io/ocs-sop/sop/OSD/CephOSDNearFull.html">
-    <meta name="description" content="Utilization of back-end storage device OSD has crossed 75% on host &amp;lt;hostname&amp;gt;. Free up some space or expand the storage cluster or contact support.">
+    <title>CephClusterNearFull :: OCS Standard Operating Procedures</title>
+    <link rel="canonical" href="https://mid998.github.io/ocs-sop/sop/OSD/CephClusterNearFull.html">
+    <meta name="description" content="Storage cluster utilization has crossed 75%.">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../_/css/site.css">
 <link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
@@ -129,7 +129,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephClusterCriticallyFull.html">CephClusterCriticallyFull</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephOSDNearFull.html">CephOSDNearFull</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -205,15 +205,14 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">OCS Standard Operating Procedures</a></li>
-    <li>Dedicated Alerts</li>
-    <li><a href="CephOSDNearFull.html">CephOSDNearFull</a></li>
+    <li><a href="CephClusterNearFull.html">CephClusterNearFull</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/red-hat-storage/ocs-sop/edit/main/sop/modules/OSD/pages/CephOSDNearFull.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/red-hat-storage/ocs-sop/edit/main/sop/modules/OSD/pages/CephClusterNearFull.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">CephOSDNearFull</h1>
+<h1 class="page">CephClusterNearFull</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div id="toc" class="toc">
@@ -253,10 +252,10 @@
 <h2 id="_overview"><a class="anchor" href="#_overview"></a>2. Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Utilization of back-end storage device OSD has crossed 75% on host &lt;hostname&gt;. Free up some space or expand the storage cluster or contact support.</p>
+<p>Storage cluster utilization has crossed 75%.</p>
 </div>
 <div class="paragraph">
-<p>Detailed Description: One of the OSD storage devices is nearing full.</p>
+<p>Detailed Description: Storage cluster utilization has crossed 75% and will become read-only at 85%. Free up some space or expand the storage cluster. It is common to see alerts related to OSD devices full or near full prior to this alert.</p>
 </div>
 </div>
 </div>

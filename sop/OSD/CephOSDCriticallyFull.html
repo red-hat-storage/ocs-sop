@@ -355,16 +355,28 @@ OCS CEPH CLUSTER IS NOT IN READONLY MODE. The following instructions only apply 
 <div class="sect3">
 <h4 id="_current_size_1_tb_expand_to_4_tb"><a class="anchor" href="#_current_size_1_tb_expand_to_4_tb"></a>4.1.2. Current size &lt; 1 TB, Expand to 4 TB</h4>
 <div class="paragraph">
-<p>WIP: Assess ability to expand. Note, if OCS nodes are not dedicated (regular worker nodes) it is not possible to guarantee resources between the time SRE assesses and customer responds.</p>
+<p>Assess ability to expand. For every 1TB of storage added, the cluster needs to have 3 nodes each with a minimum available 2 vCPUs and 8GiB memory</p>
 </div>
 <div class="paragraph">
-<p>The customer may increase capacity via the addon and the cluster will resolve the alert through self healing processes.</p>
+<p>The customer may increase capacity via the addon and the cluster will resolve the alert through self healing processes.
+If the minimum vCPU and memory resource requirements are not met, the customer should be advised to add 3 additional worker nodes to the cluster.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_current_size_4tb"><a class="anchor" href="#_current_size_4tb"></a>4.1.3. Current size = 4TB</h4>
 <div class="paragraph">
-<p>Please contact Dedicated Support.</p>
+<p>Add-on currently supports clusters of size upto 4TB. If customer needs additional storage, log a support case to follow exception process.</p>
+</div>
+<div class="ulist">
+<div class="title">Options for support</div>
+<ul>
+<li>
+<p>Update storage cluster to size above 4TB (log support exception and contact Engineering as per escalation flow)</p>
+</li>
+<li>
+<p>If cluster is in read-only and customer wants to reclaim space by deleting PVs, follow the <a href="https://access.redhat.com/solutions/3001761">KCS</a> to temporarily allow delete</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>(Optional log gathering)</p>

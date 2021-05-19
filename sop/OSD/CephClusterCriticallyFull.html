@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>CephClusterCriticallyFull :: OCS Standard Operating Procedures</title>
     <link rel="canonical" href="https://mid998.github.io/ocs-sop/sop/OSD/CephClusterCriticallyFull.html">
-    <meta name="description" content="Storage cluster utilization has crossed 85%.">
+    <meta name="description" content="Storage cluster utilization has crossed 80%.">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../_/css/site.css">
 <link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
@@ -253,10 +253,10 @@
 <h2 id="_overview"><a class="anchor" href="#_overview"></a>2. Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Storage cluster utilization has crossed 85%.</p>
+<p>Storage cluster utilization has crossed 80%.</p>
 </div>
 <div class="paragraph">
-<p>Detailed Description: Storage cluster utilization has crossed 80% and will become read-only at 85%. Your Ceph cluster will become read-only once utilization crosses 85%. Expand the storage cluster immediately. It is common to see alerts related to OSD devices full or near full prior to this alert.</p>
+<p>Detailed Description: Storage cluster utilization has crossed 80% and will become read-only at 85%. Your Ceph cluster will become read-only once utilization crosses 85%. Free up some space or expand the storage cluster immediately. It is common to see alerts related to OSD devices full or near full prior to this alert.</p>
 </div>
 </div>
 </div>
@@ -332,7 +332,7 @@ exit</code></pre>
 <div class="sect2">
 <h3 id="_notify_customer_make_changes_to_solve_the_alert"><a class="anchor" href="#_notify_customer_make_changes_to_solve_the_alert"></a>4.1. Notify Customer: Make changes to solve the alert</h3>
 <div class="paragraph">
-<p></p>
+<p>Contact customer to free up space or expand the storage</p>
 </div>
 <div class="sect3">
 <h4 id="_delete_data"><a class="anchor" href="#_delete_data"></a>4.1.1. Delete Data</h4>
@@ -355,16 +355,28 @@ OCS CEPH CLUSTER IS NOT IN READONLY MODE. The following instructions only apply 
 <div class="sect3">
 <h4 id="_current_size_1_tb_expand_to_4_tb"><a class="anchor" href="#_current_size_1_tb_expand_to_4_tb"></a>4.1.2. Current size &lt; 1 TB, Expand to 4 TB</h4>
 <div class="paragraph">
-<p>WIP: Assess ability to expand. Note, if OCS nodes are not dedicated (regular worker nodes) it is not possible to guarantee resources between the time SRE assesses and customer responds.</p>
+<p>Assess ability to expand. For every 1TB of storage added, the cluster needs to have 3 nodes each with a minimum available 2 vCPUs and 8GiB memory</p>
 </div>
 <div class="paragraph">
-<p>The customer may increase capacity via the addon and the cluster will resolve the alert through self healing processes.</p>
+<p>The customer may increase capacity via the addon and the cluster will resolve the alert through self healing processes.
+If the minimum vCPU and memory resource requirements are not met, the customer should be advised to add 3 additional worker nodes to the cluster.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_current_size_4tb"><a class="anchor" href="#_current_size_4tb"></a>4.1.3. Current size = 4TB</h4>
 <div class="paragraph">
-<p>Please contact Dedicated Support.</p>
+<p>Add-on currently supports clusters of size upto 4TB. If customer needs additional storage, log a support case to follow exception process.</p>
+</div>
+<div class="ulist">
+<div class="title">Options for support</div>
+<ul>
+<li>
+<p>Update storage cluster to size above 4TB (log support exception and contact Engineering as per escalation flow)</p>
+</li>
+<li>
+<p>If cluster is in read-only and customer wants to reclaim space by deleting PVs, follow the <a href="https://access.redhat.com/solutions/3001761">KCS</a> to temporarily allow delete</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>(Optional log gathering)</p>
