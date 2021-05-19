@@ -35,7 +35,7 @@ curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prom
 
 === (Optional) Document OCS Ceph Cluster Health
 You may directly check OCS Ceph Cluster health by using the rook-ceph toolbox.
-.Check and document ceph cluster health:
+.Step 1: Check and document ceph cluster health:
 [source,role="execute"]
 ----
 TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
@@ -49,3 +49,7 @@ ceph status
 ceph osd status
 exit
 ----
+
+.Step 3: Check the links to identify the errors.
+1) https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/4/html/troubleshooting_guide/troubleshooting-ceph-osds#common-ceph-osd-error-messages-in-the-ceph-logs_diag
+2) https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/4/html/troubleshooting_guide/troubleshooting-ceph-placement-groups#inconsistent-placement-groups_diag
