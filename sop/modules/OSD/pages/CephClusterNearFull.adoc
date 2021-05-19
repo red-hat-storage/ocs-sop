@@ -1,12 +1,12 @@
 include::partial$alert_header.adoc[]
 
-:alertname: CephClusterCriticallyFull
-:message: Storage cluster is critically full and needs immediate expansion.
-:description: Storage cluster utilization has crossed 80%.
-:detailed_description: Detailed Description: Storage cluster utilization has crossed 80% and will become read-only at 85%. Your Ceph cluster will become read-only once utilization crosses 85%. Free up some space or expand the storage cluster immediately. \
+:alertname: CephClusterNearFull
+:message: Storage cluster is nearing full. Data deletion or cluster expansion is required.
+:description: Storage cluster utilization has crossed 75%.
+:detailed_description: Detailed Description: Storage cluster utilization has crossed 75% and will become read-only at 85%. Free up some space or expand the storage cluster. \
   It is common to see alerts related to OSD devices full or near full prior to this alert.
-:resolution_description: Contact customer to free up space or expand the storage
-:severity: Critical
+:resolution_description:
+:severity: Warning
 :ceph-component: rook-ceph-mgr
 
 = {alertname}
