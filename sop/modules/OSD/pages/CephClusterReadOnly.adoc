@@ -4,7 +4,7 @@ include::partial$alert_header.adoc[]
 :message: Storage cluster is read-only now and needs immediate data deletion or cluster expansion.
 :description: Storage cluster utilization has crossed 85%.
 :detailed_description: Detailed Description: Storage cluster utilization has crossed 85% and will become read-only now. Free up some space or expand the storage cluster immediately. It is common to see alerts related to OSD devices full or near full prior to this alert.
-:resolution_description: Determine if you can proceed with scaling *UP* or *OUT* for expansion. Choose the appropriate tab for your deployment below.
+:resolution_description: Contact customer to free up space or expand the storage
 :severity: Error
 :ceph-component: rook-ceph-mgr
 
