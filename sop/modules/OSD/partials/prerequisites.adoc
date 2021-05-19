@@ -1,4 +1,3 @@
-
 === Verify cluster access
 Check the output to ensure you are in the correct context for the cluster mentioned in the alert. If not, please change context and proceed.
 
@@ -33,7 +32,7 @@ curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prom
 
 
 
-=== (Optional) Document OCS Ceph Cluster Health
+=== Check OCS Ceph Cluster Health
 You may directly check OCS Ceph Cluster health by using the rook-ceph toolbox.
 .Check and document ceph cluster health:
 [source,role="execute"]
@@ -49,3 +48,14 @@ ceph status
 ceph osd status
 exit
 ----
+
+If 'ceph status' is not in *HEALTH_OK*, please look at the Troubleshooting section to resolve issue.
+
+=== Further info ===
+==== OpenShift Data Foundation Dedicated Architecture ====
+Red Hat OpenShift Data Foundation Dedicated (ODF Dedicated) is deployed in converged mode on OpenShift Dedicated Clusters by the OpenShift Cluster Manager add-on infrastructure.
+
+.Related Links
+- https://docs.google.com/document/d/1ISEY16OfsvEPmlJEjEwPvDvDs0KyNzgl369A-V6-GRA/edit#heading=h.mznotzn8pklp[ODF Dedicated Converged Add-on Architecure ]
+- https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage/4.6/html/planning_your_deployment/ocs-architecture_rhocs[ODF Product Architecture]
+
