@@ -23,8 +23,6 @@ toc::[]
 
 {detailed_description}
 
-include::partial$architecture.adoc[]
-
 == Prerequisites
 include::partial$prerequisites.adoc[]
 
