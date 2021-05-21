@@ -10,9 +10,14 @@ The customer may delete data and the cluster will resolve the alert through self
 
 ==== Current size < 1 TB, Expand to 4 TB
 
-WIP: Assess ability to expand. Note, if OCS nodes are not dedicated (regular worker nodes) it is not possible to guarantee resources between the time SRE assesses and customer responds.
+Assess ability to expand. For every 1TB of storage added, the cluster needs to have 3 nodes each with a minimum available 2 vCPUs and 8GiB memory 
 
 The customer may increase capacity via the addon and the cluster will resolve the alert through self healing processes.
+If the minimum vCPU and memory resource requirements are not met, the customer should be advised to add 3 additional worker nodes to the cluster.
 
 ==== Current size = 4TB
-Please contact Dedicated Support.
+Add-on currently supports clusters of size upto 4TB. If customer needs additional storage, log a support case to follow exception process.
+
+.Options for support
+- Update storage cluster to size above 4TB (log support exception and contact Engineering as per escalation flow)
+- If cluster is in read-only and customer wants to reclaim space by deleting PVs, follow the https://access.redhat.com/solutions/3001761[KCS] to temporarily allow delete
