@@ -7,7 +7,6 @@ include::partial$alert_header.adoc[]
   It is common to see alerts related to OSD devices full or near full prior to this alert.
 :resolution_description: Contact customer to free up space or expand the storage
 :severity: Critical
-:ceph-component: rook-ceph-mgr
 
 = {alertname}
 

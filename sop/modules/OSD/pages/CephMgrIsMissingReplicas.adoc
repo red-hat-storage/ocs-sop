@@ -1,7 +1,7 @@
 include::partial$alert_header.adoc[]
 
 :alertname: CephMgrIsMissingReplicas
-:message: Storage cluster is critically full and needs immediate expansion.
+:message: Ceph Manager is not running
 :description: Ceph Manager is missing replicas. This impacts health status reporting and will cause some of the information reported by `ceph status` to be missing or stale. In addition, the ceph manager is responsible for a Manager framework aimed at expanding the Ceph existing capabilities.
 :detailed_description: Detailed Description: To resolve this alert, you will need to determine the cause of the disappearance of the Ceph Manager and restart if necessary. 
 :resolution_description: 

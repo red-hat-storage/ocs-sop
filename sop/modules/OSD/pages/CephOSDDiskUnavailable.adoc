@@ -3,9 +3,9 @@ include::partial$alert_header.adoc[]
 :alertname: CephOSDDiskUnavailable
 :message: Disk not accessible.
 :description: Disk device {{ $labels.device }} not accessible on host {{ $labels.host }}.
-:detailed_description: Detailed Description: A disk device is not responding. Check alert details for disk and host. Replace disk if necessary.
+:detailed_description: Detailed Description: A disk device i.e EBS volume is not responding. Check infrastructure alert details for disk and host and the affected Ceph OSD pod.
 
-:resolution_description:
+:resolution_description: Replace disk (EBS volume) if necessary using the replace Ceph OSD procedure.
 :severity: Error
 :ceph-component: rook-ceph-mgr
 

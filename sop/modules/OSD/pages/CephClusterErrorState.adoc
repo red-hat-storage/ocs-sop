@@ -3,7 +3,7 @@ include::partial$alert_header.adoc[]
 :alertname: CephClusterErrorState
 :message: Storage cluster is in error state
 :description: Storage cluster is in error state for more than 10m.
-:detailed_description: Detailed Description: This alert reflects that the rook-ceph-mgr job has been in error for an unacceptable amount of time. Check for other alerts that would have triggered prior to this one and troubleshoot those alerts first.
+:detailed_description: Detailed Description: This alert reflects that the storage cluster is in *ERROR* state for an unacceptable amount of time and this impacts the storage availability. Check for other alerts that would have triggered prior to this one and troubleshoot those alerts first.
 :resolution_description: General troubleshooting will be required in order to determine the cause of this alert. This alert will trigger along with other (usually many other) alerts. Please view and troubleshoot the other alerts first.
 :severity: Error
 :ceph-component: rook-ceph
@@ -16,7 +16,7 @@ toc::[]
 
 *Severity:* {severity}
 
-*Potential Customer Impact:* High
+*Potential Customer Impact:* Critical
 
 == Overview
 {description}

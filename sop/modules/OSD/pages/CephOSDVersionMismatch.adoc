@@ -1,7 +1,7 @@
 include::partial$alert_header.adoc[]
 
 :alertname: CephOSDVersionMisMatch
-:message: :here are multiple versions of storage services running.
+:message: :There are multiple versions of storage services running.
 :description: There are {{ $value }} different versions of Ceph OSD components running.
 :detailed_description: Detailed Description: Typically this alert triggers during an upgrade that is taking a long time.
 
@@ -16,7 +16,7 @@ toc::[]
 == Check Description
 *Severity:* {severity}
 
-*Potential Customer Impact:* High
+*Potential Customer Impact:* Medium
 
 == Overview
 {description}

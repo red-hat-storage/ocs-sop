@@ -3,7 +3,7 @@ include::partial$alert_header.adoc[]
 :alertname: CephNodeDown
 :message: A storage node went down. Please check the node immediately. The alert should contain the node name.
 :description: A storage node went down. Please check the node immediately. The alert should contain the node name.
-:detailed_description:
+:detailed_description: A node running Ceph pods is down. While storage operations will continue to function as Ceph is designed to deal with a node failure, it is recommended to resolve the issue to minimise risk of another node going down and affecting storage functions.
 :resolution_description: Resolution to this alert involves replacing the failed node with a new node of the same or larger capacity and ensuring OCS osd pods are properly placed on the new node.
 :severity: Error
 :ceph-component: rook-ceph-mgr
@@ -15,7 +15,7 @@ toc::[]
 
 *Severity:* {severity}
 
-*Potential Customer Impact:* High
+*Potential Customer Impact:* Medium
 
 
 == Overview
