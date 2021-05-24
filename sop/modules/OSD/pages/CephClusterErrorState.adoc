@@ -32,6 +32,7 @@ include::partial$prerequisites.adoc[]
 {resolution_description}
 
 include::partial$pod_debug.adoc[]
+include::partial$gather_logs_cluster_err.adoc[]
 include::partial$gather_logs.adoc[]
 
 ==  Troubleshooting

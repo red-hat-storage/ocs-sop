@@ -34,7 +34,7 @@ curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prom
 
 === Check OCS Ceph Cluster Health
 You may directly check OCS Ceph Cluster health by using the rook-ceph toolbox.
-.Check and document ceph cluster health:
+.Step 1: Check and document ceph cluster health:
 [source,role="execute"]
 ----
 TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
@@ -58,4 +58,8 @@ Red Hat OpenShift Data Foundation Dedicated (ODF Dedicated) is deployed in conve
 .Related Links
 - https://docs.google.com/document/d/1ISEY16OfsvEPmlJEjEwPvDvDs0KyNzgl369A-V6-GRA/edit#heading=h.mznotzn8pklp[ODF Dedicated Converged Add-on Architecure ]
 - https://access.redhat.com/documentation/en-us/red_hat_openshift_container_storage/4.6/html/planning_your_deployment/ocs-architecture_rhocs[ODF Product Architecture]
+
+.Step 3: Check the links to identify the errors.
+1) https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/4/html/troubleshooting_guide/troubleshooting-ceph-osds#common-ceph-osd-error-messages-in-the-ceph-logs_diag
+2) https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/4/html/troubleshooting_guide/troubleshooting-ceph-placement-groups#inconsistent-placement-groups_diag
 
