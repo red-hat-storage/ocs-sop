@@ -3,7 +3,7 @@ include::partial$alert_header.adoc[]
 :alertname: CephMgrIsAbsent
 :message: Storage metrics collector service not available anymore.
 :description: Ceph Manager has disappeared from Prometheus target discovery.
-:detailed_description: 
+:detailed_description: Not having a Ceph manager running impacts the monitoring of the cluster, PVC creation and deletion requests and should be resolved as soon as possible. 
 :severity: Warning
 :resolution_description: Verify the rook-ceph-mgr pod is failing and restart if necessary. If the ceph mgr pod restart fails, use general basic pod troubleshooting to resolve.
 :ceph-component: rook-ceph-mgr

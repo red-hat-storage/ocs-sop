@@ -3,11 +3,10 @@ include::partial$alert_header.adoc[]
 :alertname: CephOSDDiskNotResponding
 :message: Disk not responding
 :description: Disk device {{ $labels.device }} not responding on host {{ $labels.host }}.
-:detailed_description: Detailed Description: A disk device is not responding. Check alert details for disk and host. Replace disk if necessary.
+:detailed_description: Detailed Description: A disk device is not responding. Check the underlying EBS volume and infrastructure alerts to check for underlying issue. OCS cluster will continue to be operational if only one of the OSDs are down, so there's no immediate impact to customer.
 
 :resolution_description:
 :severity: Error
-:ceph-component: rook-ceph-mgr
 
 = {alertname}
 
@@ -16,7 +15,7 @@ toc::[]
 == Check Description
 *Severity:* {severity}
 
-*Potential Customer Impact:* High
+*Potential Customer Impact:* Medium
 
 == Overview
 {description}

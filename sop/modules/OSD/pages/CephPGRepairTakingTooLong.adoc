@@ -5,7 +5,7 @@ include::partial$alert_header.adoc[]
 :description: Self heal operations taking too long.
 :detailed_description:
 :severity: Warning
-:resolution_description: The self healing problems have been detected. Check for inconsistent placement groups and repair. Verify this is the correct KCS - https://access.redhat.com/solutions/1589113[KCS with PGRepair details]
+:resolution_description: The self healing problems have been detected. Check for inconsistent placement groups and repair using KCS - https://access.redhat.com/solutions/1589113[KCS with PGRepair details]
 :ceph-component: rook-ceph-mgr
 
 = CephPGRepairTakingTooLong

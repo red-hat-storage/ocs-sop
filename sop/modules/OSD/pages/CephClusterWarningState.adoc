@@ -3,10 +3,9 @@ include::partial$alert_header.adoc[]
 :alertname: CephClusterWarningState
 :message: Storage cluster is in degraded state.
 :description: Storage cluster is in warning state for more than 10m.
-:detailed_description: The rook-ceph-mgr job (Prometheus) has been in a warning state for an unacceptable amount of time. Check for other alerts that would have triggered prior to this one and troubleshoot those alerts first.
+:detailed_description: The Storage cluster has been in a warning state for an unacceptable amount of time. While the storage operations will continue to function in this state, it is recommended to fix errors so that the cluster does not get into error state impacting operations. Check for other alerts that would have triggered prior to this one and troubleshoot those alerts first.
 :resolution_description: General troubleshooting will be required in order to determine the cause of this alert. This alert will trigger along with other (usually many other) alerts. Please view and troubleshoot the other alerts first.
 :severity: Warning
-:ceph-component: rook-ceph-mgr
 
 = {alertname}
 

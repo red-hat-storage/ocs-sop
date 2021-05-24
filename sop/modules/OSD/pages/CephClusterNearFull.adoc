@@ -5,7 +5,7 @@ include::partial$alert_header.adoc[]
 :description: Storage cluster utilization has crossed 75%.
 :detailed_description: Detailed Description: Storage cluster utilization has crossed 75% and will become read-only at 85%. Free up some space or expand the storage cluster. \
   It is common to see alerts related to OSD devices full or near full prior to this alert.
-:resolution_description:
+:resolution_description: Contact customer to free up space or expand the storage
 :severity: Warning
 :ceph-component: rook-ceph-mgr
 

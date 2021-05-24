@@ -15,7 +15,7 @@ toc::[]
 == Check Description
 *Severity:* {severity}
 
-*Potential Customer Impact:* High
+*Potential Customer Impact:* Medium
 
 == Overview
 {description}

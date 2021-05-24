@@ -4,7 +4,7 @@ include::partial$alert_header.adoc[]
 :message: Back-end storage device is nearing full.
 :description: Utilization of back-end storage device OSD has crossed 75% on host <hostname>. Free up some space or expand the storage cluster or contact support.
 :detailed_description: Detailed Description: One of the OSD storage devices is nearing full. 
-:resolution_description:
+:resolution_description: Contact customer to free up space or expand the storage. Also ensure that all OSD devices are of uniform size and Ceph PG state is *active+clean*
 :severity: Warning
 :ceph-component: rook-ceph-mgr
 
@@ -16,7 +16,7 @@ toc::[]
 
 *Severity:* {severity}
 
-*Potential Customer Impact:* High
+*Potential Customer Impact:* Medium
 
 == Overview 
 

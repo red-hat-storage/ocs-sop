@@ -17,17 +17,16 @@ ocm get /api/clusters_mgmt/v1/clusters/<cluster id>/credentials \
 
 === Check Alerts
 
-.Get the route to this cluster's alertmanager:
+.Set port-forwarding for alertmanager:
 [source,role="execute"]
 ----
-MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')
+oc port-forward alertmanager-managed-ocs-alertmanager-0 9093 -n openshift-storage
 ----
-WIP: Separate prometheus stack. Verify route.
 
 .Check all alerts
 [source,role="execute"]
 ----
-curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'
+curl http://localhost:9093/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'
 ----
 
 

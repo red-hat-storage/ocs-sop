@@ -3,7 +3,7 @@ include::partial$alert_header.adoc[]
 :alertname: CephMdsMissingReplicas
 :message: Insufficient replicas for storage metadata service.
 :description: Minimum required replicas for storage metadata service not available. Might affect the working of storage cluster.
-:detailed_description: Detailed Description: Minimum required replicas for the storage metadata service (MDS) are not available. MDS is responsible for file metadata. Degradation of the MDS service can affect the working of the storage cluster and should be fixed as soon as possible.
+:detailed_description: Detailed Description: Minimum required replicas for the storage metadata service (MDS) are not available. MDS is responsible for file metadata. Degradation of the MDS service can affect the working of the storage cluster (related to cephfs storage class)  and should be fixed as soon as possible.
 :severity: Warning
 :resolution_description: 
 :ceph-component: rook-ceph-mds
