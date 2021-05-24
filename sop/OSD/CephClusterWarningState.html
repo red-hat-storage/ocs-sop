@@ -257,7 +257,7 @@
 <p>Storage cluster is in warning state for more than 10m.</p>
 </div>
 <div class="paragraph">
-<p>The rook-ceph-mgr job (Prometheus) has been in a warning state for an unacceptable amount of time. Check for other alerts that would have triggered prior to this one and troubleshoot those alerts first.</p>
+<p>The Storage cluster has been in a warning state for an unacceptable amount of time. While the storage operations will continue to function in this state, it is recommended to fix errors so that the cluster does not get into error state impacting operations. Check for other alerts that would have triggered prior to this one and troubleshoot those alerts first.</p>
 </div>
 </div>
 </div>
@@ -289,18 +289,15 @@
 <div class="sect2">
 <h3 id="_check_alerts"><a class="anchor" href="#_check_alerts"></a>3.2. Check Alerts</h3>
 <div class="listingblock execute">
-<div class="title">Get the route to this cluster&#8217;s alertmanager:</div>
+<div class="title">Set port-forwarding for alertmanager:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')</code></pre>
+<pre class="highlightjs highlight"><code>oc port-forward alertmanager-managed-ocs-alertmanager-0 9093 -n openshift-storage</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>WIP: Separate prometheus stack. Verify route.</p>
 </div>
 <div class="listingblock execute">
 <div class="title">Check all alerts</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
+<pre class="highlightjs highlight"><code>curl http://localhost:9093/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
 </div>
 </div>
 </div>
@@ -367,13 +364,13 @@ exit</code></pre>
 <div class="title">pod status: pending &#8594; Check for resource issues, pending pvcs, node assignment, kubelet problems.</div>
 <div class="content">
 <pre class="highlightjs highlight"><code>oc project openshift-storage
-oc get pod | grep rook-ceph-mgr</code></pre>
+oc get pod | grep {ceph-component}</code></pre>
 </div>
 </div>
 <div class="listingblock execute">
 <div class="title">Set MYPOD for convenience:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code># Examine the output for a rook-ceph-mgr that is in the pending state, not running or not ready
+<pre class="highlightjs highlight"><code># Examine the output for a {ceph-component} that is in the pending state, not running or not ready
 MYPOD=&lt;pod identified as the problem pod&gt;</code></pre>
 </div>
 </div>

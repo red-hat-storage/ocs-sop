@@ -257,7 +257,7 @@
 <p>Ceph Manager has disappeared from Prometheus target discovery.</p>
 </div>
 <div class="paragraph">
-<p></p>
+<p>Not having a Ceph manager running impacts the monitoring of the cluster, PVC creation and deletion requests and should be resolved as soon as possible.</p>
 </div>
 </div>
 </div>
@@ -289,18 +289,15 @@
 <div class="sect2">
 <h3 id="_check_alerts"><a class="anchor" href="#_check_alerts"></a>3.2. Check Alerts</h3>
 <div class="listingblock execute">
-<div class="title">Get the route to this cluster&#8217;s alertmanager:</div>
+<div class="title">Set port-forwarding for alertmanager:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')</code></pre>
+<pre class="highlightjs highlight"><code>oc port-forward alertmanager-managed-ocs-alertmanager-0 9093 -n openshift-storage</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>WIP: Separate prometheus stack. Verify route.</p>
 </div>
 <div class="listingblock execute">
 <div class="title">Check all alerts</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
+<pre class="highlightjs highlight"><code>curl http://localhost:9093/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
 </div>
 </div>
 </div>

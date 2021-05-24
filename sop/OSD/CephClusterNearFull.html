@@ -288,18 +288,15 @@
 <div class="sect2">
 <h3 id="_check_alerts"><a class="anchor" href="#_check_alerts"></a>3.2. Check Alerts</h3>
 <div class="listingblock execute">
-<div class="title">Get the route to this cluster&#8217;s alertmanager:</div>
+<div class="title">Set port-forwarding for alertmanager:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')</code></pre>
+<pre class="highlightjs highlight"><code>oc port-forward alertmanager-managed-ocs-alertmanager-0 9093 -n openshift-storage</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>WIP: Separate prometheus stack. Verify route.</p>
 </div>
 <div class="listingblock execute">
 <div class="title">Check all alerts</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
+<pre class="highlightjs highlight"><code>curl http://localhost:9093/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
 </div>
 </div>
 </div>
@@ -360,7 +357,7 @@ exit</code></pre>
 <div class="sect2">
 <h3 id="_notify_customer_make_changes_to_solve_the_alert"><a class="anchor" href="#_notify_customer_make_changes_to_solve_the_alert"></a>4.1. Notify Customer: Make changes to solve the alert</h3>
 <div class="paragraph">
-<p></p>
+<p>Contact customer to free up space or expand the storage</p>
 </div>
 <div class="sect3">
 <h4 id="_delete_data"><a class="anchor" href="#_delete_data"></a>4.1.1. Delete Data</h4>
