@@ -6,7 +6,7 @@ The final configuration details for OCS on OSD are TBD. These SoPs are written w
 
 ### Setup
   * Deployed on AWS and follows all OSD guidelines where possible
-  * Intermnal mode
+  * Internal mode
   * Dynamic provisioning
   * Storage capacity is expanded by scaling the present machinese.
   * The workerocs machineset is deployed
