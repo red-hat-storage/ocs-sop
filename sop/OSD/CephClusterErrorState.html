@@ -402,27 +402,47 @@ MYPOD=&lt;pod identified as the problem pod&gt;</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_troubleshooting_ceph"><a class="anchor" href="#_troubleshooting_ceph"></a>4.1.1. Troubleshooting Ceph</h4>
-<div class="paragraph">
-<p><strong>Ceph commands</strong>
-Some common commands to troubleshoot a Ceph cluster:
-- ceph status
-- ceph osd status
-- cepd osd df
-- ceph osd utilization
-- ceph osd pool stats
-- ceph osd tree
-- ceph pg stat</p>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Ceph commands</div>
+<div class="ulist">
+<div class="title">Some common commands to troubleshoot a Ceph cluster:</div>
+<ul>
+<li>
+<p>ceph status</p>
+</li>
+<li>
+<p>ceph osd status</p>
+</li>
+<li>
+<p>cepd osd df</p>
+</li>
+<li>
+<p>ceph osd utilization</p>
+</li>
+<li>
+<p>ceph osd pool stats</p>
+</li>
+<li>
+<p>ceph osd tree</p>
+</li>
+<li>
+<p>ceph pg stat</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>The first two status commands provide the overall cluster health. The normal state for cluster operations is HEALTH_OK, but will still function when the state is in a HEALTH_WARN state. If you are in a WARN state, then the cluster is in a condition that it may enter the HEALTH_ERROR state at which point all disk I/O operations are halted. If a HEALTH_WARN state is observed, then one should take action to prevent the cluster from halting when it enters the HEALTH_ERROR state.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Problem 1 **
-Ceph status shows an issue with osd, as see in example below</p>
-</li>
-</ul>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Problem 1</dt>
+<dd>
+<p>Ceph status shows an issue with osd, as see in example below</p>
+</dd>
+</dl>
 </div>
 <div class="listingblock">
 <div class="title">Example Ceph OSD error</div>
@@ -453,11 +473,11 @@ Ceph status shows an issue with osd, as see in example below</p>
 <pre class="highlightjs highlight"><code>https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/4/html/troubleshooting_guide/troubleshooting-ceph-osds#most-common-ceph-osd-errors</code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Problem 2 **
-Issues seen with PG, example
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Problem 2</dt>
+<dd>
+<p>Issues seen with PG, example
 .Example Ceph PG error
 ---
   cluster:
@@ -484,8 +504,8 @@ Issues seen with PG, example
 ---</pre>
 </div>
 </div>
-</li>
-</ul>
+</dd>
+</dl>
 </div>
 <div class="listingblock execute">
 <div class="title">Solving pg error:</div>
