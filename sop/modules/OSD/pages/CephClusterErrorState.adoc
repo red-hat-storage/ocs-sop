@@ -32,7 +32,10 @@ include::partial$prerequisites.adoc[]
 {resolution_description}
 
 include::partial$pod_debug.adoc[]
-include::partial$gather_logs_cluster_err.adoc[]
+
+If the basic health of the running pods, node affinity and resource availability on the nodes have been verified, run Ceph tools for status of the storage components.
+
+include::partial$troubleshoot_ceph_err.adoc[]
 include::partial$gather_logs.adoc[]
 
 ==  Troubleshooting
