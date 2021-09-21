@@ -8,11 +8,16 @@ ocm list clusters
 ----
 From the list above, find the cluster id of the cluster named in the alert. If you do not see the alerting cluster in the list above please contact: WIP
 
-.Grab your credentials and place in kubeconfig:
+.Create a tunnel through backplane by provdiing SSH key passphrase:
 [source,role="execute"]
 ----
-ocm get /api/clusters_mgmt/v1/clusters/<cluster id>/credentials \
-  | jq -r .kubeconfig
+ocm backplane tunnel <cluster_id> 
+----
+
+.In a new tab, login to target cluster using backplane by provdiing 2FA:
+[source,role="execute"]
+----
+ocm backplane login <cluster_id> 
 ----
 
 === Check Alerts
