@@ -2,7 +2,7 @@ include::partial$alert_header.adoc[]
 
 :alertname: CephOSDCriticallyFull
 :message: Back-end storage device is critically full.
-:description: Utilization of back-end storage device (OSD)  has crossed 85%. Immediately free up some space or expand the storage cluster or contact support.
+:description: Utilization of back-end storage device (OSD) has crossed 80%. Immediately free up some space or expand the storage cluster or contact support.
 :detailed_description: Detailed Description: One of the OSD storage devices is critically full. Expand the cluster immediately.
 :resolution_description: Contact customer to free up space or expand the storage
 :severity: Error
