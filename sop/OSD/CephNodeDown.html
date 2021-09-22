@@ -279,10 +279,15 @@
 <p>From the list above, find the cluster id of the cluster named in the alert. If you do not see the alerting cluster in the list above please contact: WIP</p>
 </div>
 <div class="listingblock execute">
-<div class="title">Grab your credentials and place in kubeconfig:</div>
+<div class="title">Create a tunnel through backplane by provdiing SSH key passphrase:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>ocm get /api/clusters_mgmt/v1/clusters/&lt;cluster id&gt;/credentials \
-  | jq -r .kubeconfig</code></pre>
+<pre class="highlightjs highlight"><code>ocm backplane tunnel &lt;cluster_id&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock execute">
+<div class="title">In a new tab, login to target cluster using backplane by provdiing 2FA:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>ocm backplane login &lt;cluster_id&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -304,10 +309,10 @@
 <div class="sect2">
 <h3 id="_check_ocs_ceph_cluster_health"><a class="anchor" href="#_check_ocs_ceph_cluster_health"></a>3.3. Check OCS Ceph Cluster Health</h3>
 <div class="paragraph">
-<p>You may directly check OCS Ceph Cluster health by using the rook-ceph toolbox.
-.Step 1: Check and document ceph cluster health:</p>
+<p>You may directly check OCS Ceph Cluster health by using the rook-ceph toolbox.</p>
 </div>
 <div class="listingblock execute">
+<div class="title">Step 1: Check and document ceph cluster health:</div>
 <div class="content">
 <pre class="highlightjs highlight"><code>TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
 oc rsh -n openshift-storage $TOOLS_POD</code></pre>
