@@ -38,6 +38,7 @@ curl http://localhost:9093/api/v1/alerts | jq '.data[] | select( .labels.alertna
 
 === Check OCS Ceph Cluster Health
 You may directly check OCS Ceph Cluster health by using the rook-ceph toolbox.
+
 .Step 1: Check and document ceph cluster health:
 [source,role="execute"]
 ----
