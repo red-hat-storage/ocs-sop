@@ -1,0 +1,27 @@
+
+To Extend the cluster , and reset is back, follow the below mentioned steps
+
+*Extend the ceph cluster by 0.02*
+
+To extend the ceph cluster, you can now just run the following command 
+
+----
+oc process -n openshift-storage ocs-extend-cluster | oc create -f -
+----
+
+Now the ceph cluster is extended by 0.02, the cluster state would become healthy
+Notify the customer once the cluster is healthy. When the customer is done deleting data ,
+you need to return the threshold to the previous value.
+ 
+but before you reset your cluster back to the previous threshold value, you should delete the existing job resource:
+
+----
+oc delete job ocs-extend-cluster-job -n openshift-project
+----
+
+Once you have deleted the old job, you can re-run the extend cluster job again to reset it back to the previous threshold value
+
+----
+oc process -n openshift-storage ocs-extend-cluster | oc create -f -
+----
+
