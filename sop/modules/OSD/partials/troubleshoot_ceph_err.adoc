@@ -17,12 +17,13 @@ Problem 1::
 Alert Manager shows that the OSD is full
 
 1) Check the alert manager for readonly alert
-
+[source,role="execute"]
 ----
 curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}' 
 ----
 
-2) if the above curl command shows that the ceph cluster is read only mode, then see :
+2) If CephClusterReadOnly alert is listed from the above curl command, then see :
+[source,role="execute"]
 ----
 https://red-hat-storage.github.io/ocs-sop/sop/OSD/CephClusterReadOnly.html
 ----

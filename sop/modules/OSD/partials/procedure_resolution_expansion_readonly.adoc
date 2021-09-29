@@ -35,10 +35,11 @@ Add-on currently supports clusters of size upto 4TB. If customer needs additiona
 .Options for support
 - Update storage cluster to size above 4TB (log support exception and contact Engineering as per escalation flow)
   
-  To update the storage cluster , use the below command, make sure to replace the desired size value with "your_number_here"
-  ---
-  oc patch storagecluster ocs-storagecluster -p '{"spec":{"storageDeviceSets":{"count":"your_number_here"}}}'
-  ---
+To update the storage cluster, use the below command and make sure to replace the "storage_size" placeholder with desired size value (int).
+[source,role="execute"]
+----
+oc patch storagecluster ocs-storagecluster -p '{"spec":{"storageDeviceSets":{"count":"storage_size"}}}'
+----
 
 - If cluster is in read-only and customer wants to reclaim space by deleting PVs, follow the https://access.redhat.com/solutions/3001761[KCS] to temporarily allow delete
 
