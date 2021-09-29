@@ -9,7 +9,7 @@ Execute the following command to extend the ceph cluster full threshold
 oc process -n openshift-storage ocs-extend-cluster | oc create -f -
 ----
 
-Now the ceph cluster threshold is extended from 0.85 to 0.87, this will make the cluster to get out of HEALTH_ERR state.
+Now the ceph cluster threshold is extended from 0.85 to 0.87, this will make the cluster to get out of HEALTH_ERR state and Readonly mode.
 Notify the customer once it is out of HEALTH_ERR state to delete some of the existing data. When the customer is done deleting data ,
 you need to revert the threshold to the previous value.
  
