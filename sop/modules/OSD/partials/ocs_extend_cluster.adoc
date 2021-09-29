@@ -1,0 +1,27 @@
+
+To Extend the cluster threshold ratio ,  follow the below mentioned steps
+
+*Extend the Ceph cluster full threshold*
+
+Execute the following command to extend the ceph cluster full threshold
+[source,role="execute"]
+----
+oc process -n openshift-storage ocs-extend-cluster | oc create -f -
+----
+
+Now the ceph cluster threshold is extended from 0.85 to 0.87, this will make the cluster to get out of HEALTH_ERR state and Readonly mode.
+Notify the customer once it is out of HEALTH_ERR state to delete some of the existing data. When the customer is done deleting data ,
+you need to revert the threshold to the previous value.
+ 
+Before reverting the threshold, the existing job resource should be deleted:
+[source,role="execute"]
+----
+oc delete job ocs-extend-cluster-job -n openshift-project
+----
+
+Once the old job is removed, re-run the extend cluster job to revert it to the previous threshold value
+[source,role="execute"]
+----
+oc process -n openshift-storage ocs-extend-cluster | oc create -f -
+----
+
