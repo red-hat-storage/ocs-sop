@@ -404,6 +404,18 @@ If the minimum vCPU and memory resource requirements are not met, the customer s
 <li>
 <p>Update storage cluster to size above 4TB (log support exception and contact Engineering as per escalation flow)</p>
 </li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To update the storage cluster, use the below command and make sure to replace the "storage_size" placeholder with desired size value (int).</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code>oc patch storagecluster ocs-storagecluster -p '{"spec":{"storageDeviceSets":{"count":"storage_size"}}}'</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>If cluster is in read-only and customer wants to reclaim space by deleting PVs, follow the <a href="https://access.redhat.com/solutions/3001761">KCS</a> to temporarily allow delete</p>
 </li>

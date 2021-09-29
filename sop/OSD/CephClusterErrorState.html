@@ -445,6 +445,56 @@ MYPOD=&lt;pod identified as the problem pod&gt;</code></pre>
 <dl>
 <dt class="hdlist1">Problem 1</dt>
 <dd>
+<p>Ceph status shows that the OSD is full
+.Example Ceph OSD-FULL error</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre> ceph status
+  cluster:
+    id:     62661e0d-417c-485e-b01f-562e9493f121
+    health: HEALTH_ERR
+            3 full osd(s)
+            3 pool(s) full
+
+  services:
+    mon: 3 daemons, quorum a,b,c (age 3h)
+    mgr: a(active, since 3h)
+    mds: ocs-storagecluster-cephfilesystem:1 {0=ocs-storagecluster-cephfilesystem-a=up:active} 1 up:standby-replay
+    osd: 3 osds: 3 up (since 3h), 3 in (since 3h)
+
+  data:
+    pools:   3 pools, 192 pgs
+    objects: 223.01k objects, 870 GiB
+    usage:   2.6 TiB used, 460 GiB / 3 TiB avail
+    pgs:     192 active+clean
+
+  io:
+    client:   853 B/s rd, 1 op/s rd, 0 op/s wr</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>1) Check the alert manager for readonly alert</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>2) If CephClusterReadOnly alert is listed from the above curl command, then see :</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code>https://red-hat-storage.github.io/ocs-sop/sop/OSD/CephClusterReadOnly.html</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Problem 2</dt>
+<dd>
 <p>Ceph status shows an issue with osd, as see in example below</p>
 </dd>
 </dl>
@@ -480,7 +530,7 @@ MYPOD=&lt;pod identified as the problem pod&gt;</code></pre>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">Problem 2</dt>
+<dt class="hdlist1">Problem 3</dt>
 <dd>
 <p>Issues seen with PG, example
 .Example Ceph PG error

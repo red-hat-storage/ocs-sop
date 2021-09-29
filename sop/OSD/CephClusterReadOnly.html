@@ -393,67 +393,78 @@ exit</code></pre>
 <p>This is essentially the same procedure stated in <a href="https://access.redhat.com/solutions/5486241">Scaling up (adding new disks) OCS 4 fails due to cluster state being unhealthy because of lack of capacity.</a></p>
 </div>
 <div class="paragraph">
-<p><strong>Deploy and Access the Toolbox</strong></p>
+<p>To Extend the cluster threshold ratio ,  follow the below mentioned steps</p>
 </div>
 <div class="paragraph">
-<p>If the toolbox is not deployed, please follow the directions below.</p>
+<p><strong>Extend the Ceph cluster full threshold</strong></p>
+</div>
+<div class="paragraph">
+<p>Execute the following command to extend the ceph cluster full threshold</p>
 </div>
 <div class="listingblock execute">
-<div class="title">Deploy Rook-Ceph toolbox if needed:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'</code></pre>
-</div>
-</div>
-<div class="listingblock execute">
-<div class="title">Run the following to rsh to the toolbox pod:</div>
-<div class="content">
-<pre class="highlightjs highlight"><code>TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
-oc rsh -n openshift-storage $TOOLS_POD</code></pre>
-</div>
-</div>
-<div class="listingblock execute">
-<div class="title">Raise the full threshold:</div>
-<div class="content">
-<pre class="highlightjs highlight"><code>ceph osd set-full-ratio 0.9</code></pre>
-</div>
-</div>
-<div class="listingblock execute">
-<div class="title">Watch the Ceph cluster come out of readonly mode:</div>
-<div class="content">
-<pre class="highlightjs highlight"><code>ceph health</code></pre>
+<pre class="highlightjs highlight"><code>oc process -n openshift-storage ocs-extend-cluster | oc create -f -</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Notify the customer once the cluster is healthy. When the customer is done deleting data, return the threshold to the previous value.</p>
+<p>Now the ceph cluster threshold is extended from 0.85 to 0.87, this will make the cluster to get out of HEALTH_ERR state and Readonly mode.
+Notify the customer once it is out of HEALTH_ERR state to delete some of the existing data. When the customer is done deleting data ,
+you need to revert the threshold to the previous value.</p>
+</div>
+<div class="paragraph">
+<p>Before reverting the threshold, the existing job resource should be deleted:</p>
 </div>
 <div class="listingblock execute">
-<div class="title">Return threshold to previous value (.85 is default):</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>ceph osd set-full-ratio 0.85</code></pre>
+<pre class="highlightjs highlight"><code>oc delete job ocs-extend-cluster-job -n openshift-project</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Do not forget to exit</p>
+<p>Once the old job is removed, re-run the extend cluster job to revert it to the previous threshold value</p>
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>exit</code></pre>
+<pre class="highlightjs highlight"><code>oc process -n openshift-storage ocs-extend-cluster | oc create -f -</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_current_size_1_tb_expand_to_4_tb"><a class="anchor" href="#_current_size_1_tb_expand_to_4_tb"></a>4.1.2. Current size &lt; 1 TB, Expand to 4 TB</h4>
 <div class="paragraph">
-<p>WIP: Assess ability to expand. Note, if OCS nodes are not dedicated (regular worker nodes) it is not possible to guarantee resources between the time SRE assesses and customer responds.</p>
+<p>Assess ability to expand. For every 1TB of storage added, the cluster needs to have 3 nodes each with a minimum available 2 vCPUs and 8GiB memory</p>
 </div>
 <div class="paragraph">
-<p>The customer may increase capacity via the addon and the cluster will resolve the alert through self healing processes.</p>
+<p>The customer may increase capacity via the addon and the cluster will resolve the alert through self healing processes.
+If the minimum vCPU and memory resource requirements are not met, the customer should be advised to add 3 additional worker nodes to the cluster.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_current_size_4tb"><a class="anchor" href="#_current_size_4tb"></a>4.1.3. Current size = 4TB</h4>
 <div class="paragraph">
-<p>Please contact Dedicated Support.</p>
+<p>Add-on currently supports clusters of size upto 4TB. If customer needs additional storage, log a support case to follow exception process.</p>
+</div>
+<div class="ulist">
+<div class="title">Options for support</div>
+<ul>
+<li>
+<p>Update storage cluster to size above 4TB (log support exception and contact Engineering as per escalation flow)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To update the storage cluster, use the below command and make sure to replace the "storage_size" placeholder with desired size value (int).</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code>oc patch storagecluster ocs-storagecluster -p '{"spec":{"storageDeviceSets":{"count":"storage_size"}}}'</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If cluster is in read-only and customer wants to reclaim space by deleting PVs, follow the <a href="https://access.redhat.com/solutions/3001761">KCS</a> to temporarily allow delete</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>(Optional log gathering)</p>
