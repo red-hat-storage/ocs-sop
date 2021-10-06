@@ -6,7 +6,7 @@ Checking on the OCS operator status involves checking the operator subscription 
 
 .Check the ocs-operator subscription status
 ----
-oc get sub ocs-operator -n openshift-storage  -o json | jq .status.conditions
+oc get sub $(oc get pods -n openshift-storage | grep -v ocs-operator) -n openshift-storage  -o json | jq .status.conditions
 ----
 
 Like all operators, the status conditions types are:

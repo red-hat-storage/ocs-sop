@@ -28,7 +28,11 @@ include::partial$prerequisites.adoc[]
 
 ==  Alert
 
-WIP: Needs procedure for quorum recovery.
+Follow the link to follow procedures for quorum recovery
+
+- https://access.redhat.com/solutions/5898541[Restore Ceph Mon Quorum]
+
+
 
 Follow the general pod debug workflow outlined below.
 
