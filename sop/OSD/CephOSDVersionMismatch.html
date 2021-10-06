@@ -373,7 +373,7 @@ exit</code></pre>
 <div class="listingblock">
 <div class="title">Check the ocs-operator subscription status</div>
 <div class="content">
-<pre>oc get sub ocs-operator -n openshift-storage  -o json | jq .status.conditions</pre>
+<pre>oc get sub $(oc get pods -n openshift-storage | grep -v ocs-operator) -n openshift-storage  -o json | jq .status.conditions</pre>
 </div>
 </div>
 <div class="paragraph">

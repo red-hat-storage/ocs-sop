@@ -369,9 +369,6 @@ exit</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>WIP: Link to node replacement SOP</p>
-</div>
-<div class="paragraph">
 <p>The OCS resource requirements must be met in order for the osd pods to be scheduled on the new node. This may take a few minutes as the ceph cluster recovers data for the failing but now recovering osd.</p>
 </div>
 <div class="paragraph">
@@ -430,10 +427,6 @@ oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">ceph status</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>How long recovery takes will depend on the size of the Ceph cluster.
-WIP: Note about health status and no recovery for small quick clusters.</p>
 </div>
 <div class="paragraph">
 <p>(Optional log gathering)</p>

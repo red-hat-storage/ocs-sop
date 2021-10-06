@@ -357,7 +357,14 @@ exit</code></pre>
 <h2 id="_alert"><a class="anchor" href="#_alert"></a>4. Alert</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>WIP: Needs procedure for quorum recovery.</p>
+<p>Follow the link to follow procedures for quorum recovery</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://access.redhat.com/solutions/5898541">Restore Ceph Mon Quorum</a></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Follow the general pod debug workflow outlined below.</p>
@@ -366,7 +373,7 @@ exit</code></pre>
 <div class="title">pod status: pending &#8594; Check for resource issues, pending pvcs, node assignment, kubelet problems.</div>
 <div class="content">
 <pre class="highlightjs highlight"><code>oc project openshift-storage
-oc get pod | grep rook-ceph-mgr</code></pre>
+oc get pod | grep rook-ceph-mon</code></pre>
 </div>
 </div>
 <div class="listingblock execute">
