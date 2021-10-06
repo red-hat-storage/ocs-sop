@@ -33,7 +33,11 @@ include::partial$prerequisites.adoc[]
 The missing/unresponsive disk(volume) must be replaced as soon as possible. This procedure determines which node is having disk issues.
 
 ==== Determine OCS Nodes
-WIP
+
+Check for OSD pods.Describe pod for more info.
+----
+oc describe pod <osd-pod> -n openshift-storage
+----
 
 include::partial$gather_logs.adoc[]
 

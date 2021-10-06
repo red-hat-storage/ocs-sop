@@ -36,8 +36,6 @@ include::partial$prerequisites.adoc[]
 oc -n openshift-storage get pods
 ----
 
-WIP: Link to node replacement SOP
-
 The OCS resource requirements must be met in order for the osd pods to be scheduled on the new node. This may take a few minutes as the ceph cluster recovers data for the failing but now recovering osd.
 
 To watch this recovery in action ensure the osd pods were actually placed on the new worker node.
@@ -75,9 +73,6 @@ include::partial$deploy_toolbox.adoc[]
 ----
 ceph status
 ----
-
-How long recovery takes will depend on the size of the Ceph cluster.
-WIP: Note about health status and no recovery for small quick clusters.
 
 include::partial$gather_logs.adoc[]
 
