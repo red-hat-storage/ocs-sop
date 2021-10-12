@@ -5,7 +5,7 @@
 .pod status: pending -> Check for resource issues, pending pvcs, node assignment, kubelet problems.
 ----
 oc project openshift-storage
-oc get pod | grep rook-ceph-mon
+oc get pod | grep {ceph-component}
 ----
 
 [subs="verbatim,attributes"]

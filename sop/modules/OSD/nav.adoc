@@ -4,6 +4,7 @@
 * xref:CephOSDCriticallyFull.adoc[CephOSDCriticallyFull]
 * xref:CephOSDDiskUnavailable.adoc[CephOSDDiskUnavailable]
 * xref:CephOSDDiskNotResponding.adoc[CephOSDDiskNotResponding]
+* xref:CephOSDFlapping.adoc[CephOSDFlapping]
 * xref:CephNodeDown.adoc[CephNodeDown]
 * xref:CephMonVersionMismatch.adoc[CephMonVersionMismatch]
 * xref:CephOSDVersionMismatch.adoc[CephOSDVersionMismatch]
