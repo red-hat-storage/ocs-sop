@@ -142,6 +142,9 @@
     <a class="nav-link" href="CephOSDDiskNotResponding.html">CephOSDDiskNotResponding</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="CephOSDFlapping.html">CephOSDFlapping</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephNodeDown.html">CephNodeDown</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -369,7 +372,7 @@ exit</code></pre>
 <div class="title">pod status: pending &#8594; Check for resource issues, pending pvcs, node assignment, kubelet problems.</div>
 <div class="content">
 <pre class="highlightjs highlight"><code>oc project openshift-storage
-oc get pod | grep rook-ceph-mon</code></pre>
+oc get pod | grep rook-ceph</code></pre>
 </div>
 </div>
 <div class="listingblock execute">

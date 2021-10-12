@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>CephNodeDown :: OCS Standard Operating Procedures</title>
-    <link rel="canonical" href="https://mid998.github.io/ocs-sop/sop/OSD/CephNodeDown.html">
-    <meta name="description" content="A storage node went down. Please check the node immediately. The alert should contain the node name.">
+    <title>CephOSDFlapping :: OCS Standard Operating Procedures</title>
+    <link rel="canonical" href="https://mid998.github.io/ocs-sop/sop/OSD/CephOSDFlapping.html">
+    <meta name="description" content="Ceph storage osd flapping.">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../_/css/site.css">
 <link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
@@ -141,10 +141,10 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephOSDDiskNotResponding.html">CephOSDDiskNotResponding</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="CephOSDFlapping.html">CephOSDFlapping</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephNodeDown.html">CephNodeDown</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -209,14 +209,14 @@
   <ul>
     <li><a href="../index.html">OCS Standard Operating Procedures</a></li>
     <li>Dedicated Alerts</li>
-    <li><a href="CephNodeDown.html">CephNodeDown</a></li>
+    <li><a href="CephOSDFlapping.html">CephOSDFlapping</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/red-hat-storage/ocs-sop/edit/main/sop/modules/OSD/pages/CephNodeDown.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/red-hat-storage/ocs-sop/edit/main/sop/modules/OSD/pages/CephOSDFlapping.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">CephNodeDown</h1>
+<h1 class="page">CephOSDFlapping</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div id="toc" class="toc">
@@ -232,11 +232,7 @@
 <li><a href="#_further_info">3.4. Further info</a></li>
 </ul>
 </li>
-<li><a href="#_alert">4. Alert</a>
-<ul class="sectlevel2">
-<li><a href="#_make_changes_to_solve_alert">4.1. Make changes to solve alert</a></li>
-</ul>
-</li>
+<li><a href="#_alert">4. Alert</a></li>
 <li><a href="#_troubleshooting">5. Troubleshooting</a></li>
 </ul>
 </div>
@@ -257,10 +253,10 @@
 <h2 id="_overview"><a class="anchor" href="#_overview"></a>2. Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A storage node went down. Please check the node immediately. The alert should contain the node name.</p>
+<p>Ceph storage osd flapping.</p>
 </div>
 <div class="paragraph">
-<p>A node running Ceph pods is down. While storage operations will continue to function as Ceph is designed to deal with a node failure, it is recommended to resolve the issue to minimise risk of another node going down and affecting storage functions.</p>
+<p>A storage daemon has restarted 5 times in last 5 minutes. Please check the pod events or ceph status to find out the cause.</p>
 </div>
 </div>
 </div>
@@ -363,73 +359,55 @@ exit</code></pre>
 <div class="sect1">
 <h2 id="_alert"><a class="anchor" href="#_alert"></a>4. Alert</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_make_changes_to_solve_alert"><a class="anchor" href="#_make_changes_to_solve_alert"></a>4.1. Make changes to solve alert</h3>
-<div class="listingblock execute">
-<div class="title">Document the current OCS pods (running and failing):</div>
-<div class="content">
-<pre class="highlightjs highlight"><code>oc -n openshift-storage get pods</code></pre>
+<div class="paragraph">
+<p>Follow the link to follow procedures for flapping OSDs</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/2/html/troubleshooting_guide/troubleshooting-osds#flapping-osds">troubleshoot flapping OSDs</a></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>The OCS resource requirements must be met in order for the osd pods to be scheduled on the new node. This may take a few minutes as the ceph cluster recovers data for the failing but now recovering osd.</p>
-</div>
-<div class="paragraph">
-<p>To watch this recovery in action ensure the osd pods were actually placed on the new worker node.</p>
-</div>
-<div class="listingblock execute">
-<div class="title">Check if the previous failing osd pods are now running:</div>
-<div class="content">
-<pre class="highlightjs highlight"><code>oc -n openshift-storage get pods</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If the previously failing osd pods have not been scheduled, use describe and check events for reasons the pods were not rescheduled.</p>
+<p>Follow the general pod debug workflow outlined below.</p>
 </div>
 <div class="listingblock execute">
-<div class="title">Describe events for failing osd pod:</div>
+<div class="title">pod status: pending &#8594; Check for resource issues, pending pvcs, node assignment, kubelet problems.</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>oc -n openshift-storage get pods | grep osd</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Find a failing osd pod(s):</p>
-</div>
-<div class="listingblock execute">
-<div class="content">
-<pre class="highlightjs highlight"><code>oc -n openshift-storage describe pods/&lt;osd podname from previous step&gt;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>In the event section look for failure reasons, such as resources not being met.</p>
-</div>
-<div class="paragraph">
-<p>In addition, you may use the rook-ceph-toolbox to watch the recovery. This step is optional but can be helpful for large Ceph clusters.</p>
-</div>
-<div class="paragraph">
-<p><strong>Deploy and Access the Toolbox</strong></p>
-</div>
-<div class="paragraph">
-<p>If the toolbox is not deployed, please follow the directions below.</p>
-</div>
-<div class="listingblock execute">
-<div class="title">Deploy Rook-Ceph toolbox if needed:</div>
-<div class="content">
-<pre class="highlightjs highlight"><code>oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'</code></pre>
+<pre class="highlightjs highlight"><code>oc project openshift-storage
+oc get pod | grep rook-ceph-osd</code></pre>
 </div>
 </div>
 <div class="listingblock execute">
-<div class="title">Run the following to rsh to the toolbox pod:</div>
+<div class="title">Set MYPOD for convenience:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
-oc rsh -n openshift-storage $TOOLS_POD</code></pre>
+<pre class="highlightjs highlight"><code># Examine the output for a rook-ceph-osd that is in the pending state, not running or not ready
+MYPOD=&lt;pod identified as the problem pod&gt;</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">From the rsh command prompt, run the following and watch for "recovery" under the io section:</div>
+<div class="paragraph">
+<p>Look for resource limitations or pending pvcs. Otherwise, check for node assignment.</p>
+</div>
+<div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">ceph status</code></pre>
+<pre class="highlightjs highlight"><code>oc get pod/${MYPOD} -o wide</code></pre>
 </div>
+</div>
+<div class="listingblock execute">
+<div class="title">pod status: NOT pending, running, but NOT ready &#8594; Check readiness probe.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>oc describe pod/${MYPOD}</code></pre>
+</div>
+</div>
+<div class="listingblock execute">
+<div class="title">pod status: NOT pending, but NOT running &#8594; Check for app or image issues.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>oc logs pod/${MYPOD}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If a node was assigned, check kubelet on the node.</p>
 </div>
 <div class="paragraph">
 <p>(Optional log gathering)</p>
@@ -438,7 +416,6 @@ oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 <div class="title">Document Ceph Cluster health check:</div>
 <div class="content">
 <pre class="highlightjs highlight"><code>oc adm must-gather --image=registry.redhat.io/ocs4/ocs-must-gather-rhel8:v4.6</code></pre>
-</div>
 </div>
 </div>
 </div>

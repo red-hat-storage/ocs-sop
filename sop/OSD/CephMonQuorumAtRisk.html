@@ -142,6 +142,9 @@
     <a class="nav-link" href="CephOSDDiskNotResponding.html">CephOSDDiskNotResponding</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="CephOSDFlapping.html">CephOSDFlapping</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephNodeDown.html">CephNodeDown</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -379,7 +382,7 @@ oc get pod | grep rook-ceph-mon</code></pre>
 <div class="listingblock execute">
 <div class="title">Set MYPOD for convenience:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code># Examine the output for a rook-ceph-mgr that is in the pending state, not running or not ready
+<pre class="highlightjs highlight"><code># Examine the output for a rook-ceph-mon that is in the pending state, not running or not ready
 MYPOD=&lt;pod identified as the problem pod&gt;</code></pre>
 </div>
 </div>
