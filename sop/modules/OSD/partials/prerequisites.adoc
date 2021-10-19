@@ -6,7 +6,7 @@ Check the output to ensure you are in the correct context for the cluster mentio
 ----
 ocm list clusters
 ----
-From the list above, find the cluster id of the cluster named in the alert. If you do not see the alerting cluster in the list above please contact: WIP
+From the list above, find the cluster id of the cluster named in the alert. If you do not see the alerting cluster in the list above please refer https://red.ht/srep-comms[Effective communication with SRE Platform]
 
 .Create a tunnel through backplane by provdiing SSH key passphrase:
 [source,role="execute"]
