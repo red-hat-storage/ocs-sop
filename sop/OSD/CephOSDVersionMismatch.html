@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>CephOSDVersionMisMatch :: OCS Standard Operating Procedures</title>
     <link rel="canonical" href="https://mid998.github.io/ocs-sop/sop/OSD/CephOSDVersionMismatch.html">
-    <meta name="description" content="There are {{ $value }} different versions of Ceph OSD components running.">
+    <meta name="description" content="There are different versions of Ceph OSD components running.">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../_/css/site.css">
 <link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
@@ -175,6 +175,9 @@
     <a class="nav-link" href="CephMonQuorumAtRisk.html">CephMonQuorumAtRisk</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="CephDataRecoveryTakingTooLong.html">CephDataRecoveryTakingTooLong</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephPGRepairTakingTooLong.html">CephPGRepairTakingTooLong</a>
   </li>
 </ul>
@@ -257,7 +260,7 @@
 <h2 id="_overview"><a class="anchor" href="#_overview"></a>2. Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>There are {{ $value }} different versions of Ceph OSD components running.</p>
+<p>There are different versions of Ceph OSD components running.</p>
 </div>
 <div class="paragraph">
 <p>Detailed Description: Typically this alert triggers during an upgrade that is taking a long time.</p>
@@ -279,7 +282,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>From the list above, find the cluster id of the cluster named in the alert. If you do not see the alerting cluster in the list above please contact: WIP</p>
+<p>From the list above, find the cluster id of the cluster named in the alert. If you do not see the alerting cluster in the list above please refer <a href="https://red.ht/srep-comms">Effective communication with SRE Platform</a></p>
 </div>
 <div class="listingblock execute">
 <div class="title">Create a tunnel through backplane by provdiing SSH key passphrase:</div>

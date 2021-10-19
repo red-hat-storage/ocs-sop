@@ -175,6 +175,9 @@
     <a class="nav-link" href="CephMonQuorumAtRisk.html">CephMonQuorumAtRisk</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="CephDataRecoveryTakingTooLong.html">CephDataRecoveryTakingTooLong</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="CephPGRepairTakingTooLong.html">CephPGRepairTakingTooLong</a>
   </li>
 </ul>
@@ -260,7 +263,7 @@
 <p>A disk device is not responding on one of the host.</p>
 </div>
 <div class="paragraph">
-<p>Detailed Description: A disk device is not responding. Check the underlying EBS volume and infrastructure alerts to check for underlying issue. OCS cluster will continue to be operational if only one of the OSDs are down, so there&#8217;s no immediate impact to customer.</p>
+<p>Detailed Description: A disk device is not responding. Check whether all the OSDs are up and running.</p>
 </div>
 </div>
 </div>
@@ -279,7 +282,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>From the list above, find the cluster id of the cluster named in the alert. If you do not see the alerting cluster in the list above please contact: WIP</p>
+<p>From the list above, find the cluster id of the cluster named in the alert. If you do not see the alerting cluster in the list above please refer <a href="https://red.ht/srep-comms">Effective communication with SRE Platform</a></p>
 </div>
 <div class="listingblock execute">
 <div class="title">Create a tunnel through backplane by provdiing SSH key passphrase:</div>
@@ -366,17 +369,44 @@ exit</code></pre>
 <div class="sect2">
 <h3 id="_make_changes_to_solve_alert"><a class="anchor" href="#_make_changes_to_solve_alert"></a>4.1. Make changes to solve alert</h3>
 <div class="paragraph">
-<p>The missing/unresponsive disk(volume) must be replaced as soon as possible. This procedure determines which node is having disk issues.</p>
+<p>Follow the general pod debug workflow outlined below.</p>
 </div>
-<div class="sect3">
-<h4 id="_determine_ocs_nodes"><a class="anchor" href="#_determine_ocs_nodes"></a>4.1.1. Determine OCS Nodes</h4>
-<div class="paragraph">
-<p>Check for OSD pods.Describe pod for more info.</p>
-</div>
-<div class="listingblock">
+<div class="listingblock execute">
+<div class="title">pod status: pending &#8594; Check for resource issues, pending pvcs, node assignment, kubelet problems.</div>
 <div class="content">
-<pre>oc describe pod &lt;osd-pod&gt; -n openshift-storage</pre>
+<pre class="highlightjs highlight"><code>oc project openshift-storage
+oc get pod | grep rook-ceph-osd</code></pre>
 </div>
+</div>
+<div class="listingblock execute">
+<div class="title">Set MYPOD for convenience:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code># Examine the output for a rook-ceph-osd that is in the pending state, not running or not ready
+MYPOD=&lt;pod identified as the problem pod&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Look for resource limitations or pending pvcs. Otherwise, check for node assignment.</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code>oc get pod/${MYPOD} -o wide</code></pre>
+</div>
+</div>
+<div class="listingblock execute">
+<div class="title">pod status: NOT pending, running, but NOT ready &#8594; Check readiness probe.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>oc describe pod/${MYPOD}</code></pre>
+</div>
+</div>
+<div class="listingblock execute">
+<div class="title">pod status: NOT pending, but NOT running &#8594; Check for app or image issues.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>oc logs pod/${MYPOD}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If a node was assigned, check kubelet on the node.</p>
 </div>
 <div class="paragraph">
 <p>(Optional log gathering)</p>
@@ -385,7 +415,6 @@ exit</code></pre>
 <div class="title">Document Ceph Cluster health check:</div>
 <div class="content">
 <pre class="highlightjs highlight"><code>oc adm must-gather --image=registry.redhat.io/ocs4/ocs-must-gather-rhel8:v4.6</code></pre>
-</div>
 </div>
 </div>
 </div>
