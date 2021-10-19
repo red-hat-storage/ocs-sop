@@ -15,4 +15,5 @@
 * xref:CephClusterErrorState.adoc[CephClusterErrorState]
 * xref:CephMgrIsAbsent.adoc[CephMgrIsAbsent]
 * xref:CephMonQuorumAtRisk.adoc[CephMonQuorumAtRisk]
+* xref:CephDataRecoveryTakingTooLong.adoc[CephDataRecoveryTakingTooLong]
 * xref:CephPGRepairTakingTooLong.adoc[CephPGRepairTakingTooLong]
