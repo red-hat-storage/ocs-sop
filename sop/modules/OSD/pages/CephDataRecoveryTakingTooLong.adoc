@@ -1,0 +1,39 @@
+include::partial$alert_header.adoc[]
+
+:alertname: CephDataRecoveryTakingTooLong
+:message: Data recovery is slow.
+:description: Data recovery has been active for too long.
+:detailed_description: Detailed Description: Data recovery is slow, check whether all the OSDs are up and running.
+:severity: Warning
+:resolution_description: 
+:ceph-component: rook-ceph-osd
+
+= {alertname}
+
+toc::[]
+
+== Check Description 
+
+*Severity:* {severity}
+
+*Potential Customer Impact:* High
+
+== Overview
+{description}
+
+{detailed_description}
+
+== Prerequisites
+include::partial$prerequisites.adoc[]
+
+==  Alert
+
+=== Make changes to solve alert
+
+Follow the general pod debug workflow outlined below.
+
+include::partial$pod_debug.adoc[]
+include::partial$gather_logs.adoc[]
+
+==  Troubleshooting
+include::partial$troubleshooting.adoc[]

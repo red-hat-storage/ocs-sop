@@ -3,10 +3,11 @@ include::partial$alert_header.adoc[]
 :alertname: CephOSDDiskNotResponding
 :message: Disk not responding
 :description: A disk device is not responding on one of the host.
-:detailed_description: Detailed Description: A disk device is not responding. Check the underlying EBS volume and infrastructure alerts to check for underlying issue. OCS cluster will continue to be operational if only one of the OSDs are down, so there's no immediate impact to customer.
+:detailed_description: Detailed Description: A disk device is not responding. Check whether all the OSDs are up and running.
 
 :resolution_description:
 :severity: Error
+:ceph-component: rook-ceph-osd
 
 = {alertname}
 
@@ -30,15 +31,9 @@ include::partial$prerequisites.adoc[]
 
 === Make changes to solve alert
 
-The missing/unresponsive disk(volume) must be replaced as soon as possible. This procedure determines which node is having disk issues.
+Follow the general pod debug workflow outlined below.
 
-==== Determine OCS Nodes
-
-Check for OSD pods.Describe pod for more info.
-----
-oc describe pod <osd-pod> -n openshift-storage
-----
-
+include::partial$pod_debug.adoc[]
 include::partial$gather_logs.adoc[]
 
 == Troubleshooting
