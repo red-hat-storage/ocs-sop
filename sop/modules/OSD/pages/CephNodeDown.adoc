@@ -6,7 +6,7 @@ include::partial$alert_header.adoc[]
 :detailed_description: A node running Ceph pods is down. While storage operations will continue to function as Ceph is designed to deal with a node failure, it is recommended to resolve the issue to minimise risk of another node going down and affecting storage functions.
 :resolution_description: Resolution to this alert involves replacing the failed node with a new node of the same or larger capacity and ensuring OCS osd pods are properly placed on the new node.
 :severity: Error
-:ceph-component: rook-ceph-mgr
+:ceph-component: rook-ceph-osd
 = {alertname}
 
 toc::[]
@@ -65,7 +65,10 @@ In the event section look for failure reasons, such as resources not being met.
 
 In addition, you may use the rook-ceph-toolbox to watch the recovery. This step is optional but can be helpful for large Ceph clusters.
 
-include::partial$deploy_toolbox.adoc[]
+*Determine failed OCS Node*
+include::partial$determine_failed_ocs_node.adoc[]
+
+include::partial$access_toolbox.adoc[]
 
 
 .From the rsh command prompt, run the following and watch for "recovery" under the io section:

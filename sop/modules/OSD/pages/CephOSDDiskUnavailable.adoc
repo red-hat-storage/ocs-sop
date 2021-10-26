@@ -3,11 +3,11 @@ include::partial$alert_header.adoc[]
 :alertname: CephOSDDiskUnavailable
 :message: Disk not accessible.
 :description: A disk device is not accessible on one of the host.
-:detailed_description: Detailed Description: A disk device i.e EBS volume is not responding. Check infrastructure alert details for disk and host and the affected Ceph OSD pod.
+:detailed_description: Detailed Description: A disk device is not accessible on one of the host and its corresponding OSD is marked out by the ceph cluster. This alert is raised when a ceph node failed to recover within 10 mins.
 
 :resolution_description: Replace disk (EBS volume) if necessary using the replace Ceph OSD procedure.
 :severity: Error
-:ceph-component: rook-ceph-mgr
+:ceph-component: rook-ceph-osd
 
 = {alertname}
 
@@ -31,10 +31,10 @@ include::partial$prerequisites.adoc[]
 
 === Make changes to solve alert
 
-The missing/unresponsive disk(volume) must be replaced as soon as possible. This procedure determines which node is having disk issues.
+This alert is raised when a ceph node failed to recover within 10 mins. This procedure determines which node has failures.
 
-==== Determine OCS Nodes
-WIP
+==== Determine failed OCS Node
+include::partial$determine_failed_ocs_node.adoc[]
 
 include::partial$gather_logs.adoc[]
 
