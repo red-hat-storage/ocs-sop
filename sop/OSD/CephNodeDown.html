@@ -410,16 +410,22 @@ exit</code></pre>
 <p>In addition, you may use the rook-ceph-toolbox to watch the recovery. This step is optional but can be helpful for large Ceph clusters.</p>
 </div>
 <div class="paragraph">
-<p><strong>Deploy and Access the Toolbox</strong></p>
-</div>
-<div class="paragraph">
-<p>If the toolbox is not deployed, please follow the directions below.</p>
+<p><strong>Determine failed OCS Node</strong></p>
 </div>
 <div class="listingblock execute">
-<div class="title">Deploy Rook-Ceph toolbox if needed:</div>
+<div class="title">Run the following to get the list of worker nodes and check for the node status:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'</code></pre>
+<pre class="highlightjs highlight"><code>oc get nodes --selector='node-role.kubernetes.io/worker','!node-role.kubernetes.io/infra'</code></pre>
 </div>
+</div>
+<div class="listingblock execute">
+<div class="title">Describe the node which is of NotReady status to get more information on the failure:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>oc describe node &lt;node_name&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Access the Toolbox</strong></p>
 </div>
 <div class="listingblock execute">
 <div class="title">Run the following to rsh to the toolbox pod:</div>

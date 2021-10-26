@@ -263,7 +263,7 @@
 <p>A disk device is not accessible on one of the host.</p>
 </div>
 <div class="paragraph">
-<p>Detailed Description: A disk device i.e EBS volume is not responding. Check infrastructure alert details for disk and host and the affected Ceph OSD pod.</p>
+<p>Detailed Description: A disk device is not accessible on one of the host and its corresponding OSD is marked out by the ceph cluster. This alert is raised when a ceph node failed to recover within 10 mins.</p>
 </div>
 </div>
 </div>
@@ -369,12 +369,21 @@ exit</code></pre>
 <div class="sect2">
 <h3 id="_make_changes_to_solve_alert"><a class="anchor" href="#_make_changes_to_solve_alert"></a>4.1. Make changes to solve alert</h3>
 <div class="paragraph">
-<p>The missing/unresponsive disk(volume) must be replaced as soon as possible. This procedure determines which node is having disk issues.</p>
+<p>This alert is raised when a ceph node failed to recover within 10 mins. This procedure determines which node has failures.</p>
 </div>
 <div class="sect3">
-<h4 id="_determine_ocs_nodes"><a class="anchor" href="#_determine_ocs_nodes"></a>4.1.1. Determine OCS Nodes</h4>
-<div class="paragraph">
-<p>WIP</p>
+<h4 id="_determine_failed_ocs_node"><a class="anchor" href="#_determine_failed_ocs_node"></a>4.1.1. Determine failed OCS Node</h4>
+<div class="listingblock execute">
+<div class="title">Run the following to get the list of worker nodes and check for the node status:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>oc get nodes --selector='node-role.kubernetes.io/worker','!node-role.kubernetes.io/infra'</code></pre>
+</div>
+</div>
+<div class="listingblock execute">
+<div class="title">Describe the node which is of NotReady status to get more information on the failure:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>oc describe node &lt;node_name&gt;</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>(Optional log gathering)</p>
