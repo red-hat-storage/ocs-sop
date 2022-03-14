@@ -1,6 +1,8 @@
 # ocs-sop
 Standard Operating Procedure Documents for OpenShift Container Storage
 
+Find the rendered pages here: https://red-hat-storage.github.io/ocs-sop
+
 ## Assumptions
 The final configuration details for OCS on OSD are TBD. These SoPs are written with the assumptions listed below.
 
