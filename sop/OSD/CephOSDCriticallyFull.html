@@ -6,7 +6,7 @@
     <title>CephOSDCriticallyFull :: OCS Standard Operating Procedures</title>
     <link rel="canonical" href="https://mid998.github.io/ocs-sop/sop/OSD/CephOSDCriticallyFull.html">
     <meta name="description" content="Utilization of back-end storage device (OSD) has crossed 80%. Immediately free up some space or expand the storage cluster or contact support.">
-    <meta name="generator" content="Antora 2.3.4">
+    <meta name="generator" content="Antora 3.0.1">
     <link rel="stylesheet" href="../../_/css/site.css">
 <link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -194,7 +194,7 @@
     <li class="component is-current">
       <span class="title">OCS Standard Operating Procedures</span>
       <ul class="versions">
-        <li class="version is-current is-latest">
+        <li class="version is-current">
           <a href="../index.html">master</a>
         </li>
       </ul>
@@ -278,7 +278,7 @@
 <div class="listingblock execute">
 <div class="title">List clusters you have permission to access:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>ocm list clusters</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">ocm list clusters</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -287,13 +287,13 @@
 <div class="listingblock execute">
 <div class="title">Create a tunnel through backplane by provdiing SSH key passphrase:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>ocm backplane tunnel &lt;cluster_id&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">ocm backplane tunnel &lt;cluster_id&gt;</code></pre>
 </div>
 </div>
 <div class="listingblock execute">
 <div class="title">In a new tab, login to target cluster using backplane by provdiing 2FA:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>ocm backplane login &lt;cluster_id&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">ocm backplane login &lt;cluster_id&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -302,13 +302,13 @@
 <div class="listingblock execute">
 <div class="title">Set port-forwarding for alertmanager:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>oc port-forward alertmanager-managed-ocs-alertmanager-0 9093 -n openshift-storage</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">oc port-forward alertmanager-managed-ocs-alertmanager-0 9093 -n openshift-storage</code></pre>
 </div>
 </div>
 <div class="listingblock execute">
 <div class="title">Check all alerts</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>curl http://localhost:9093/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">curl http://localhost:9093/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
 </div>
 </div>
 </div>
@@ -320,7 +320,7 @@
 <div class="listingblock execute">
 <div class="title">Step 1: Check and document ceph cluster health:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
+<pre class="highlightjs highlight"><code class="language-none hljs">TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
 oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 </div>
 </div>
@@ -417,7 +417,7 @@ If the minimum vCPU and memory resource requirements are not met, the customer s
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>oc patch storagecluster ocs-storagecluster -p '{"spec":{"storageDeviceSets":{"count":"storage_size"}}}'</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">oc patch storagecluster ocs-storagecluster -p '{"spec":{"storageDeviceSets":{"count":"storage_size"}}}'</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -433,7 +433,7 @@ If the minimum vCPU and memory resource requirements are not met, the customer s
 <div class="listingblock execute">
 <div class="title">Document Ceph Cluster health check:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>oc adm must-gather --image=registry.redhat.io/ocs4/ocs-must-gather-rhel8:v4.6</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">oc adm must-gather --image=registry.redhat.io/ocs4/ocs-must-gather-rhel8:v4.6</code></pre>
 </div>
 </div>
 </div>

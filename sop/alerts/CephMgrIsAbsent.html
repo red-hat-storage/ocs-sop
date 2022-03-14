@@ -6,7 +6,7 @@
     <title>CephMgrIsAbsent :: OCS Standard Operating Procedures</title>
     <link rel="canonical" href="https://mid998.github.io/ocs-sop/sop/alerts/CephMgrIsAbsent.html">
     <meta name="description" content="Ceph Manager has disappeared from Prometheus target discovery.">
-    <meta name="generator" content="Antora 2.3.4">
+    <meta name="generator" content="Antora 3.0.1">
     <link rel="stylesheet" href="../../_/css/site.css">
 <link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -194,7 +194,7 @@
     <li class="component is-current">
       <span class="title">OCS Standard Operating Procedures</span>
       <ul class="versions">
-        <li class="version is-current is-latest">
+        <li class="version is-current">
           <a href="../index.html">master</a>
         </li>
       </ul>
@@ -271,7 +271,7 @@
 <div class="listingblock execute">
 <div class="title">Verify you are admin and cluster server details:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>oc whoami</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">oc whoami</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -283,7 +283,7 @@
 <div class="listingblock execute">
 <div class="title">Get the route to this cluster&#8217;s alertmanager:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -292,7 +292,7 @@
 <div class="listingblock execute">
 <div class="title">Check all alerts</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -301,13 +301,13 @@
 <div class="listingblock execute">
 <div class="title">Get your alertname from the alert, set for use in jq:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>export MYALERTNAME="&lt;alertname from alert&gt;"</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">export MYALERTNAME="&lt;alertname from alert&gt;"</code></pre>
 </div>
 </div>
 <div class="listingblock execute">
 <div class="title">Check if the alert is still active:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -319,7 +319,7 @@
 <div class="listingblock execute">
 <div class="title">If you need more details run:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERTDETAILS: .}'</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERTDETAILS: .}'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -346,7 +346,7 @@ The rook-ceph toolbox is not supported by Red Hat and is used here only to provi
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -355,7 +355,7 @@ The rook-ceph toolbox is not supported by Red Hat and is used here only to provi
 <div class="listingblock execute">
 <div class="title">Check and document ceph cluster health:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
+<pre class="highlightjs highlight"><code class="language-none hljs">TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
 oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 </div>
 </div>
@@ -389,7 +389,7 @@ exit</code></pre>
 <div class="listingblock execute">
 <div class="title">Get the route to this cluster&#8217;s alertmanager:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -398,7 +398,7 @@ exit</code></pre>
 <div class="listingblock execute">
 <div class="title">Check all alerts</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -407,13 +407,13 @@ exit</code></pre>
 <div class="listingblock execute">
 <div class="title">Get your alertname from the alert, set for use in jq:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>export MYALERTNAME="&lt;alertname from alert&gt;"</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">export MYALERTNAME="&lt;alertname from alert&gt;"</code></pre>
 </div>
 </div>
 <div class="listingblock execute">
 <div class="title">Check if the alert is still active:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -425,7 +425,7 @@ exit</code></pre>
 <div class="listingblock execute">
 <div class="title">If you need more details run:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERTDETAILS: .}'</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERTDETAILS: .}'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -534,7 +534,7 @@ The cause of the missing replicas must be determined and fixed. Basic troublesho
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>[
+<pre class="highlightjs highlight"><code class="language-none hljs">[
   {
     "lastTransitionTime": "2021-01-26T19:21:37Z",
     "message": "all available catalogsources are healthy",

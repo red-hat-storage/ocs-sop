@@ -6,7 +6,7 @@
     <title>CephOSDCriticallyFull :: OCS Standard Operating Procedures</title>
     <link rel="canonical" href="https://mid998.github.io/ocs-sop/sop/alerts/CephOSDCriticallyFull.html">
     <meta name="description" content="Utilization of back-end storage device (OSD)  has crossed 85%. Immediately free up some space or expand the storage cluster or contact support.">
-    <meta name="generator" content="Antora 2.3.4">
+    <meta name="generator" content="Antora 3.0.1">
     <link rel="stylesheet" href="../../_/css/site.css">
 <link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -194,7 +194,7 @@
     <li class="component is-current">
       <span class="title">OCS Standard Operating Procedures</span>
       <ul class="versions">
-        <li class="version is-current is-latest">
+        <li class="version is-current">
           <a href="../index.html">master</a>
         </li>
       </ul>
@@ -271,7 +271,7 @@
 <div class="listingblock execute">
 <div class="title">Verify you are admin and cluster server details:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>oc whoami</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">oc whoami</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -283,7 +283,7 @@
 <div class="listingblock execute">
 <div class="title">Get the route to this cluster&#8217;s alertmanager:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -292,7 +292,7 @@
 <div class="listingblock execute">
 <div class="title">Check all alerts</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -301,13 +301,13 @@
 <div class="listingblock execute">
 <div class="title">Get your alertname from the alert, set for use in jq:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>export MYALERTNAME="&lt;alertname from alert&gt;"</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">export MYALERTNAME="&lt;alertname from alert&gt;"</code></pre>
 </div>
 </div>
 <div class="listingblock execute">
 <div class="title">Check if the alert is still active:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -319,7 +319,7 @@
 <div class="listingblock execute">
 <div class="title">If you need more details run:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERTDETAILS: .}'</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname | test(env.MYALERTNAME)) | { ALERTDETAILS: .}'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -346,7 +346,7 @@ The rook-ceph toolbox is not supported by Red Hat and is used here only to provi
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -355,7 +355,7 @@ The rook-ceph toolbox is not supported by Red Hat and is used here only to provi
 <div class="listingblock execute">
 <div class="title">Check and document ceph cluster health:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
+<pre class="highlightjs highlight"><code class="language-none hljs">TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
 oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 </div>
 </div>
@@ -410,7 +410,7 @@ exit</code></pre>
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -418,7 +418,7 @@ exit</code></pre>
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
+<pre class="highlightjs highlight"><code class="language-none hljs">TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
 oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 </div>
 </div>
@@ -427,7 +427,7 @@ oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>ceph status</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">ceph status</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -438,7 +438,7 @@ oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>ceph osd status</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">ceph osd status</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -449,7 +449,7 @@ oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>exit</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">exit</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -457,7 +457,7 @@ oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -466,7 +466,7 @@ oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 <div class="listingblock execute">
 <div class="title">Check all alerts</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
 </div>
 </div>
 </div>
@@ -477,7 +477,7 @@ oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>oc get csv -A | grep local-storage</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">oc get csv -A | grep local-storage</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -495,7 +495,7 @@ oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 <div class="listingblock execute">
 <div class="title">Look for PV names with local-pv prefixes:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>oc -n openshift-storage get pvc | grep local-pv</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">oc -n openshift-storage get pvc | grep local-pv</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -512,7 +512,7 @@ ocs-deviceset-localblksc-demo-2-data-0-nzzn5   Bound    local-pv-fb64d972       
 <div class="listingblock execute">
 <div class="title">Check the storageClassName in the storage cluster matches:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>oc -n openshift-storage get storagecluster -o yaml | grep storageClassName</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">oc -n openshift-storage get storagecluster -o yaml | grep storageClassName</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -548,7 +548,7 @@ ocs-deviceset-localblksc-demo-2-data-0-nzzn5   Bound    local-pv-fb64d972       
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>oc -n openshift-local-storage get localvolumeset -o yaml</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">oc -n openshift-local-storage get localvolumeset -o yaml</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -588,7 +588,7 @@ Details of attaching additional storage capacity will depend on your particular 
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>oc -n openshift-local-storage get localvolumediscoveryresults</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">oc -n openshift-local-storage get localvolumediscoveryresults</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -599,7 +599,7 @@ Details of attaching additional storage capacity will depend on your particular 
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>oc -n openshift-local-storage get localvolumediscoveryresults/discovery-result-ip-10-0-149-49.us-east-2.compute.internal -o yaml</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">oc -n openshift-local-storage get localvolumediscoveryresults/discovery-result-ip-10-0-149-49.us-east-2.compute.internal -o yaml</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -625,7 +625,7 @@ Details of attaching additional storage capacity will depend on your particular 
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>oc -n openshift-storage edit storagecluster/ocs-storagecluster</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">oc -n openshift-storage edit storagecluster/ocs-storagecluster</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -677,7 +677,7 @@ Watch the expansion progress by viewing ceph status and ceph osd status. This st
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -685,7 +685,7 @@ Watch the expansion progress by viewing ceph status and ceph osd status. This st
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
+<pre class="highlightjs highlight"><code class="language-none hljs">TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
 oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 </div>
 </div>
@@ -694,7 +694,7 @@ oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>ceph status</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">ceph status</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -756,7 +756,7 @@ oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>ceph osd status</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">ceph osd status</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -823,7 +823,7 @@ oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>exit</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">exit</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -831,13 +831,13 @@ oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')</code></pre>
 </div>
 </div>
 <div class="listingblock execute">
 <div class="title">Check all alerts. You may have to run this several times to watch the alerts resolve:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -856,7 +856,7 @@ oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>oc -n openshift-storage edit storagecluster/ocs-storagecluster</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">oc -n openshift-storage edit storagecluster/ocs-storagecluster</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -908,7 +908,7 @@ Watch the expansion progress by viewing ceph status and ceph osd status. This st
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -916,7 +916,7 @@ Watch the expansion progress by viewing ceph status and ceph osd status. This st
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
+<pre class="highlightjs highlight"><code class="language-none hljs">TOOLS_POD=$(oc get pods -n openshift-storage -l app=rook-ceph-tools -o name)
 oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 </div>
 </div>
@@ -925,7 +925,7 @@ oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>ceph status</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">ceph status</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -987,7 +987,7 @@ oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>ceph osd status</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">ceph osd status</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1054,7 +1054,7 @@ oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>exit</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">exit</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1062,13 +1062,13 @@ oc rsh -n openshift-storage $TOOLS_POD</code></pre>
 </div>
 <div class="listingblock execute">
 <div class="content">
-<pre class="highlightjs highlight"><code>MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">MYALERTMANAGER=$(oc -n openshift-monitoring get routes/alertmanager-main --no-headers | awk '{print $2}')</code></pre>
 </div>
 </div>
 <div class="listingblock execute">
 <div class="title">Check all alerts. You may have to run this several times to watch the alerts resolve:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code>curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">curl -k -H "Authorization: Bearer $(oc -n openshift-monitoring sa get-token prometheus-k8s)"  https://${MYALERTMANAGER}/api/v1/alerts | jq '.data[] | select( .labels.alertname) | { ALERT: .labels.alertname, STATE: .status.state}'</code></pre>
 </div>
 </div>
 <div class="paragraph">
