@@ -3,8 +3,8 @@
 
 .Document Ceph Cluster health check:
 ----
-For OCS specific results run:
-oc adm must-gather --image=registry.redhat.io/ocs4/ocs-must-gather-rhel8:v4.6
+For ODF specific results run:
+oc adm must-gather --image=registry.redhat.io/odf4/ocs-must-gather-rhel8:v4.10
 ----
 
 
